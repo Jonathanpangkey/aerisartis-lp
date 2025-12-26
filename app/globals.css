@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #fef6f2;
+  --color-primary-100: #fde8dd;
+  --color-primary-200: #fbd0bb;
+  --color-primary-300: #f8b399;
+  --color-primary-400: #e38a5d;
+  --color-primary-500: #b85c2e;
+  --color-primary-600: #a54f27;
+  --color-primary-700: #7a3e1f;
+  --color-primary-800: #5c2e17;
+  --color-primary-900: #3d1f10;
+  --color-primary: #b85c2e;
+  --color-primary-light: #e38a5d;
+  --color-primary-dark: #7a3e1f;
+  --color-primary-foreground: #ffffff;
+
+  --color-accent-50: #faf7f2;
+  --color-accent-100: #f3ebdd;
+  --color-accent-200: #e6d5b8;
+  --color-accent-300: #e6c28a;
+  --color-accent-400: #d4a373;
+  --color-accent-500: #d4a373;
+  --color-accent-600: #c39366;
+  --color-accent-700: #b0895b;
+  --color-accent-800: #8a6b47;
+  --color-accent-900: #5c4730;
+  --color-accent: #d4a373;
+  --color-accent-light: #e6c28a;
+  --color-accent-dark: #b0895b;
+
+  /* === NEUTRAL / BACKGROUND === */
+  --color-background-dark: #0b0b0b;
+  --color-background: #0c0a09;
+  --color-text-muted: rgba(255, 255, 255, 0.9);
+  --color-muted: rgba(255, 255, 255, 0.9);
+
+  /* === SHADOWS === */
+  --shadow-copper: 0 12px 30px rgba(184, 92, 46, 0.45);
+  --shadow-gold: 0 10px 25px rgba(212, 163, 115, 0.45);
+  --shadow-primary: 0 12px 30px rgba(184, 92, 46, 0.45);
+  --shadow-accent: 0 10px 25px rgba(212, 163, 115, 0.45);
+}
+
+@layer base {
+  * {
+    @apply font-serif;
+  }
+}
