@@ -62,7 +62,7 @@ export const Contact = () => {
   ];
 
   return (
-    <section className='relative py-24 px-6 overflow-hidden'>
+    <section id="contact" className='relative py-24 px-6 overflow-hidden'>
       <div className='absolute top-1/4 left-1/3 w-100 h-100 bg-accent/10 rounded-full blur-3xl'></div>
 
       <div className='relative max-w-7xl mx-auto'>

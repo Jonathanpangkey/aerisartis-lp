@@ -41,7 +41,7 @@ export const Featured = () => {
   ];
 
   return (
-    <section className='relative py-24 px-6 overflow-hidden'>
+    <section id="featured" className='relative py-24 px-6 overflow-hidden'>
       <div className='absolute top-1/4 right-1/4 w-95 h-95 bg-[#b85c2e]/10 rounded-full blur-3xl'></div>
       <div className='absolute bottom-1/4 left-1/3 w-95 h-95 bg-[#d4a373]/10 rounded-full blur-3xl'></div>
 

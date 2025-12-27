@@ -28,7 +28,7 @@ export const About = () => {
   ];
 
   return (
-    <section className='relative py-24 px-6 overflow-hidden'>
+    <section id="about" className='relative py-24 px-6 overflow-hidden'>
       <div className='absolute top-20 left-1/7 w-100 h-100 bg-[#d4a373]/10 rounded-full blur-3xl'></div>
       <div className='absolute bottom-20 right-1/7 w-100 h-100 bg-[#b85c2e]/10 rounded-full blur-3xl'></div>
 

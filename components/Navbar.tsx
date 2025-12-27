@@ -14,15 +14,28 @@ export const Navbar = () => {
   }, []);
 
   const menuItems = [
-    ["Beranda", "#beranda"],
-    ["Tentang", "#tentang"],
-    ["Koleksi", "#koleksi"],
-    ["Galeri", "#galeri"],
-    ["Kontak", "#kontak"],
+    ["Beranda", "#home"],
+    ["Tentang", "#about"],
+    ["Galeri", "#gallery"],
+    ["Kontak", "#contact"],
   ];
 
-  const handleMenuClick = () => {
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
     setIsMobileMenuOpen(false);
+
+    const targetId = href.replace("#", "");
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      const navHeight = 80; // Tinggi navbar
+      const targetPosition = targetElement.offsetTop - navHeight;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
@@ -46,6 +59,7 @@ export const Navbar = () => {
               <a
                 key={label}
                 href={href}
+                onClick={(e) => handleSmoothScroll(e, href)}
                 className='
                   relative text-white
                   hover:text-accent
@@ -54,6 +68,7 @@ export const Navbar = () => {
                   after:bg-accent after:transition-all after:duration-300 after:transform after:-translate-x-1/2
                   hover:after:w-full
                   py-2
+                  cursor-pointer
                 '>
                 {label}
               </a>
@@ -93,11 +108,12 @@ export const Navbar = () => {
             <a
               key={label}
               href={href}
-              onClick={handleMenuClick}
+              onClick={(e) => handleSmoothScroll(e, href)}
               className='
                 text-white text-lg font-medium py-4 border-b border-white/10
                 hover:text-accent hover:pl-2
                 transition-all duration-200
+                cursor-pointer
               '>
               {label}
             </a>

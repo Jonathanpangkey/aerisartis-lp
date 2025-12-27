@@ -33,7 +33,7 @@ export const Gallery = () => {
   ];
 
   return (
-    <section className='relative py-24 px-6 overflow-hidden bg-[#0a0a0a]'>
+    <section id="gallery" className='relative py-24 px-6 overflow-hidden bg-[#0a0a0a]'>
       <div className='absolute top-1/3 left-0 w-96 h-96 bg-[#d4a373]/10 rounded-full blur-3xl'></div>
       <div className='absolute bottom-1/3 right-0 w-96 h-96 bg-[#b85c2e]/10 rounded-full blur-3xl'></div>
 
