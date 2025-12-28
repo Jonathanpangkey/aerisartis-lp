@@ -25,11 +25,12 @@ export const Navbar = () => {
   }, [isMobileMenuOpen]);
 
   const menuItems = [
-    ["Beranda", "#beranda"],
-    ["Tentang", "#tentang"],
-    ["Koleksi", "#koleksi"],
-    ["Galeri", "#galeri"],
-    ["Kontak", "#kontak"],
+    ["Beranda", "#home"],
+    ["Tentang", "#about"],
+    ["Koleksi", "#featured"],
+    ["Galeri", "#gallery"],
+    ["Kemitraan", "#partnership"],
+    ["Kontak", "#contact"],
   ];
 
   const handleMenuClick = () => {

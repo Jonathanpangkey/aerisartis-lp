@@ -26,18 +26,10 @@ export const Partnership = () => {
       name: "Grand Aston Hotel",
       logo: "/assets/img/logo.png",
     },
-    {
-      name: "Borobudur Heritage",
-      logo: "/assets/img/logo.png",
-    },
-    {
-      name: "Prambanan Temple",
-      logo: "/assets/img/logo.png",
-    },
   ];
 
   return (
-    <section className='relative py-24 px-6 overflow-hidden bg-[#0a0908]'>
+    <section id='partnership' className='relative py-24 px-6 overflow-hidden bg-[#0a0908]'>
       <div className='absolute top-1/3 left-1/4 w-96 h-96 bg-[#d4a373]/8 rounded-full blur-3xl'></div>
       <div className='absolute bottom-1/3 right-1/4 w-96 h-96 bg-[#b85c2e]/8 rounded-full blur-3xl'></div>
 
