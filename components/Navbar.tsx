@@ -13,29 +13,27 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
+
   const menuItems = [
-    ["Beranda", "#home"],
-    ["Tentang", "#about"],
-    ["Galeri", "#gallery"],
-    ["Kontak", "#contact"],
+    ["Beranda", "#beranda"],
+    ["Tentang", "#tentang"],
+    ["Koleksi", "#koleksi"],
+    ["Galeri", "#galeri"],
+    ["Kontak", "#kontak"],
   ];
 
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
+  const handleMenuClick = () => {
     setIsMobileMenuOpen(false);
-
-    const targetId = href.replace("#", "");
-    const targetElement = document.getElementById(targetId);
-
-    if (targetElement) {
-      const navHeight = 80; // Tinggi navbar
-      const targetPosition = targetElement.offsetTop - navHeight;
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
-      });
-    }
   };
 
   return (
@@ -44,22 +42,21 @@ export const Navbar = () => {
         className={`
           fixed top-0 left-0 right-0 z-50
           transition-all duration-300
-          ${isScrolled ? "bg-black/60 backdrop-blur-md py-0" : "bg-transparent py-2"}
+          ${isScrolled ? "bg-black/60 backdrop-blur-md py-4 " : "bg-transparent py-6"}
         `}>
         <div className='max-w-7xl mx-auto px-4 flex justify-between items-center transition-all duration-300'>
           <div
             className={`
               flex items-center gap-3 transition-all duration-300
-              ${isScrolled ? "scale-80" : "scale-100"}
+              ${isScrolled ? "scale-70" : "scale-100"}
             `}>
-            <img src='/assets/img/logo.png' alt='Logo Toko Tembaga' className='w-30 h-30 object-contain' />
+            <img src='/assets/img/logo.png' alt='Logo Toko Tembaga' className='w-30 object-contain' />
           </div>
           <div className='hidden md:flex items-center gap-8 text-md font-medium'>
             {menuItems.map(([label, href]) => (
               <a
                 key={label}
                 href={href}
-                onClick={(e) => handleSmoothScroll(e, href)}
                 className='
                   relative text-white
                   hover:text-accent
@@ -68,7 +65,6 @@ export const Navbar = () => {
                   after:bg-accent after:transition-all after:duration-300 after:transform after:-translate-x-1/2
                   hover:after:w-full
                   py-2
-                  cursor-pointer
                 '>
                 {label}
               </a>
@@ -108,12 +104,11 @@ export const Navbar = () => {
             <a
               key={label}
               href={href}
-              onClick={(e) => handleSmoothScroll(e, href)}
+              onClick={handleMenuClick}
               className='
                 text-white text-lg font-medium py-4 border-b border-white/10
                 hover:text-accent hover:pl-2
                 transition-all duration-200
-                cursor-pointer
               '>
               {label}
             </a>
