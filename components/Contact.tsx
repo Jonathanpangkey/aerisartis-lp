@@ -1,6 +1,6 @@
 "use client";
 import React, {useState} from "react";
-import {Phone, Mail, MapPin, Send} from "lucide-react";
+import {Phone, Mail, MapPin, Send, Instagram} from "lucide-react";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -20,13 +20,10 @@ export const Contact = () => {
   const handleSubmit = () => {
     const {name, email, whatsapp, message} = formData;
 
-    // Format pesan untuk dikirim ke WhatsApp
     const whatsappMessage = `Halo, saya ${name}.\nEmail: ${email}\nNomor WhatsApp: ${whatsapp}\nPesan: ${message}`;
 
-    // Nomor WhatsApp tujuan
     const phoneNumber = "6281328390414";
 
-    // Redirect ke WhatsApp
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
   };
 
@@ -34,17 +31,28 @@ export const Contact = () => {
     {
       icon: <Phone className='w-5 h-5' />,
       label: "Telepon",
-      value: "+62 812 3456 7890",
+      value: "081775432061",
     },
     {
-      icon: <Mail className='w-5 h-5' />,
-      label: "Email",
-      value: "hello@aerisartis.com",
+      icon: <Phone className='w-5 h-5' />,
+      label: "Telepon",
+      value: "085848440140",
     },
+    // {
+    //   icon: <Mail className='w-5 h-5' />,
+    //   label: "Email",
+    //   value: "hello@aerisartis.com",
+    // },
     {
       icon: <MapPin className='w-5 h-5' />,
       label: "Lokasi",
       value: "Yogyakarta, Indonesia",
+    },
+    {
+      icon: <Instagram className='w-5 h-5' />,
+      label: "Instagram",
+      value: "aeris_artis",
+      link: "https://www.instagram.com/aeris_artis/",
     },
   ];
 
@@ -75,7 +83,17 @@ export const Contact = () => {
                   </div>
                   <div>
                     <p className='text-white/60 text-sm mb-1'>{item.label}</p>
-                    <p className='text-white font-semibold text-lg'>{item.value}</p>
+                    {item.link ? (
+                      <a
+                        href={item.link}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        className='text-white font-semibold text-lg hover:text-accent transition-colors'>
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p className='text-white font-semibold text-lg'>{item.value}</p>
+                    )}
                   </div>
                 </div>
               </div>
