@@ -21,7 +21,7 @@ export const Contact = () => {
     const {name, email, whatsapp, message} = formData;
 
     // Format pesan untuk dikirim ke WhatsApp
-    const whatsappMessage = `Halo, saya ${name}.%0AEmail: ${email}%0ANomor WhatsApp: ${whatsapp}%0APesan: ${message}`;
+    const whatsappMessage = `Halo, saya ${name}.\nEmail: ${email}\nNomor WhatsApp: ${whatsapp}\nPesan: ${message}`;
 
     // Nomor WhatsApp tujuan
     const phoneNumber = "6281328390414";
