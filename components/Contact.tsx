@@ -24,7 +24,7 @@ export const Contact = () => {
     const whatsappMessage = `Halo, saya ${name}.%0AEmail: ${email}%0ANomor WhatsApp: ${whatsapp}%0APesan: ${message}`;
 
     // Nomor WhatsApp tujuan
-    const phoneNumber = "091328390414";
+    const phoneNumber = "081328390414";
 
     // Redirect ke WhatsApp
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
