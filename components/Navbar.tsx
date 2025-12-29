@@ -70,6 +70,7 @@ export const Navbar = () => {
                 {label}
               </a>
             ))}
+            {/* <button className='bg-linear-to-r py-2 px-6 rounded-full  from-primary to-[#d46e3d] hover:from-[#d46e3d] hover:to-primary'>Login</button> */}
           </div>
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -114,6 +115,9 @@ export const Navbar = () => {
               {label}
             </a>
           ))}
+          <button className='mt-6 cursor-pointer bg-linear-to-r p-2 rounded-full  from-primary to-[#d46e3d] hover:from-[#d46e3d] hover:to-primary'>
+            Login
+          </button>
         </div>
       </div>
     </>
