@@ -22,7 +22,7 @@ export const Footer = () => {
       <div className='relative max-w-7xl mx-auto px-6 py-16'>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-12 mb-12'>
           <div className='space-y-6'>
-            <img src='/assets/img/logo.png' alt='Logo Aerisartis' className='w-32 h-auto object-contain' />
+            <img src='/assets/img/logo/logo.png' alt='Logo Aerisartis' className='w-32 h-auto object-contain' />
             <p className='text-white/60 leading-relaxed text-sm'>
               Menghadirkan keindahan dan keahlian dalam setiap karya kerajinan tembaga dan kuningan sejak 2004.
             </p>

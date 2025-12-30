@@ -1,28 +1,56 @@
 export const Partnership = () => {
   const partners = [
     {
-      name: "Hotel Tentrem",
-      logo: "/assets/img/logo.png",
+      name: "Coat of Arms Yogyakarta",
+      logo: "/assets/img/partnership-01.webp",
     },
     {
-      name: "The Royal Surakarta",
-      logo: "/assets/img/logo.png",
+      name: "Denjaka",
+      logo: "/assets/img/partnership-02.webp",
     },
     {
-      name: "Museum Batik",
-      logo: "/assets/img/logo.png",
+      name: "Marinir",
+      logo: "/assets/img/partnership-03.webp",
     },
     {
-      name: "Taman Sari Gallery",
-      logo: "/assets/img/logo.png",
+      name: "Kota Magelang",
+      logo: "/assets/img/partnership-04.webp",
     },
     {
-      name: "Keraton Jogja",
-      logo: "/assets/img/logo.png",
+      name: "Kota Semarang",
+      logo: "/assets/img/partnership-05.webp",
     },
     {
-      name: "Grand Aston Hotel",
-      logo: "/assets/img/logo.png",
+      name: "PSI",
+      logo: "/assets/img/partnership-06.webp",
+    },
+    {
+      name: "MaxOne Hotel",
+      logo: "/assets/img/partnership-07.webp",
+    },
+    {
+      name: "Polres Cimahi",
+      logo: "/assets/img/partnership-08.webp",
+    },
+    {
+      name: "Sekretariat Kabinet",
+      logo: "/assets/img/partnership-09.webp",
+    },
+    {
+      name: "Provinsi Bali",
+      logo: "/assets/img/partnership-10.webp",
+    },
+    {
+      name: "Kabupaten Banyuasin",
+      logo: "/assets/img/partnership-11.webp",
+    },
+    {
+      name: "Kabupaten Kutai Kartanegara",
+      logo: "/assets/img/partnership-12.webp",
+    },
+    {
+      name: "Provinsi Kalimantan Timur",
+      logo: "/assets/img/partnership-13.webp",
     },
   ];
 
@@ -42,13 +70,13 @@ export const Partnership = () => {
           </p>
         </div>
 
-        <div className='flex flex-wrap justify-center items-center gap-8'>
+        <div className='flex flex-wrap justify-center items-center gap-6'>
           {partners.map((partner, index) => (
             <img
               key={index}
               src={partner.logo}
               alt={partner.name}
-              className='w-50 object-contain grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-300'
+              className='max-w-35 h-35 object-contain grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-300 '
             />
           ))}
         </div>

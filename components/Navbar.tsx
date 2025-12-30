@@ -51,7 +51,7 @@ export const Navbar = () => {
               flex items-center gap-3 transition-all duration-300
               ${isScrolled ? "scale-70" : "scale-100"}
             `}>
-            <img src='/assets/img/logo.png' alt='Logo Toko Tembaga' className='w-30 object-contain' />
+            <img src='/assets/img/logo/logo.png' alt='Logo Toko Tembaga' className='w-30 object-contain' />
           </div>
           <div className='hidden md:flex items-center gap-8 text-md font-medium'>
             {menuItems.map(([label, href]) => (
