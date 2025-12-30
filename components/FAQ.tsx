@@ -7,44 +7,52 @@ export const FAQ = () => {
 
   const faqs = [
     {
-      question: "Apa material yang digunakan untuk produk Aerisartis?",
+      question: "Berapa lama waktu pengerjaan pesanan di Aerisartis?",
       answer:
-        "Kami menggunakan tembaga dan kuningan berkualitas tinggi yang dipilih secara teliti. Setiap material telah melalui proses seleksi ketat untuk memastikan kualitas dan ketahanan produk jangka panjang.",
+        "Waktu pengerjaan menyesuaikan jenis produk, tingkat kerumitan desain, ukuran, dan jumlah pesanan. Estimasi waktu produksi akan diinformasikan secara transparan sebelum proses dimulai.",
     },
     {
-      question: "Berapa lama proses pembuatan custom order?",
+      question: "Apa keunggulan produk kerajinan tembaga dan kuningan Aerisartis?",
       answer:
-        "Waktu pembuatan custom order bervariasi tergantung kompleksitas desain, biasanya berkisar antara 2-4 minggu. Kami akan memberikan estimasi waktu yang lebih detail setelah konsultasi desain awal dengan Anda.",
+        "Produk Aerisartis dikerjakan secara handmade dengan perhatian tinggi pada detail dan kualitas material. Tembaga dan kuningan dipilih karena karakter visualnya yang kuat, daya tahan yang baik, serta kemampuannya menghadirkan nilai estetika yang elegan dan timeless pada ruang.",
     },
     {
-      question: "Apakah produk tembaga memerlukan perawatan khusus?",
+      question: "Bagaimana proses pemesanan dimulai?",
       answer:
-        "Ya, produk tembaga memerlukan perawatan rutin untuk menjaga kilaunya. Kami menyarankan pembersihan dengan kain lembut dan produk pembersih khusus tembaga. Panduan perawatan lengkap akan diberikan bersama setiap pembelian.",
+        "Pemesanan dimulai setelah pembayaran awal sesuai kesepakatan. Detail pesanan, spesifikasi, dan referensi desain dikirimkan melalui WhatsApp atau email resmi Aerisartis.",
     },
     {
-      question: "Apakah ada garansi untuk produk yang dibeli?",
-      answer:
-        "Semua produk Aerisartis dilengkapi dengan garansi 1 tahun untuk cacat produksi. Garansi tidak mencakup kerusakan akibat penggunaan yang tidak sesuai atau perawatan yang kurang tepat.",
+      question: "Apakah menerima desain custom dan file siap produksi?",
+      answer: "Ya. Aerisartis menerima desain custom maupun file siap produksi. Produksi dimulai setelah desain disetujui oleh pelanggan.",
     },
     {
-      question: "Bagaimana cara memesan produk custom?",
+      question: "Apakah revisi desain diperbolehkan?",
       answer:
-        "Anda dapat menghubungi kami melalui WhatsApp atau email untuk konsultasi desain. Tim kami akan membantu mewujudkan ide Anda, dari konsep awal hingga produk jadi. Kami juga menyediakan mock-up desain sebelum proses produksi dimulai.",
+        "Revisi sebelum persetujuan desain dapat didiskusikan. Revisi setelah desain disetujui dan produksi berjalan akan dikenakan biaya tambahan sesuai tahapan produksi.",
     },
     {
-      question: "Apakah produk bisa dikirim ke luar kota?",
+      question: "Berapa lama proses produksi?",
       answer:
-        "Tentu! Kami melayani pengiriman ke seluruh Indonesia. Produk akan dikemas dengan sangat hati-hati menggunakan packaging khusus untuk memastikan barang sampai dengan aman. Biaya pengiriman disesuaikan dengan lokasi tujuan.",
+        "Waktu produksi menyesuaikan tingkat kerumitan, ukuran, dan jumlah pesanan. Estimasi waktu akan diinformasikan sebelum produksi dimulai.",
     },
     {
-      question: "Apakah harga yang tertera sudah final?",
+      question: "Bagaimana kontrol kualitas dilakukan?",
       answer:
-        "Harga yang tertera untuk produk standar sudah final. Untuk custom order, harga akan ditentukan berdasarkan kompleksitas desain, ukuran, dan detail finishing yang diinginkan. Kami akan memberikan quotation lengkap setelah konsultasi.",
+        "Setiap produk diperiksa kualitas dan kesesuaiannya sebelum pengiriman. Jika terdapat kendala teknis, pelanggan akan diinformasikan terlebih dahulu.",
     },
     {
-      question: "Bisakah saya mengunjungi workshop langsung?",
+      question: "Kapan pesanan dikirim?",
+      answer: "Pengiriman dilakukan setelah pembayaran pelunasan dan biaya pengiriman diterima sepenuhnya.",
+    },
+    {
+      question: "Apakah melayani pengiriman internasional?",
       answer:
-        "Kami menerima kunjungan ke workshop dengan perjanjian terlebih dahulu. Anda dapat melihat langsung proses pembuatan dan koleksi produk kami. Silakan hubungi kami untuk membuat janji kunjungan.",
+        "Ya. Aerisartis melayani pengiriman ke luar negeri dengan standar pengemasan ekspor. Biaya pengiriman, pajak, bea masuk, dan biaya kepabeanan menjadi tanggung jawab pelanggan, kecuali disepakati lain.",
+    },
+    {
+      question: "Apakah ada kemungkinan perbedaan kecil/minor pada produk handmade?",
+      answer:
+        "Ya. Setiap produk handmade memiliki karakter unik. Perbedaan minor pada warna, tekstur, atau detail merupakan bagian dari nilai kerajinan dan tidak dianggap sebagai cacat.",
     },
   ];
 

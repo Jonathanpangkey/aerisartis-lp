@@ -10,7 +10,7 @@ export const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-    };
+    }
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -34,7 +34,7 @@ export const Navbar = () => {
     {
       label: "Pemesanan",
       submenu: [
-        {label: "Pemesanan/Kolaborasi", href: "#cara-pesan"},
+        {label: "Pemesanan/Kolaborasi", href: "#how-to-order"},
         {label: "FAQ", href: "#faq"},
       ],
     },

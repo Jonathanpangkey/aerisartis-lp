@@ -2,11 +2,14 @@ import {Heart} from "lucide-react";
 
 export const Footer = () => {
   const quickLinks = [
-    {label: "Beranda", href: "#beranda"},
-    {label: "Tentang", href: "#tentang"},
-    {label: "Koleksi", href: "#koleksi"},
-    {label: "Galeri", href: "#galeri"},
-    {label: "Kontak", href: "#kontak"},
+    {label: "Beranda", href: "#home"},
+    {label: "Tentang", href: "#about"},
+    {label: "Koleksi", href: "#featured"},
+    {label: "Galeri", href: "#gallery"},
+    {label: "Pemesanan", href: "#how-to-order"},
+    {label: "FAQ", href: "#faq"},
+    {label: "Kemitraan", href: "#partnership"},
+    {label: "Kontak", href: "#contact"},
   ];
 
   const operationalHours = [

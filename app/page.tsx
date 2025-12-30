@@ -7,6 +7,7 @@ import {Contact} from "@/components/Contact";
 import {Footer} from "@/components/Footer";
 import {Partnership} from "@/components/Partnership";
 import {FAQ} from "@/components/FAQ";
+import {HowToOrder} from "@/components/HowToOrder";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Gallery />
       <Partnership />
       <FAQ />
+      <HowToOrder />
       <Contact />
       <Footer />
     </div>

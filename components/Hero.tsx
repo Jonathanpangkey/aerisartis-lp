@@ -46,9 +46,11 @@ export const Hero = () => {
             </button>
           </Link>
 
-          <button className='border-2 cursor-pointer border-accent text-accent px-7.5 py-3.5 rounded-full font-semibold transition-all duration-300 hover:bg-accent hover:text-white hover:-translate-y-1 hover:shadow-accent'>
-            Hubungi Kami
-          </button>
+          <Link href='#contact'>
+            <button className='border-2 cursor-pointer border-accent text-accent px-7.5 py-3.5 rounded-full font-semibold transition-all duration-300 hover:bg-accent hover:text-white hover:-translate-y-1 hover:shadow-accent'>
+              Hubungi Kami
+            </button>
+          </Link>
         </div>
       </div>
 
