@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import {useState} from "react";
 
 export const Hero = () => {
@@ -39,9 +40,11 @@ export const Hero = () => {
         </p>
 
         <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
-          <button className='bg-primary cursor-pointer text-primary-foreground px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-primary'>
-            Jelajahi Koleksi
-          </button>
+          <Link href='/featured'>
+            <button className='bg-primary cursor-pointer text-primary-foreground px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-primary'>
+              Jelajahi Koleksi
+            </button>
+          </Link>
 
           <button className='border-2 cursor-pointer border-accent text-accent px-7.5 py-3.5 rounded-full font-semibold transition-all duration-300 hover:bg-accent hover:text-white hover:-translate-y-1 hover:shadow-accent'>
             Hubungi Kami

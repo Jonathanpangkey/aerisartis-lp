@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const Gallery = () => {
   const galleryItems = [
     {
@@ -33,7 +35,7 @@ export const Gallery = () => {
   ];
 
   return (
-    <section id="gallery" className='relative py-24 px-6 overflow-hidden bg-[#0a0a0a]'>
+    <section id='gallery' className='relative py-24 px-6 overflow-hidden bg-[#0a0a0a]'>
       <div className='absolute top-1/3 left-0 w-96 h-96 bg-[#d4a373]/10 rounded-full blur-3xl'></div>
       <div className='absolute bottom-1/3 right-0 w-96 h-96 bg-[#b85c2e]/10 rounded-full blur-3xl'></div>
 
@@ -48,7 +50,6 @@ export const Gallery = () => {
           </p>
         </div>
 
-        {/* Grid Container: Default 1 kolom (HP), md ke atas 3 kolom */}
         <div className='grid grid-cols-1 md:grid-cols-3 md:auto-rows-[200px] gap-4'>
           {galleryItems.map((item) => (
             <div key={item.id} className={`group relative rounded-2xl overflow-hidden cursor-pointer h-62.5 md:h-auto ${item.span}`}>
@@ -75,9 +76,11 @@ export const Gallery = () => {
             <button className='bg-linear-to-r cursor-pointer from-primary to-[#d46e3d] hover:brightness-110 text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg'>
               Hubungi Kami
             </button>
-            <button className='border-2 cursor-pointer border-accent text-accent hover:bg-accent hover:text-white px-8 py-4 rounded-full font-semibold transition-all hover:scale-105 '>
-              Lihat Katalog Lengkap
-            </button>
+            <Link href='/featured'>
+              <button className='border-2 cursor-pointer border-accent text-accent hover:bg-accent hover:text-white px-8 py-4 rounded-full font-semibold transition-all hover:scale-105 '>
+                Lihat Katalog Lengkap
+              </button>
+            </Link>
           </div>
         </div>
       </div>

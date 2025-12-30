@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const Featured = () => {
   const collections = [
     {
@@ -80,9 +82,11 @@ export const Featured = () => {
           ))}
         </div>
         <div className='text-center mt-12'>
-          <button className='bg-linear-to-r cursor-pointer from-primary to-[#d46e3d] hover:from-[#d46e3d] hover:to-primary text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg'>
-            Lihat Semua Koleksi
-          </button>
+          <Link href='/featured'>
+            <button className='bg-linear-to-r cursor-pointer from-primary to-[#d46e3d] hover:from-[#d46e3d] hover:to-primary text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg'>
+              Lihat Semua Koleksi
+            </button>
+          </Link>
         </div>
       </div>
     </section>

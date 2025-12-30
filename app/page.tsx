@@ -6,6 +6,7 @@ import {Gallery} from "@/components/Gallery";
 import {Contact} from "@/components/Contact";
 import {Footer} from "@/components/Footer";
 import {Partnership} from "@/components/Partnership";
+import {FAQ} from "@/components/FAQ";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Featured />
       <Gallery />
       <Partnership />
+      <FAQ />
       <Contact />
       <Footer />
     </div>
