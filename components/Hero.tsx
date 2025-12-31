@@ -30,13 +30,13 @@ export const Hero = () => {
         className={`relative z-10 max-w-5xl mx-auto px-6 text-center ${
           !isVideoLoaded ? "opacity-0" : "opacity-100"
         } transition-opacity duration-500`}>
-        <h1 className='text-5xl md:text-7xl lg:text-8xl mb-6'>
-          <span className='text-accent block m-0'>Seni dalam</span>
-          <span className='text-white'>Setiap Detail</span>
+        <h1 className='text-5xl md:text-6xl lg:text-7xl mb-6'>
+          <span className='text-accent block m-0'>Abadikan Estetika</span>
+          <span className='text-white'>Dalam Timpaan Logam</span>
         </h1>
 
         <p className='text-muted text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed'>
-          Kerajinan tembaga & kuningan yang menggabungkan tradisi dengan sentuhan modern untuk menciptakan karya seni yang tak terlupakan
+          Kerajinan tembaga dan kuningan yang dikerjakan dengan ketelitian, menghadirkan nilai estetika dan fungsi dalam satu kesatuan.
         </p>
 
         <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>

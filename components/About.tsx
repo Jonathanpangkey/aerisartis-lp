@@ -1,22 +1,32 @@
 import React from "react";
-import {Sparkles, Flame, Users} from "lucide-react";
+import {Sparkles, Flame, Users, Wrench, Handshake, MapPin, Truck, Globe} from "lucide-react";
 
 export const About = () => {
   const features = [
     {
-      icon: <Sparkles className='w-6 h-6' />,
-      title: "Desain Eksklusif",
-      description: "Setiap karya dirancang dengan detail yang memukau dan desain yang unik",
+      icon: <Wrench className='w-6 h-6' />,
+      title: "Kustomisasi Produk",
+      description: "Pembuatan produk tembaga dan kuningan secara handmade sesuai desain, ukuran, dan kebutuhan spesifik klien",
     },
     {
-      icon: <Flame className='w-6 h-6' />,
-      title: "Pengrajin Ahli",
-      description: "Dibuat oleh tangan-tangan terampil dengan pengalaman lebih dari 20 tahun",
+      icon: <Handshake className='w-6 h-6' />,
+      title: "Kolaborasi & Kerja Sama",
+      description: "Terbuka untuk kolaborasi dengan pihak swasta, desainer, arsitek, kontraktor, maupun instansi dalam berbagai skala proyek",
     },
     {
-      icon: <Users className='w-6 h-6' />,
-      title: "Custom Order",
-      description: "Kami menerima pesanan khusus sesuai dengan kebutuhan dan keinginan Anda",
+      icon: <MapPin className='w-6 h-6' />,
+      title: "Survei & Pengukuran",
+      description: "Survei lapangan dan pengukuran langsung ke lokasi klien untuk memastikan akurasi desain dan kesesuaian produk",
+    },
+    {
+      icon: <Truck className='w-6 h-6' />,
+      title: "Pengiriman Dalam Negeri",
+      description: "Layanan pengiriman produk ke seluruh wilayah Indonesia dengan pengemasan yang aman dan terkontrol",
+    },
+    {
+      icon: <Globe className='w-6 h-6' />,
+      title: "Pengiriman Internasional",
+      description: "Fasilitas pengiriman ke luar negeri dengan penyesuaian standar pengemasan dan dokumen pendukung",
     },
   ];
 
@@ -28,7 +38,7 @@ export const About = () => {
   ];
 
   return (
-    <section id="about" className='relative py-24 px-6 overflow-hidden'>
+    <section id='about' className='relative py-24 px-6 overflow-hidden'>
       <div className='absolute top-20 left-1/7 w-100 h-100 bg-[#d4a373]/10 rounded-full blur-3xl'></div>
       <div className='absolute bottom-20 right-1/7 w-100 h-100 bg-[#b85c2e]/10 rounded-full blur-3xl'></div>
 
@@ -36,11 +46,11 @@ export const About = () => {
         <div className='text-center mb-16'>
           <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>TENTANG KAMI</p>
           <h2 className='text-4xl md:text-5xl font-bold mb-6'>
-            Menciptakan <span className='text-accent'>Keindahan Abadi</span>
+            Solusi <span className='text-accent'>Lengkap untuk Kebutuhan</span> Anda
           </h2>
           <p className='text-white/70 text-lg max-w-3xl mx-auto leading-relaxed'>
-            Aerisartis adalah studio kerajinan yang mengkhususkan diri dalam pembuatan karya seni tembaga dan kuningan. Kami percaya bahwa setiap
-            karya adalah cerminan dari dedikasi dan passion kami terhadap seni metalworking.
+            Aerisartis menyediakan berbagai layanan profesional mulai dari kustomisasi produk hingga pengiriman internasional. Kami siap mewujudkan
+            visi Anda dengan dedikasi penuh dan standar kualitas terbaik.
           </p>
         </div>
 
