@@ -43,7 +43,7 @@ export const Featured = () => {
   return (
     <section id='featured' className='relative py-24 px-6 overflow-hidden'>
       <div className='absolute top-1/4 right-1/4 w-95 h-95 bg-[#b85c2e]/10 rounded-full blur-3xl'></div>
-      <div className='absolute bottom-1/4 left-1/3 w-95 h-95 bg-[#d4a373]/10 rounded-full blur-3xl'></div>
+      <div className='absolute bottom-1/4 left-1/3 w-95 h-95 bg-primary-background/10 rounded-full blur-3xl'></div>
 
       <div className='relative max-w-7xl mx-auto'>
         <div className='text-center mb-16'>
@@ -77,7 +77,7 @@ export const Featured = () => {
                 <h3 className='text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors'>{item.title}</h3>
                 <p className='text-white/60 text-sm leading-relaxed'>{item.description}</p>
               </div>
-              <div className='absolute inset-0 border-2 border-[#d4a373] rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity'></div>
+              <div className='absolute inset-0 border-2 border-primary-background rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity'></div>
             </div>
           ))}
         </div>

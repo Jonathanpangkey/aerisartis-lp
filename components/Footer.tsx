@@ -12,11 +12,7 @@ export const Footer = () => {
     {label: "Kontak", href: "#contact"},
   ];
 
-  const operationalHours = [
-    {day: "Senin - Jumat", time: "08:00 - 17:00"},
-    {day: "Sabtu", time: "08:00 - 15:00"},
-    {day: "Minggu", time: "Tutup"},
-  ];
+  const operationalHours = [{day: "Senin - Minggu", time: "08:00 - 21:00"}];
 
   return (
     <footer className='relative border-t border-[#292524] overflow-hidden'>

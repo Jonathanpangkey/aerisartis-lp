@@ -62,7 +62,7 @@ export const FAQ = () => {
 
   return (
     <section id='faq' className='relative py-24 px-6 overflow-hidden'>
-      <div className='absolute top-1/4 left-1/5 w-96 h-96 bg-[#d4a373]/8 rounded-full blur-3xl'></div>
+      <div className='absolute top-1/4 left-1/5 w-96 h-96 bg-primary-background/8 rounded-full blur-3xl'></div>
       <div className='absolute bottom-1/4 right-1/5 w-96 h-96 bg-[#b85c2e]/8 rounded-full blur-3xl'></div>
 
       <div className='relative max-w-4xl mx-auto'>

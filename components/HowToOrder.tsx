@@ -7,7 +7,7 @@ export const HowToOrder = () => {
       icon: <Wallet className='w-8 h-8' />,
       title: "Pemesanan & Pembayaran",
       description: "Lakukan pembayaran awal dan kirimkan detail pesanan, referensi desain, ukuran melalui WhatsApp atau email resmi.",
-      color: "from-[#d4a373] to-[#b85c2e]",
+      color: "from-primary-background to-[#b85c2e]",
     },
     {
       icon: <FileCheck className='w-8 h-8' />,
@@ -19,13 +19,13 @@ export const HowToOrder = () => {
       icon: <Hammer className='w-8 h-8' />,
       title: "Proses Produksi",
       description: "Produk dikerjakan handmade dengan detail sempurna. Estimasi waktu disesuaikan dengan kompleksitas pesanan.",
-      color: "from-[#d46e3d] to-[#d4a373]",
+      color: "from-[#d46e3d] to-primary-background",
     },
     {
       icon: <Search className='w-8 h-8' />,
       title: "Quality Control",
       description: "Setiap produk melalui pemeriksaan kualitas ketat sebelum diserahkan. Kami pastikan sesuai pesanan Anda.",
-      color: "from-[#d4a373] to-[#b85c2e]",
+      color: "from-primary-background to-[#b85c2e]",
     },
     {
       icon: <CheckCircle className='w-8 h-8' />,
@@ -63,7 +63,7 @@ export const HowToOrder = () => {
 
   return (
     <section id='how-to-order' className='relative py-24 px-6 overflow-hidden'>
-      <div className='absolute top-1/4 right-1/4 w-96 h-96 bg-[#d4a373]/10 rounded-full blur-3xl'></div>
+      <div className='absolute top-1/4 right-1/4 w-96 h-96 bg-primary-background/10 rounded-full blur-3xl'></div>
       <div className='absolute bottom-1/4 left-1/4 w-96 h-96 bg-[#b85c2e]/10 rounded-full blur-3xl'></div>
 
       <div className='relative max-w-7xl mx-auto'>
@@ -145,45 +145,8 @@ export const HowToOrder = () => {
             </li>
           </ul>
         </div>
-
-        <div>
-          <div className='relative bg-linear-to-r from-[#1c1917] via-[#292524] to-[#1c1917] border border-accent/20 rounded-3xl p-8 md:p-12 overflow-hidden'>
-            <div className='absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl'></div>
-            <div className='absolute bottom-0 left-0 w-64 h-64 bg-[#b85c2e]/5 rounded-full blur-3xl'></div>
-
-            <div className='relative text-center'>
-              <h3 className='text-3xl md:text-4xl font-bold text-white mb-4'>Siap Memulai Pesanan Anda?</h3>
-              <p className='text-white/70 text-lg mb-8 max-w-2xl mx-auto'>Hubungi kami untuk konsultasi dan mulai wujudkan karya impian Anda</p>
-              <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-                <Link href='/featured'>
-                  <button className='cursor-pointer bg-[#1c1917]/50 w-fit m-auto backdrop-blur-sm border border-accent/50 hover:bg-[#1c1917] text-white px-8 py-4 rounded-full font-semibold transition-all'>
-                    Lihat Koleksi
-                  </button>
-                </Link>
-                <Link href='/#contact'>
-                  <button className='cursor-pointer bg-linear-to-r from-primary to-[#d46e3d] hover:from-[#d46e3d] hover:to-primary text-white px-8 py-4 rounded-full font-semibold transition-all  '>
-                    Hubungi
-                  </button>
-                </Link>
-              </div>
-
-              <div className='mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto'>
-                {[
-                  {label: "Handmade Quality", value: "100%"},
-                  {label: "Quality Control", value: "Ketat"},
-                  {label: "Estimasi Produksi", value: "2-4 Minggu"},
-                  {label: "Kepuasan", value: "Terjamin"},
-                ].map((item, index) => (
-                  <div key={index} className='text-center'>
-                    <div className='text-accent font-bold text-xl md:text-2xl mb-1'>{item.value}</div>
-                    <div className='text-white/60 text-xs'>{item.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
 };
+

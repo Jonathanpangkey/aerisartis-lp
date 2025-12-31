@@ -29,32 +29,40 @@ export const Contact = () => {
 
   const contactInfo = [
     {
-      icon: <Phone className='w-5 h-5' />,
+      icon: <Phone className='w-5 h-4' />,
       label: "Telepon",
       value: "081775432061",
+      link: "tel:081775432061",
     },
     {
-      icon: <Phone className='w-5 h-5' />,
+      icon: <Phone className='w-4 h-4' />,
       label: "Telepon",
       value: "085848440140",
+      link: "tel:085848440140",
     },
-    // {
-    //   icon: <Mail className='w-5 h-5' />,
-    //   label: "Email",
-    //   value: "hello@aerisartis.com",
-    // },
     {
-      icon: <MapPin className='w-5 h-5' />,
+      icon: <Mail className='w-4 h-4' />,
+      label: "Email",
+      value: "aerisartisart@gmail.com",
+      link: "mailto:aerisartisart@gmail.com",
+    },
+    {
+      icon: <MapPin className='w-4 h-4' />,
       label: "Lokasi",
-      value: "Yogyakarta, Indonesia",
+      value: "Tumang, Boyolali, Indonesia",
+      link: "https://www.google.com/maps/search/?api=1&query=Tumang+Boyolali+Indonesia",
     },
     {
-      icon: <Instagram className='w-5 h-5' />,
+      icon: <Instagram className='w-4 h-4' />,
       label: "Instagram",
       value: "aeris_artis",
       link: "https://www.instagram.com/aeris_artis/",
     },
   ];
+
+  const handleContactClick = (link: string) => {
+    window.open(link, "_blank");
+  };
 
   return (
     <section id='contact' className='relative py-24 px-6 overflow-hidden'>
@@ -66,7 +74,7 @@ export const Contact = () => {
           <h2 className='text-4xl md:text-5xl font-bold mb-6'>
             Mari <span className='text-accent'>Berkolaborasi</span>
           </h2>
-          <p className='text-muted text-lg max-w-2xl mx-auto'>
+          <p className='text-white/70 text-lg max-w-2xl mx-auto'>
             Punya ide untuk karya custom? Atau ingin tahu lebih lanjut tentang produk kami? Kami siap mendengarkan Anda
           </p>
         </div>
@@ -76,24 +84,15 @@ export const Contact = () => {
             {contactInfo.map((item, index) => (
               <div
                 key={index}
-                className='group bg-[#1c1917]/50 backdrop-blur-sm border border-[#292524] rounded-2xl p-6 hover:border-accent/50 transition-all duration-300'>
+                onClick={() => handleContactClick(item.link)}
+                className='group bg-[#1c1917]/50 backdrop-blur-sm border border-[#292524] rounded-2xl p-4.5 hover:border-accent/50 transition-all duration-300 cursor-pointer hover:bg-[#1c1917]/70'>
                 <div className='flex items-center gap-4'>
-                  <div className='w-14 h-14 bg-linear-to-br from-accent to-primary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform'>
+                  <div className='w-14 h-14 bg-linear-to-br from-accent to-[#b85c2e] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform'>
                     <div className='text-white'>{item.icon}</div>
                   </div>
                   <div>
                     <p className='text-white/60 text-sm mb-1'>{item.label}</p>
-                    {item.link ? (
-                      <a
-                        href={item.link}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        className='text-white font-semibold text-lg hover:text-accent transition-colors'>
-                        {item.value}
-                      </a>
-                    ) : (
-                      <p className='text-white font-semibold text-lg'>{item.value}</p>
-                    )}
+                    <p className='text-white font-semibold text-lg group-hover:text-accent transition-colors'>{item.value}</p>
                   </div>
                 </div>
               </div>
@@ -110,7 +109,7 @@ export const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder='Masukkan nama Anda'
-                  className='w-full bg-background-dark border border-[#292524] rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors'
+                  className='w-full bg-[#0a0908] border border-[#292524] rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors'
                 />
               </div>
 
@@ -122,7 +121,7 @@ export const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder='email@example.com'
-                  className='w-full bg-background-dark border border-[#292524] rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors'
+                  className='w-full bg-[#0a0908] border border-[#292524] rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors'
                 />
               </div>
 
@@ -134,7 +133,7 @@ export const Contact = () => {
                   value={formData.whatsapp}
                   onChange={handleChange}
                   placeholder='+62 812 xxxx xxxx'
-                  className='w-full bg-background-dark border border-[#292524] rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors'
+                  className='w-full bg-[#0a0908] border border-[#292524] rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors'
                 />
               </div>
 
@@ -146,13 +145,13 @@ export const Contact = () => {
                   onChange={handleChange}
                   placeholder='Ceritakan tentang proyek atau pertanyaan Anda...'
                   rows={4}
-                  className='w-full bg-background-dark border border-[#292524] rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors resize-none'
+                  className='w-full bg-[#0a0908] border border-[#292524] rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors resize-none'
                 />
               </div>
 
               <button
                 onClick={handleSubmit}
-                className='w-full cursor-pointer bg-linear-to-r from-accent to-primary hover:from-primary hover:to-accent text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:shadow-primary flex items-center justify-center gap-2'>
+                className='w-full cursor-pointer bg-linear-to-r from-accent to-[#b85c2e] hover:from-[#b85c2e] hover:to-accent text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:shadow-lg hover:shadow-accent/50 flex items-center justify-center gap-2'>
                 Kirim Pesan
                 <Send className='w-5 h-5' />
               </button>

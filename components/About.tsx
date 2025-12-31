@@ -31,15 +31,15 @@ export const About = () => {
   ];
 
   const stats = [
-    {value: "20+", label: "Tahun Pengalaman"},
-    {value: "500+", label: "Karya Tercipta"},
-    {value: "300+", label: "Pelanggan Puas"},
-    {value: "100%", label: "Handmade"},
+    {label: "Handmade Quality", value: "100%"},
+    {label: "Quality Control", value: "Ketat"},
+    {label: "Estimasi Produksi", value: "2-4 Minggu"},
+    {label: "Kepuasan", value: "Terjamin"},
   ];
 
   return (
     <section id='about' className='relative py-24 px-6 overflow-hidden'>
-      <div className='absolute top-20 left-1/7 w-100 h-100 bg-[#d4a373]/10 rounded-full blur-3xl'></div>
+      <div className='absolute top-20 left-1/7 w-100 h-100 bg-primary-background/10 rounded-full blur-3xl'></div>
       <div className='absolute bottom-20 right-1/7 w-100 h-100 bg-[#b85c2e]/10 rounded-full blur-3xl'></div>
 
       <div className='relative max-w-7xl mx-auto'>
