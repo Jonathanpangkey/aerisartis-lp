@@ -1,5 +1,5 @@
 import React from "react";
-import {Sparkles, Flame, Users, Wrench, Handshake, MapPin, Truck, Globe} from "lucide-react";
+import {Wrench, Handshake, MapPin, Truck, Globe} from "lucide-react";
 
 export const About = () => {
   const features = [
