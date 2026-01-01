@@ -69,11 +69,11 @@ export const About = () => {
           ))}
         </div>
 
-        <div className='grid grid-cols-2 md:grid-cols-4 gap-8'>
+        <div className='grid grid-cols-1 md:grid-cols-4 gap-8'>
           {stats.map((stat, index) => (
             <div key={index} className='text-center'>
-              <div className='text-4xl md:text-5xl font-bold text-accent mb-2'>{stat.value}</div>
-              <div className='text-white/60 text-sm'>{stat.label}</div>
+              <div className='text-3xl md:text-4xl font-bold text-accent mb-2'>{stat.value}</div> {/* Ukuran teks lebih kecil */}
+              <div className='text-white/50 text-xs'>{stat.label}</div> {/* Ukuran teks label lebih kecil */}
             </div>
           ))}
         </div>

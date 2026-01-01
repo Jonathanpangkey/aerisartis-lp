@@ -1,26 +1,40 @@
 "use client";
-import {ArrowLeft, Share2, Heart, ShoppingCart, Phone} from "lucide-react";
+import {ArrowLeft, Share2, Heart, ShoppingCart, Loader2} from "lucide-react";
 import Link from "next/link";
-import {useState} from "react";
+import {useState, useEffect, use} from "react";
+import {supabase, type Product} from "@/lib/supabase";
 
-export default function ProductDetailPage({params}: {params: {id: string}}) {
+export default function Page({params}: {params: Promise<{id: string}>}) {
+  const {id} = use(params);
+
   const [selectedImage, setSelectedImage] = useState(0);
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const product = {
-    id: params.id,
-    title: "Golden Elegance Vase",
-    category: "Dekorasi Rumah",
+  useEffect(() => {
+    async function fetchProduct() {
+      try {
+        setLoading(true);
+        const {data, error} = await supabase.from("products").select("*").eq("id", id).single();
 
-    description:
-      "Vas tembaga dengan finishing emas yang memukau, dibuat dengan teknik tradisional oleh pengrajin berpengalaman. Setiap detail diukir dengan presisi tinggi untuk menghasilkan karya seni yang tidak hanya indah dipandang, tetapi juga tahan lama.",
-    images: [
-      "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?q=80&w=800",
-      "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800",
-      "https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=800",
-    ],
-  };
+        if (error) throw error;
+
+        setProduct(data);
+      } catch (err) {
+        console.error("Error fetching product:", err);
+        setError("Produk tidak ditemukan");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProduct();
+  }, [id]);
 
   const handleOrderWhatsApp = () => {
+    if (!product) return;
+
     const whatsappMessage = `Halo, saya tertarik dengan produk:
 
 *${product.title}*
@@ -30,6 +44,33 @@ Saya ingin mengetahui lebih lanjut tentang produk ini dan proses pemesanannya. T
     const phoneNumber = "6281328390414";
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
   };
+
+  if (loading) {
+    return (
+      <div className='min-h-screen bg-[#0a0908] flex items-center justify-center'>
+        <div className='flex flex-col items-center'>
+          <Loader2 className='w-12 h-12 text-accent animate-spin mb-4' />
+          <p className='text-white/60'>Memuat produk...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !product) {
+    return (
+      <div className='min-h-screen bg-[#0a0908] flex items-center justify-center'>
+        <div className='text-center'>
+          <p className='text-red-400 text-lg mb-4'>{error || "Produk tidak ditemukan"}</p>
+          <Link
+            href='/featured'
+            className='inline-flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-full hover:bg-accent/80 transition-colors'>
+            <ArrowLeft className='w-5 h-5' />
+            Kembali ke Katalog
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className='min-h-screen bg-[#0a0908]'>
@@ -56,7 +97,7 @@ Saya ingin mengetahui lebih lanjut tentang produk ini dan proses pemesanannya. T
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-12'>
           <div className='space-y-4'>
             <div className='relative aspect-square bg-[#1c1917]/30 backdrop-blur-sm border border-[#292524] rounded-2xl overflow-hidden'>
-              <img src={product.images[selectedImage]} alt={product.title} className='w-full h-full object-cover' />
+              <img src={product.image} alt={product.title} className='w-full h-full object-cover' />
             </div>
           </div>
 

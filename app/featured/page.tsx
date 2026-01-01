@@ -1,100 +1,37 @@
 "use client";
-import {useState} from "react";
-import {ArrowLeft, Search, Filter} from "lucide-react";
+import {useState, useEffect} from "react";
+import {ArrowLeft, Search, Filter, Loader2} from "lucide-react";
 import Link from "next/link";
+import {supabase, type Product} from "@/lib/supabase";
 
-export default function FeaturedPage() {
+export default function page() {
   const [selectedCategory, setSelectedCategory] = useState("Semua");
   const [searchQuery, setSearchQuery] = useState("");
+  const [collections, setCollections] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const categories = ["Semua", "Dekorasi Rumah", "Seni Makan", "Seni Dinding", "Vas & Pot", "Lampu", "Peralatan"];
 
-  const collections = [
-    {
-      id: 1,
-      title: "Golden Elegance Vase",
-      description: "Vas tembaga dengan finishing emas yang memukau",
-      category: "Dekorasi Rumah",
-      image: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?q=80&w=800",
-    },
-    {
-      id: 2,
-      title: "Artisan Bowl Collection",
-      description: "Koleksi mangkuk kuningan dengan ukiran tradisional",
-      category: "Seni Makan",
-      image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800",
-    },
-    {
-      id: 3,
-      title: "Heritage Wall Art",
-      description: "Hiasan dinding tembaga dengan motif tradisional modern",
-      category: "Seni Dinding",
-      image: "https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=800",
-    },
-    {
-      id: 4,
-      title: "Copper Dining Set",
-      description: "Set peralatan makan tembaga untuk 6 orang",
-      category: "Seni Makan",
-      image: "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?q=80&w=800",
-    },
-    {
-      id: 5,
-      title: "Traditional Lamp",
-      description: "Lampu hias tembaga dengan desain etnik",
-      category: "Lampu",
-      image: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?q=80&w=800",
-    },
-    {
-      id: 6,
-      title: "Brass Flower Pot",
-      description: "Pot bunga kuningan dengan ukiran detail",
-      category: "Vas & Pot",
-      image: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?q=80&w=800",
-    },
-    {
-      id: 7,
-      title: "Decorative Plate",
-      description: "Piring hias tembaga dengan motif batik",
-      category: "Dekorasi Rumah",
-      image: "https://images.unsplash.com/photo-1600857062241-98e5dba60f04?q=80&w=800",
-    },
-    {
-      id: 8,
-      title: "Copper Tea Set",
-      description: "Set teh tembaga premium dengan teko dan 4 cangkir",
-      category: "Seni Makan",
-      image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=800",
-    },
-    {
-      id: 9,
-      title: "Wall Mirror Frame",
-      description: "Bingkai cermin tembaga dengan desain vintage",
-      category: "Seni Dinding",
-      image: "https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?q=80&w=800",
-    },
-    {
-      id: 10,
-      title: "Antique Vase Set",
-      description: "Set 3 vas antik dengan berbagai ukuran",
-      category: "Vas & Pot",
-      image: "https://images.unsplash.com/photo-1565123409695-7b5ef8d2b1fc?q=80&w=800",
-    },
-    {
-      id: 11,
-      title: "Modern Ceiling Lamp",
-      description: "Lampu gantung modern dengan aksen tembaga",
-      category: "Lampu",
-      image: "https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?q=80&w=800",
-    },
-    {
-      id: 12,
-      title: "Handcrafted Utensils",
-      description: "Peralatan dapur handmade dari tembaga murni",
-      category: "Peralatan",
-      image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=800",
-    },
-  ];
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        setLoading(true);
+        const {data, error} = await supabase.from("products").select("*").order("created_at", {ascending: false});
+
+        if (error) throw error;
+
+        setCollections(data || []);
+      } catch (err) {
+        console.error("Error fetching products:", err);
+        setError("Gagal memuat produk. Silakan coba lagi.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProducts();
+  }, []);
 
   const filteredCollections = collections.filter((item) => {
     const matchCategory = selectedCategory === "Semua" || item.category === selectedCategory;
@@ -146,51 +83,71 @@ export default function FeaturedPage() {
       </div>
 
       <div className='max-w-7xl mx-auto px-6 py-12'>
-        <div className='mb-6 text-white/60 text-sm'>Menampilkan {filteredCollections.length} produk</div>
-
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
-          {filteredCollections.map((item) => (
-            <Link
-              key={item.id}
-              href={`/featured/${item.id}`}
-              className='group relative bg-[#1c1917]/30 backdrop-blur-sm border border-[#292524] rounded-2xl overflow-hidden hover:border-accent/50 transition-all duration-300 block'>
-              <div className='relative aspect-square overflow-hidden'>
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-500'
-                />
-                <div className='absolute top-4 left-4'>
-                  <span className='bg-accent text-white text-xs font-semibold px-3 py-1 rounded-full'>{item.category}</span>
-                </div>
-                <div className='absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent opacity-60'></div>
-              </div>
-
-              <div className='p-5'>
-                <h3 className='text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors line-clamp-1'>{item.title}</h3>
-                <p className='text-white/60 text-sm leading-relaxed mb-4 line-clamp-2'>{item.description}</p>
-                <div className='flex items-center justify-end'>
-                  <span className='bg-accent hover:bg-accent/80 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all'>Detail</span>
-                </div>
-              </div>
-
-              <div className='absolute inset-0 border-2 border-accent rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity'></div>
-            </Link>
-          ))}
-        </div>
-
-        {filteredCollections.length === 0 && (
+        {loading ? (
+          <div className='flex flex-col items-center justify-center py-20'>
+            <Loader2 className='w-12 h-12 text-accent animate-spin mb-4' />
+            <p className='text-white/60'>Memuat produk...</p>
+          </div>
+        ) : error ? (
           <div className='text-center py-20'>
-            <p className='text-white/60 text-lg'>Tidak ada produk ditemukan</p>
+            <p className='text-red-400 text-lg mb-4'>{error}</p>
             <button
-              onClick={() => {
-                setSelectedCategory("Semua");
-                setSearchQuery("");
-              }}
-              className='mt-4 text-accent hover:underline'>
-              Reset Filter
+              onClick={() => window.location.reload()}
+              className='bg-accent text-white px-6 py-3 rounded-full hover:bg-accent/80 transition-colors'>
+              Coba Lagi
             </button>
           </div>
+        ) : (
+          <>
+            <div className='mb-6 text-white/60 text-sm'>Menampilkan {filteredCollections.length} produk</div>
+
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+              {filteredCollections.map((item) => (
+                <Link
+                  key={item.id}
+                  href={`/featured/${item.id}`}
+                  className='group relative bg-[#1c1917]/30 backdrop-blur-sm border border-[#292524] rounded-2xl overflow-hidden hover:border-accent/50 transition-all duration-300 block'>
+                  <div className='relative aspect-square overflow-hidden'>
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-500'
+                    />
+                    <div className='absolute top-4 left-4'>
+                      <span className='bg-accent text-white text-xs font-semibold px-3 py-1 rounded-full'>{item.category}</span>
+                    </div>
+                    <div className='absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent opacity-60'></div>
+                  </div>
+
+                  <div className='p-5'>
+                    <h3 className='text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors line-clamp-1'>{item.title}</h3>
+                    <p className='text-white/60 text-sm leading-relaxed mb-4 line-clamp-2'>{item.description}</p>
+                    <div className='flex items-center justify-between'>
+                      <span className='bg-accent hover:bg-accent/80 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all ml-auto'>
+                        Detail
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className='absolute inset-0 border-2 border-accent rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity'></div>
+                </Link>
+              ))}
+            </div>
+
+            {filteredCollections.length === 0 && !loading && (
+              <div className='text-center py-20'>
+                <p className='text-white/60 text-lg'>Tidak ada produk ditemukan</p>
+                <button
+                  onClick={() => {
+                    setSelectedCategory("Semua");
+                    setSearchQuery("");
+                  }}
+                  className='mt-4 text-accent hover:underline'>
+                  Reset Filter
+                </button>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
