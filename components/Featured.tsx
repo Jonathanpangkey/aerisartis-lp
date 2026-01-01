@@ -12,7 +12,7 @@ export const Featured = () => {
     async function fetchFeaturedProducts() {
       try {
         setLoading(true);
-        const {data, error} = await supabase.from("products").select("*").order("created_at", {ascending: false}).limit(6);
+        const {data, error} = await supabase.from("products").select("*").order("created_at", {ascending: false}).limit(3);
 
         if (error) throw error;
 
@@ -34,7 +34,7 @@ export const Featured = () => {
 
       <div className='relative max-w-7xl mx-auto'>
         <div className='text-center mb-16'>
-          <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>KOLEKSI</p>
+          <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>Katalog Kami</p>
           <h2 className='text-4xl md:text-5xl font-bold mb-6'>
             Karya <span className='text-accent'>Eksklusif</span>
           </h2>

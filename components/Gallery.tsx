@@ -41,18 +41,36 @@ export const Gallery = () => {
 
       <div className='relative max-w-7xl mx-auto'>
         <div className='text-center mb-16'>
-          <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>GALERI KAMI</p>
+          <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>KARYA KAMI</p>
           <h2 className='text-4xl md:text-5xl font-bold mb-6 text-white'>
-            Karya <span className='text-accent'>Terpilih</span>
+            Hasil <span className='text-accent'>Kolaborasi</span>
           </h2>
-          <p className='text-white/70 text-lg max-w-2xl mx-auto'>
-            Jelajahi koleksi kerajinan tembaga dan kuningan yang telah kami ciptakan dengan penuh dedikasi
-          </p>
+          <p className='text-white/70 text-lg max-w-2xl mx-auto'>Jelajahi koleksi kerajinan pilihan yang telah kami ciptakan dengan penuh dedikasi</p>
         </div>
 
-        <div className='grid grid-cols-1 md:grid-cols-3 md:auto-rows-[200px] gap-4'>
+        <div className='md:hidden flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide -mx-6 px-6'>
           {galleryItems.map((item) => (
-            <div key={item.id} className={`group relative rounded-2xl overflow-hidden cursor-pointer h-62.5 md:h-auto ${item.span}`}>
+            <div key={item.id} className='group relative rounded-2xl overflow-hidden cursor-pointer shrink-0 w-70 h-87.5 snap-center'>
+              <img src={item.image} alt={item.title} className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' />
+
+              <div className='absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+                <div className='absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300'>
+                  <h3 className='text-white font-bold text-lg mb-1'>{item.title}</h3>
+                  <div className='flex items-center gap-2'>
+                    <div className='w-8 h-0.5 bg-accent'></div>
+                    <span className='text-accent text-sm font-medium'>Lihat Detail</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className='absolute inset-0 border-2 border-accent/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
+            </div>
+          ))}
+        </div>
+
+        <div className='hidden md:grid grid-cols-3 auto-rows-[200px] gap-4'>
+          {galleryItems.map((item) => (
+            <div key={item.id} className={`group relative rounded-2xl overflow-hidden cursor-pointer ${item.span}`}>
               <img src={item.image} alt={item.title} className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' />
 
               <div className='absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
@@ -72,16 +90,9 @@ export const Gallery = () => {
 
         <div className='mt-16 text-center'>
           <p className='text-white/70 mb-6'>Tertarik dengan karya kami? Mari diskusikan proyek impian Anda</p>
-          <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
-            <button className='bg-linear-to-r cursor-pointer from-primary to-[#d46e3d] hover:brightness-110 text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg'>
-              Hubungi Kami
-            </button>
-            <Link href='/featured'>
-              <button className='border-2 cursor-pointer border-accent text-accent hover:bg-accent hover:text-white px-8 py-4 rounded-full font-semibold transition-all hover:scale-105 '>
-                Lihat Katalog Lengkap
-              </button>
-            </Link>
-          </div>
+          <button className='bg-linear-to-r cursor-pointer from-primary to-[#d46e3d] hover:brightness-110 text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg'>
+            Hubungi Kami
+          </button>
         </div>
       </div>
     </section>
