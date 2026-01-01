@@ -1,4 +1,5 @@
-import {Wrench, Handshake, MapPin, Truck, Globe, Hammer, Gem, CheckCircle} from "lucide-react";
+import React from "react";
+import {Wrench, Handshake, MapPin, Truck, Globe, CreditCard, MessageSquare, Hammer} from "lucide-react";
 
 export const About = () => {
   const features = [
@@ -19,29 +20,25 @@ export const About = () => {
     },
     {
       icon: <Truck className='w-6 h-6' />,
-      title: "Pengiriman Dalam Negeri",
-      description: "Layanan pengiriman produk ke seluruh wilayah Indonesia dengan pengemasan yang aman dan terkontrol",
-    },
-    {
-      icon: <Globe className='w-6 h-6' />,
-      title: "Pengiriman Internasional",
-      description: "Fasilitas pengiriman ke luar negeri dengan penyesuaian standar pengemasan dan dokumen pendukung",
+      title: "Pengiriman Produk",
+      description: "Layanan pengiriman produk ke seluruh wilayah Indonesia dan luar negeri dengan pengemasan yang aman dan terkontrol",
     },
     {
       icon: <Hammer className='w-6 h-6' />,
-      title: "Dibuat oleh Pengrajin Ahli",
-      description: "Setiap produk dikerjakan 100% secara handmade oleh pengrajin ahli dengan perhatian tinggi pada detail",
+      title: "Pengrajin Langsung",
+      description: "Produk dikerjakan langsung oleh pengrajin ahli dengan perhatian tinggi pada detail dan kualitas",
     },
     {
-      icon: <Gem className='w-6 h-6' />,
-      title: "Material Berkualitas Tinggi",
-      description: "Menggunakan material premium seperti tembaga dan kuningan berkualitas tinggi untuk hasil terbaik",
+      icon: <CreditCard className='w-6 h-6' />,
+      title: "Pembayaran Bertahap",
+      description: "Fleksibilitas pembayaran bertahap sesuai dengan kesepakatan dan tahapan produksi",
     },
-    {
-      icon: <CheckCircle className='w-6 h-6' />,
-      title: "Quality Control",
-      description: "Setiap produk melewati proses quality control yang ketat untuk memastikan kualitas dan kesesuaian",
-    },
+  ];
+
+  const stats = [
+    {label: "Handmade Quality", value: "100%"},
+    {label: "Quality Control", value: "Ketat"},
+    {label: "Material Quality", value: "Premium"},
   ];
 
   return (
@@ -61,17 +58,26 @@ export const About = () => {
           </p>
         </div>
 
-        <div className='grid grid-cols-1 md:grid-cols-4 gap-6 mb-20'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-20'>
           {features.map((feature, index) => (
             <div
               key={index}
-              className='group relative bg-[#1c1917]/50 backdrop-blur-sm border border-[#292524] rounded-2xl p-6 hover:border-accent/50 transition-all duration-300'>
+              className='group relative bg-[#1c1917]/50 backdrop-blur-sm border border-[#292524] rounded-2xl p-8 hover:border-accent/50 transition-all duration-300'>
               <div className='w-14 h-14 bg-linear-to-br from-accent to-[#b85c2e] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform'>
                 <div className='text-white'>{feature.icon}</div>
               </div>
 
               <h3 className='text-xl font-bold text-white mb-3'>{feature.title}</h3>
               <p className='text-white/60 leading-relaxed'>{feature.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+          {stats.map((stat, index) => (
+            <div key={index} className='text-center'>
+              <div className='text-2xl md:text-4xl font-bold text-accent mb-2'>{stat.value}</div> {/* Ukuran teks lebih kecil */}
+              <div className='text-white/50 text-xs'>{stat.label}</div> {/* Ukuran teks label lebih kecil */}
             </div>
           ))}
         </div>
