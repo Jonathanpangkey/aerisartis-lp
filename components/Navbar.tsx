@@ -10,7 +10,7 @@ export const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-    }
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -29,7 +29,7 @@ export const Navbar = () => {
   const menuItems = [
     {label: "Beranda", href: "#home"},
     {label: "Tentang", href: "#about"},
-    {label: "Koleksi", href: "#featured"},
+    {label: "Koleksi", href: "/featured"},
     {label: "Galeri", href: "#gallery"},
     {
       label: "Pemesanan",
@@ -39,6 +39,7 @@ export const Navbar = () => {
       ],
     },
     {label: "Kemitraan", href: "#partnership"},
+    {label: "Artikel", href: "/articles"},
     {label: "Kontak", href: "#contact"},
   ];
 

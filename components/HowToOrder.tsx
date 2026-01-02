@@ -1,19 +1,18 @@
 import {Wallet, FileCheck, Hammer, Search, Truck, CheckCircle} from "lucide-react";
-import Link from "next/link";
 
 export const HowToOrder = () => {
   const steps = [
+    {
+      icon: <FileCheck className='w-8 h-8' />,
+      title: "Desain & Persetujuan",
+      description: " Konsultasikan desain anda ke kami. Kami menyusun desain bedasarkan materi Anda. Produksi dimulai setelah desain disetujui.",
+      color: "from-[#b85c2e] to-[#d46e3d]",
+    },
     {
       icon: <Wallet className='w-8 h-8' />,
       title: "Pemesanan & Pembayaran",
       description: "Lakukan pembayaran awal dan kirimkan detail pesanan, referensi desain, ukuran melalui WhatsApp atau email resmi.",
       color: "from-primary-background to-[#b85c2e]",
-    },
-    {
-      icon: <FileCheck className='w-8 h-8' />,
-      title: "Desain & Persetujuan",
-      description: "Kami menyusun desain berdasarkan materi Anda. Produksi dimulai setelah desain disetujui.",
-      color: "from-[#b85c2e] to-[#d46e3d]",
     },
     {
       icon: <Hammer className='w-8 h-8' />,
@@ -149,4 +148,3 @@ export const HowToOrder = () => {
     </section>
   );
 };
-

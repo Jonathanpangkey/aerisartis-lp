@@ -1,12 +1,10 @@
 // app/admin/login/page.tsx
 "use client";
 import {useState} from "react";
-import {useRouter} from "next/navigation";
 import {Lock, Mail, Loader2, AlertCircle} from "lucide-react";
 import {AuthService} from "@/lib/service/auth-service";
 
-export default function AdminLoginPage() {
-  const router = useRouter();
+export default function page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);

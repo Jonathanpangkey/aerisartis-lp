@@ -1,4 +1,3 @@
-// app/admin/dashboard/page.tsx
 "use client";
 import {useState, useEffect} from "react";
 import {useRouter} from "next/navigation";
@@ -9,7 +8,7 @@ import {AdminProductService, type ProductInput} from "@/lib/service/admin-produc
 import {ImageValidator} from "@/lib/utils/image-utils";
 import type {Product} from "@/lib/supabase";
 
-export default function AdminDashboardPage() {
+export default function page() {
   const router = useRouter();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);

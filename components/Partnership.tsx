@@ -72,14 +72,12 @@ export const Partnership = () => {
           </p>
         </div>
 
-        {/* Mobile: Horizontal Scroll */}
         <div className='md:hidden flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide -mx-6 px-6'>
           {partners.map((partner, index) => (
             <img key={index} src={partner.logo} alt={partner.name} className='shrink-0 w-32 h-32 object-contain snap-center' />
           ))}
         </div>
 
-        {/* Desktop: Flex Wrap */}
         <div className='hidden md:flex flex-wrap justify-center items-center gap-6'>
           {partners.map((partner, index) => (
             <img
@@ -96,7 +94,7 @@ export const Partnership = () => {
         <div className='inline-flex items-center gap-3 bg-[#1c1917]/50 backdrop-blur-sm border border-[#292524] rounded-full px-8 py-4'>
           <div className='w-3 h-3 bg-accent rounded-full animate-pulse'></div>
           <p className='text-white/80 text-sm font-medium'>
-            Dipercaya oleh <span className='text-accent font-bold'>10+</span> partner sejak 2004
+            Aerisartis sudah dipercaya untuk berkolaborasi dengan <span className='text-accent font-bold'>10+</span> mitra terbaik
           </p>
         </div>
       </div>
