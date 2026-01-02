@@ -1,10 +1,12 @@
 "use client";
+"use client";
 import {useState, useEffect} from "react";
 import {ArrowLeft, Search, Filter, Loader2} from "lucide-react";
 import Link from "next/link";
-import {supabase, type Product} from "@/lib/supabase";
+import {ProductService} from "@/lib/service/product-service";
+import type {Product} from "@/lib/supabase";
 
-export default function page() {
+export default function FeaturedPage() {
   const [selectedCategory, setSelectedCategory] = useState("Semua");
   const [searchQuery, setSearchQuery] = useState("");
   const [collections, setCollections] = useState<Product[]>([]);
@@ -15,33 +17,25 @@ export default function page() {
 
   useEffect(() => {
     async function fetchProducts() {
-      try {
-        setLoading(true);
-        const {data, error} = await supabase.from("products").select("*").order("created_at", {ascending: false});
+      setLoading(true);
+      const {data, error} = await ProductService.getAllProducts();
 
-        if (error) throw error;
-
+      if (error) {
+        setError(error);
+      } else {
         setCollections(data || []);
-      } catch (err) {
-        console.error("Error fetching products:", err);
-        setError("Gagal memuat produk. Silakan coba lagi.");
-      } finally {
-        setLoading(false);
       }
+
+      setLoading(false);
     }
 
     fetchProducts();
   }, []);
 
-  const filteredCollections = collections.filter((item) => {
-    const matchCategory = selectedCategory === "Semua" || item.category === selectedCategory;
-    const matchSearch =
-      item.title.toLowerCase().includes(searchQuery.toLowerCase()) || item.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchCategory && matchSearch;
-  });
+  const filteredCollections = ProductService.filterProducts(collections, selectedCategory, searchQuery);
 
   return (
-    <div className='min-h-screen bg-[#0a0908]'>
+    <div className='min-h-screen bg-background-dark'>
       <div className='relative bg-linear-to-b from-[#1c1917] to-[#0a0908] border-b border-[#292524]'>
         <div className='max-w-7xl mx-auto px-6 py-8'>
           <Link href='/' className='flex items-center gap-2 text-white/70 hover:text-accent transition-colors mb-6'>

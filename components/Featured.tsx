@@ -2,26 +2,26 @@
 import Link from "next/link";
 import {useState, useEffect} from "react";
 import {Loader2} from "lucide-react";
-import {supabase, type Product} from "@/lib/supabase";
+import {ProductService} from "@/lib/service/product-service";
+import type {Product} from "@/lib/supabase";
 
 export const Featured = () => {
   const [collections, setCollections] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchFeaturedProducts() {
-      try {
-        setLoading(true);
-        const {data, error} = await supabase.from("products").select("*").order("created_at", {ascending: false}).limit(3);
+      setLoading(true);
+      const {data, error} = await ProductService.getFeaturedProducts(3);
 
-        if (error) throw error;
-
+      if (error) {
+        setError(error);
+      } else {
         setCollections(data || []);
-      } catch (err) {
-        console.error("Error fetching featured products:", err);
-      } finally {
-        setLoading(false);
       }
+
+      setLoading(false);
     }
 
     fetchFeaturedProducts();
@@ -47,6 +47,15 @@ export const Featured = () => {
           <div className='flex flex-col items-center justify-center py-20'>
             <Loader2 className='w-12 h-12 text-accent animate-spin mb-4' />
             <p className='text-white/60'>Memuat koleksi...</p>
+          </div>
+        ) : error ? (
+          <div className='text-center py-20'>
+            <p className='text-red-400 text-lg mb-4'>{error}</p>
+            <button
+              onClick={() => window.location.reload()}
+              className='bg-accent text-white px-6 py-3 rounded-full hover:bg-accent/80 transition-colors'>
+              Coba Lagi
+            </button>
           </div>
         ) : collections.length > 0 ? (
           <>

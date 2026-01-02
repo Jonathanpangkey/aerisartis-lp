@@ -11,7 +11,7 @@ import {HowToOrder} from "@/components/HowToOrder";
 
 export default function Home() {
   return (
-    <div className='min-h-screen bg-background text-white'>
+    <div className='min-h-screen bg-background-dark text-white'>
       <Navbar />
       <Hero />
       <About />

@@ -2,31 +2,27 @@
 import {ArrowLeft, Share2, Heart, ShoppingCart, Loader2} from "lucide-react";
 import Link from "next/link";
 import {useState, useEffect, use} from "react";
-import {supabase, type Product} from "@/lib/supabase";
+import {ProductService} from "@/lib/service/product-service";
+import type {Product} from "@/lib/supabase";
 
-export default function Page({params}: {params: Promise<{id: string}>}) {
+export default function ProductDetailPage({params}: {params: Promise<{id: string}>}) {
   const {id} = use(params);
 
-  const [selectedImage, setSelectedImage] = useState(0);
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchProduct() {
-      try {
-        setLoading(true);
-        const {data, error} = await supabase.from("products").select("*").eq("id", id).single();
+      setLoading(true);
+      const {data, error} = await ProductService.getProductById(id);
 
-        if (error) throw error;
-
+      if (error) {
+        setError(error);
+      } else {
         setProduct(data);
-      } catch (err) {
-        console.error("Error fetching product:", err);
-        setError("Produk tidak ditemukan");
-      } finally {
-        setLoading(false);
       }
+      setLoading(false);
     }
 
     fetchProduct();
@@ -43,6 +39,22 @@ Saya ingin mengetahui lebih lanjut tentang produk ini dan proses pemesanannya. T
 
     const phoneNumber = "6281328390414";
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
+  };
+
+  const handleShare = () => {
+    if (navigator.share && product) {
+      navigator
+        .share({
+          title: product.title,
+          text: product.description,
+          url: window.location.href,
+        })
+        .catch((err) => console.log("Error sharing:", err));
+    } else {
+      // Fallback: copy to clipboard
+      navigator.clipboard.writeText(window.location.href);
+      alert("Link berhasil disalin!");
+    }
   };
 
   if (loading) {
@@ -82,7 +94,7 @@ Saya ingin mengetahui lebih lanjut tentang produk ini dan proses pemesanannya. T
               <span>Kembali</span>
             </Link>
             <div className='flex items-center gap-4'>
-              <button className='p-2 text-white/70 hover:text-accent transition-colors'>
+              <button onClick={handleShare} className='p-2 text-white/70 hover:text-accent transition-colors'>
                 <Share2 className='w-5 h-5' />
               </button>
               <button className='p-2 text-white/70 hover:text-accent transition-colors'>

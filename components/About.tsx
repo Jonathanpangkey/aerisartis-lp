@@ -1,4 +1,3 @@
-import React from "react";
 import {Wrench, Handshake, MapPin, Truck, Globe, CreditCard, MessageSquare, Hammer} from "lucide-react";
 
 export const About = () => {
