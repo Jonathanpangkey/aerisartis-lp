@@ -38,6 +38,7 @@ export const About = () => {
     {label: "Handmade Quality", value: "100%"},
     {label: "Quality Control", value: "Ketat"},
     {label: "Material Quality", value: "Premium"},
+    {label: "Konsultasi", value: "Free"},
   ];
 
   return (
@@ -47,14 +48,10 @@ export const About = () => {
 
       <div className='relative max-w-7xl mx-auto'>
         <div className='text-center mb-16'>
-          <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>TENTANG KAMI</p>
+          <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>LAYANAN KAMI</p>
           <h2 className='text-4xl md:text-5xl font-bold mb-6'>
             Solusi <span className='text-accent'>Lengkap untuk Kebutuhan</span> Anda
           </h2>
-          <p className='text-white/70 text-lg max-w-3xl mx-auto leading-relaxed'>
-            Aerisartis menyediakan berbagai layanan profesional mulai dari kustomisasi produk hingga pengiriman internasional. Kami siap mewujudkan
-            visi Anda dengan dedikasi penuh dan standar kualitas terbaik.
-          </p>
         </div>
 
         <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-20'>
@@ -72,7 +69,7 @@ export const About = () => {
           ))}
         </div>
 
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+        <div className='grid grid-cols-1 md:grid-cols-4 gap-8'>
           {stats.map((stat, index) => (
             <div key={index} className='text-center'>
               <div className='text-2xl md:text-4xl font-bold text-accent mb-2'>{stat.value}</div> {/* Ukuran teks lebih kecil */}

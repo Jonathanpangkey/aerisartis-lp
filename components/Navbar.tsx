@@ -27,10 +27,15 @@ export const Navbar = () => {
   }, [isMobileMenuOpen]);
 
   const menuItems = [
-    {label: "Beranda", href: "#home"},
     {label: "Tentang", href: "#about"},
     {label: "Koleksi", href: "/featured"},
-    {label: "Galeri", href: "#gallery"},
+    {
+      label: "Kolaborasi",
+      submenu: [
+        {label: "Galeri", href: "#gallery"},
+        {label: "Kemitraan", href: "#partnership"},
+      ],
+    },
     {
       label: "Pemesanan",
       submenu: [
@@ -38,9 +43,7 @@ export const Navbar = () => {
         {label: "FAQ", href: "#faq"},
       ],
     },
-    {label: "Kemitraan", href: "#partnership"},
     {label: "Artikel", href: "/articles"},
-    {label: "Kontak", href: "#contact"},
   ];
 
   const handleMenuClick = () => {
@@ -61,13 +64,14 @@ export const Navbar = () => {
           ${isScrolled ? "bg-black/60 backdrop-blur-md py-4" : "bg-transparent py-6"}
         `}>
         <div className='max-w-7xl mx-auto px-4 flex justify-between items-center transition-all duration-300'>
-          <div
+          <a
+            href='#home'
             className={`
               flex items-center gap-3 transition-all duration-300
               ${isScrolled ? "scale-70" : "scale-100"}
             `}>
             <img src='/assets/img/logo/logo.png' alt='Logo Toko Tembaga' className='w-30 object-contain' />
-          </div>
+          </a>
 
           <div className='hidden md:flex items-center gap-8 text-md font-medium'>
             {menuItems.map((item) =>

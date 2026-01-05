@@ -90,9 +90,11 @@ export const Gallery = () => {
 
         <div className='mt-16 text-center'>
           <p className='text-white/70 mb-6'>Tertarik dengan karya kami? Mari diskusikan proyek impian Anda</p>
-          <button className='bg-linear-to-r cursor-pointer from-primary to-[#d46e3d] hover:brightness-110 text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg'>
-            Hubungi Kami
-          </button>
+          <Link href='#contact'>
+            <button className='bg-linear-to-r cursor-pointer from-primary to-[#d46e3d] hover:brightness-110 text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg'>
+              Hubungi Kami
+            </button>
+          </Link>
         </div>
       </div>
     </section>
