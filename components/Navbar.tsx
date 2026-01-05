@@ -27,7 +27,7 @@ export const Navbar = () => {
   }, [isMobileMenuOpen]);
 
   const menuItems = [
-    {label: "Tentang", href: "#about"},
+    {label: "Tentang", href: "/about"},
     {label: "Koleksi", href: "/featured"},
     {
       label: "Kolaborasi",
