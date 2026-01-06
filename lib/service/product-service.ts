@@ -1,4 +1,14 @@
-import {supabase, type Product} from "@/lib/supabase";
+import {supabase} from "@/lib/supabase";
+
+export type Product = {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  image: string;
+  created_at: string;
+  updated_at: string;
+};
 
 export class ProductService {
   static async getAllProducts(): Promise<{
@@ -6,7 +16,7 @@ export class ProductService {
     error: string | null;
   }> {
     try {
-      const {data, error} = await supabase.from("products").select("*").order("created_at", {ascending: false});
+      const {data, error} = await supabase.from("products").select("*").order("updated_at", {ascending: false});
 
       if (error) throw error;
 
@@ -28,7 +38,7 @@ export class ProductService {
     error: string | null;
   }> {
     try {
-      const {data, error} = await supabase.from("products").select("*").order("created_at", {ascending: false}).limit(limit);
+      const {data, error} = await supabase.from("products").select("*").order("updated_at", {ascending: false}).limit(limit);
 
       if (error) throw error;
 
@@ -87,32 +97,6 @@ export class ProductService {
   }
 
   /**
-   * Search products by title or description
-   */
-  static async searchProducts(query: string): Promise<{
-    data: Product[] | null;
-    error: string | null;
-  }> {
-    try {
-      const {data, error} = await supabase
-        .from("products")
-        .select("*")
-        .or(`title.ilike.%${query}%,description.ilike.%${query}%`)
-        .order("created_at", {ascending: false});
-
-      if (error) throw error;
-
-      return {data, error: null};
-    } catch (err) {
-      console.error("Error searching products:", err);
-      return {
-        data: null,
-        error: "Gagal mencari produk.",
-      };
-    }
-  }
-
-  /**
    * Client-side filtering (untuk combine search + category)
    * Digunakan ketika sudah ada data di client
    */
@@ -127,4 +111,4 @@ export class ProductService {
 }
 
 // Export untuk backward compatibility
-export const {getAllProducts, getFeaturedProducts, getProductById, getProductsByCategory, searchProducts, filterProducts} = ProductService;
+export const {getAllProducts, getFeaturedProducts, getProductById, getProductsByCategory, filterProducts} = ProductService;

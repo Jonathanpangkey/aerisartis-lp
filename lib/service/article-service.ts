@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase";
+import {supabase} from "@/lib/supabase";
 
 export type Article = {
   id: string;
@@ -9,7 +9,6 @@ export type Article = {
   author: string;
   read_time: string;
   slug: string;
-  published: boolean;
   created_at: string;
   updated_at: string;
 };
@@ -18,54 +17,92 @@ export type ArticleInput = Omit<Article, "id" | "created_at" | "updated_at">;
 
 export class ArticleService {
   /**
-   * Fetch all published articles
+   * Fetch all articles
    */
   static async getAllArticles(): Promise<{
     data: Article[] | null;
     error: string | null;
   }> {
     try {
-      const { data, error } = await supabase
-        .from("articles")
-        .select("*")
-        .eq("published", true)
-        .order("created_at", { ascending: false });
+      const {data, error} = await supabase.from("articles").select("*").order("updated_at", {ascending: false});
 
       if (error) throw error;
 
-      return { data, error: null };
+      return {data, error: null};
     } catch (err: any) {
       console.error("Error fetching articles:", err);
       return {
         data: null,
-        error: "Gagal memuat artikel.",
+        error: err.message || "Gagal memuat artikel.",
       };
     }
   }
 
   /**
-   * Fetch articles by category
+   * Create new article
    */
-  static async getArticlesByCategory(category: string): Promise<{
-    data: Article[] | null;
+  static async createArticle(articleData: ArticleInput): Promise<{
+    data: Article | null;
     error: string | null;
   }> {
     try {
-      const { data, error } = await supabase
-        .from("articles")
-        .select("*")
-        .eq("published", true)
-        .eq("category", category)
-        .order("created_at", { ascending: false });
+      const {data, error} = await supabase.from("articles").insert([articleData]).select().single();
 
       if (error) throw error;
 
-      return { data, error: null };
+      return {data, error: null};
     } catch (err: any) {
-      console.error("Error fetching articles by category:", err);
+      console.error("Error creating article:", err);
       return {
         data: null,
-        error: "Gagal memuat artikel berdasarkan kategori.",
+        error: err.message || "Gagal menambahkan artikel.",
+      };
+    }
+  }
+
+  /**
+   * Update existing article
+   */
+  static async updateArticle(
+    id: string,
+    articleData: Partial<ArticleInput>
+  ): Promise<{
+    data: Article | null;
+    error: string | null;
+  }> {
+    try {
+      const {data, error} = await supabase.from("articles").update(articleData).eq("id", id).select().single();
+
+      if (error) throw error;
+
+      return {data, error: null};
+    } catch (err: any) {
+      console.error("Error updating article:", err);
+      return {
+        data: null,
+        error: err.message || "Gagal memperbarui artikel.",
+      };
+    }
+  }
+
+  /**
+   * Delete article
+   */
+  static async deleteArticle(id: string): Promise<{
+    success: boolean;
+    error: string | null;
+  }> {
+    try {
+      const {error} = await supabase.from("articles").delete().eq("id", id);
+
+      if (error) throw error;
+
+      return {success: true, error: null};
+    } catch (err: any) {
+      console.error("Error deleting article:", err);
+      return {
+        success: false,
+        error: err.message || "Gagal menghapus artikel.",
       };
     }
   }
@@ -78,16 +115,11 @@ export class ArticleService {
     error: string | null;
   }> {
     try {
-      const { data, error } = await supabase
-        .from("articles")
-        .select("*")
-        .eq("slug", slug)
-        .eq("published", true)
-        .single();
+      const {data, error} = await supabase.from("articles").select("*").eq("slug", slug).single();
 
       if (error) throw error;
 
-      return { data, error: null };
+      return {data, error: null};
     } catch (err: any) {
       console.error("Error fetching article:", err);
       return {
@@ -105,16 +137,11 @@ export class ArticleService {
     error: string | null;
   }> {
     try {
-      const { data, error } = await supabase
-        .from("articles")
-        .select("*")
-        .eq("id", id)
-        .eq("published", true)
-        .single();
+      const {data, error} = await supabase.from("articles").select("*").eq("id", id).single();
 
       if (error) throw error;
 
-      return { data, error: null };
+      return {data, error: null};
     } catch (err: any) {
       console.error("Error fetching article:", err);
       return {
@@ -132,16 +159,11 @@ export class ArticleService {
     error: string | null;
   }> {
     try {
-      const { data, error } = await supabase
-        .from("articles")
-        .select("*")
-        .eq("published", true)
-        .order("created_at", { ascending: false })
-        .limit(limit);
+      const {data, error} = await supabase.from("articles").select("*").order("updated_at", {ascending: false}).limit(limit);
 
       if (error) throw error;
 
-      return { data, error: null };
+      return {data, error: null};
     } catch (err: any) {
       console.error("Error fetching featured articles:", err);
       return {
@@ -152,45 +174,13 @@ export class ArticleService {
   }
 
   /**
-   * Search articles by title or excerpt
-   */
-  static async searchArticles(query: string): Promise<{
-    data: Article[] | null;
-    error: string | null;
-  }> {
-    try {
-      const { data, error } = await supabase
-        .from("articles")
-        .select("*")
-        .eq("published", true)
-        .or(`title.ilike.%${query}%,excerpt.ilike.%${query}%,content.ilike.%${query}%`)
-        .order("created_at", { ascending: false });
-
-      if (error) throw error;
-
-      return { data, error: null };
-    } catch (err: any) {
-      console.error("Error searching articles:", err);
-      return {
-        data: null,
-        error: "Gagal mencari artikel.",
-      };
-    }
-  }
-
-  /**
    * Client-side filtering (untuk combine search + category)
    */
-  static filterArticles(
-    articles: Article[],
-    category: string,
-    searchQuery: string
-  ): Article[] {
+  static filterArticles(articles: Article[], category: string, searchQuery: string): Article[] {
     return articles.filter((article) => {
       const matchCategory = category === "Semua" || article.category === category;
       const matchSearch =
-        article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        article.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+        article.title.toLowerCase().includes(searchQuery.toLowerCase()) || article.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
       return matchCategory && matchSearch;
     });
   }
@@ -220,11 +210,12 @@ export class ArticleService {
 
 export const {
   getAllArticles,
-  getArticlesByCategory,
+  createArticle,
+  updateArticle,
+  deleteArticle,
   getArticleBySlug,
   getArticleById,
   getFeaturedArticles,
-  searchArticles,
   filterArticles,
   generateSlug,
   formatDate,

@@ -25,11 +25,9 @@ export default function page() {
       }
 
       if (user) {
-        // Wait a bit for cookies to be set properly
         await new Promise((resolve) => setTimeout(resolve, 100));
 
-        // Use window.location for a hard refresh to ensure middleware runs
-        window.location.href = "/admin/dashboard";
+        window.location.href = "/admin/products";
         return;
       }
     } catch (err) {

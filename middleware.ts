@@ -60,7 +60,7 @@ export async function middleware(req: NextRequest) {
     if (req.nextUrl.pathname === "/admin/login") {
       // If already logged in, redirect to dashboard
       if (session) {
-        return NextResponse.redirect(new URL("/admin/dashboard", req.url));
+        return NextResponse.redirect(new URL("/admin/products", req.url));
       }
       return response;
     }

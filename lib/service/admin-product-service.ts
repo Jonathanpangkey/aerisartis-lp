@@ -1,6 +1,12 @@
-import {supabase, type Product} from "@/lib/supabase";
+import {supabase} from "@/lib/supabase";
+import {type Product} from "@/lib/service/product-service";
 
-export type ProductInput = Omit<Product, "id" | "created_at">;
+export type ProductInput = {
+  title: string;
+  description: string;
+  category: string;
+  image: string;
+};
 
 export class AdminProductService {
   /**
@@ -27,6 +33,7 @@ export class AdminProductService {
 
   /**
    * Update existing product
+   * Note: updated_at will be automatically set by database trigger
    */
   static async updateProduct(
     id: string,
@@ -86,12 +93,10 @@ export class AdminProductService {
       const filePath = `products/${fileName}`;
 
       // Upload to Supabase Storage
-      const {data, error} = await supabase.storage
-        .from("images") // pastikan bucket 'images' sudah dibuat
-        .upload(filePath, file, {
-          cacheControl: "3600",
-          upsert: false,
-        });
+      const {data, error} = await supabase.storage.from("images").upload(filePath, file, {
+        cacheControl: "3600",
+        upsert: false,
+      });
 
       if (error) throw error;
 

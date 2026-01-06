@@ -1,15 +1,13 @@
+// app/admin/dashboard/products/page.tsx
 "use client";
 import {useState, useEffect} from "react";
-import {useRouter} from "next/navigation";
-import {Plus, Edit, Trash2, LogOut, Loader2, Package, Search, Image as ImageIcon, X, Save, AlertCircle, CheckCircle} from "lucide-react";
-import {AuthService} from "@/lib/service/auth-service";
+import {Plus, Edit, Trash2, Loader2, Package, Search, Image as ImageIcon, X, Save, AlertCircle, CheckCircle} from "lucide-react";
 import {ProductService} from "@/lib/service/product-service";
 import {AdminProductService, type ProductInput} from "@/lib/service/admin-product-service";
 import {ImageValidator} from "@/lib/utils/image-utils";
-import type {Product} from "@/lib/supabase";
+import type {Product} from "@/lib/service/product-service";
 
-export default function page() {
-  const router = useRouter();
+export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -40,11 +38,6 @@ export default function page() {
     const {data} = await ProductService.getAllProducts();
     setProducts(data || []);
     setLoading(false);
-  };
-
-  const handleLogout = async () => {
-    await AuthService.logout();
-    window.location.href = "/admin/login";
   };
 
   const openCreateModal = () => {
@@ -87,7 +80,6 @@ export default function page() {
     setImageInfo("");
 
     try {
-      // Validasi gambar
       const result = await ImageValidator.validate(file, {
         maxSizeMB: 5,
         allowedFormats: ["image/jpeg", "image/jpg", "image/png", "image/webp"],
@@ -98,7 +90,6 @@ export default function page() {
       if (!result.valid) {
         setError(result.error || "Gambar tidak valid");
         setImageValidating(false);
-        // Reset input
         e.target.value = "";
         return;
       }
@@ -106,7 +97,6 @@ export default function page() {
       setImageFile(file);
       setImageInfo(`✓ Valid • ${ImageValidator.formatFileSize(file.size)}`);
 
-      // Create preview
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result as string);
@@ -127,13 +117,11 @@ export default function page() {
     try {
       let imageUrl = formData.image;
 
-      // Upload new image if file selected
       if (imageFile) {
         const {url, error: uploadError} = await AdminProductService.uploadImage(imageFile);
         if (uploadError) throw new Error(uploadError);
         imageUrl = url!;
 
-        // Delete old image if editing
         if (modalMode === "edit" && selectedProduct?.image) {
           await AdminProductService.deleteImage(selectedProduct.image);
         }
@@ -171,7 +159,6 @@ export default function page() {
       return;
     }
 
-    // Delete image from storage
     if (product.image) {
       await AdminProductService.deleteImage(product.image);
     }
@@ -187,103 +174,118 @@ export default function page() {
   );
 
   return (
-    <div className='min-h-screen bg-[#0a0908]'>
-      {/* Header */}
-      <div className='sticky top-0 z-40 bg-[#0a0908]/95 backdrop-blur-md border-b border-[#292524]'>
-        <div className='max-w-7xl mx-auto px-6 py-4'>
-          <div className='flex items-center justify-between'>
-            <div className='flex items-center gap-3'>
-              <div className='w-10 h-10 bg-linear-to-br from-accent to-[#b85c2e] rounded-lg flex items-center justify-center'>
-                <Package className='w-6 h-6 text-white' />
-              </div>
-              <div>
-                <h1 className='text-xl font-bold text-white'>Admin Dashboard</h1>
-                <p className='text-white/60 text-sm'>Kelola Produk</p>
-              </div>
-            </div>
-            <button onClick={handleLogout} className='flex items-center gap-2 text-white/70 hover:text-red-400 transition-colors'>
-              <LogOut className='w-5 h-5' />
-              <span>Keluar</span>
-            </button>
-          </div>
+    <div className='max-w-7xl mx-auto px-6 py-8'>
+      {/* Actions Bar */}
+      <div className='flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center mb-8'>
+        <div>
+          <h2 className='text-2xl font-bold text-white mb-1'>Kelola Produk</h2>
+          <p className='text-white/60 text-sm'>Tambah, edit, atau hapus produk kerajinan</p>
+        </div>
+        <button
+          onClick={openCreateModal}
+          className='bg-linear-to-r from-accent to-[#b85c2e] hover:from-[#b85c2e] hover:to-accent text-white px-6 py-3 rounded-full font-semibold transition-all flex items-center gap-2 shadow-lg'>
+          <Plus className='w-5 h-5' />
+          Tambah Produk
+        </button>
+      </div>
+
+      {/* Search */}
+      <div className='mb-8'>
+        <div className='relative w-full sm:w-96'>
+          <Search className='absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40' />
+          <input
+            type='text'
+            placeholder='Cari produk...'
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className='w-full bg-[#1c1917]/50 border border-[#292524] rounded-full pl-12 pr-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-accent transition-colors'
+          />
         </div>
       </div>
 
-      {/* Content */}
-      <div className='max-w-7xl mx-auto px-6 py-8'>
-        {/* Actions Bar */}
-        <div className='flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center mb-8'>
-          <div className='relative w-full sm:w-96'>
-            <Search className='absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40' />
-            <input
-              type='text'
-              placeholder='Cari produk...'
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className='w-full bg-[#1c1917]/50 border border-[#292524] rounded-full pl-12 pr-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-accent transition-colors'
-            />
-          </div>
-          <button
-            onClick={openCreateModal}
-            className='bg-linear-to-r from-accent to-[#b85c2e] hover:from-[#b85c2e] hover:to-accent text-white px-6 py-3 rounded-full font-semibold transition-all flex items-center gap-2 shadow-lg'>
-            <Plus className='w-5 h-5' />
-            Tambah Produk
-          </button>
+      {/* Products Table */}
+      {loading ? (
+        <div className='flex flex-col items-center justify-center py-20'>
+          <Loader2 className='w-12 h-12 text-accent animate-spin mb-4' />
+          <p className='text-white/60'>Memuat produk...</p>
         </div>
-
-        {/* Products Grid */}
-        {loading ? (
-          <div className='flex flex-col items-center justify-center py-20'>
-            <Loader2 className='w-12 h-12 text-accent animate-spin mb-4' />
-            <p className='text-white/60'>Memuat produk...</p>
+      ) : (
+        <div className='bg-[#1c1917]/30 backdrop-blur-sm border border-[#292524] rounded-2xl overflow-hidden'>
+          <div className='overflow-x-auto'>
+            <table className='w-full'>
+              <thead>
+                <tr className='border-b border-[#292524]'>
+                  <th className='text-left py-4 px-6 text-white/70 font-semibold text-sm'>Produk</th>
+                  <th className='text-left py-4 px-6 text-white/70 font-semibold text-sm'>Kategori</th>
+                  <th className='text-left py-4 px-6 text-white/70 font-semibold text-sm'>Deskripsi</th>
+                  <th className='text-left py-4 px-6 text-white/70 font-semibold text-sm'>Terakhir Diubah</th>
+                  <th className='text-center py-4 px-6 text-white/70 font-semibold text-sm'>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredProducts.length === 0 ? (
+                  <tr>
+                    <td colSpan={5} className='text-center py-20'>
+                      <Package className='w-16 h-16 text-white/20 mx-auto mb-4' />
+                      <p className='text-white/60 text-lg'>{searchQuery ? "Tidak ada produk ditemukan" : "Belum ada produk"}</p>
+                    </td>
+                  </tr>
+                ) : (
+                  filteredProducts.map((product) => (
+                    <tr key={product.id} className='border-b border-[#292524] hover:bg-[#1c1917]/50 transition-colors'>
+                      <td className='py-4 px-6'>
+                        <div className='flex items-center gap-4'>
+                          <div className='w-16 h-16 rounded-lg overflow-hidden bg-[#0a0908] shrink-0'>
+                            <img src={product.image} alt={product.title} className='w-full h-full object-cover' />
+                          </div>
+                          <div>
+                            <div className='text-white font-medium line-clamp-1'>{product.title}</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className='py-4 px-6'>
+                        <span className='inline-block bg-accent/20 text-accent text-xs font-semibold px-3 py-1 rounded-full'>{product.category}</span>
+                      </td>
+                      <td className='py-4 px-6'>
+                        <p className='text-white/70 text-sm line-clamp-2 max-w-md'>{product.description}</p>
+                      </td>
+                      <td className='py-4 px-6 text-white/70 text-sm'>
+                        {new Date(product.updated_at).toLocaleDateString("id-ID", {
+                          day: "numeric",
+                          month: "short",
+                          year: "numeric",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
+                      </td>
+                      <td className='py-4 px-6'>
+                        <div className='flex items-center justify-center gap-2'>
+                          <button
+                            onClick={() => openEditModal(product)}
+                            className='bg-[#292524] hover:bg-accent text-white p-2 rounded-lg transition-colors'>
+                            <Edit className='w-4 h-4' />
+                          </button>
+                          <button
+                            onClick={() => handleDelete(product)}
+                            className='bg-[#292524] hover:bg-red-500 text-white p-2 rounded-lg transition-colors'>
+                            <Trash2 className='w-4 h-4' />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
           </div>
-        ) : (
-          <>
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
-              {filteredProducts.map((product) => (
-                <div key={product.id} className='bg-[#1c1917]/30 backdrop-blur-sm border border-[#292524] rounded-2xl overflow-hidden group'>
-                  <div className='relative aspect-square overflow-hidden'>
-                    <img src={product.image} alt={product.title} className='w-full h-full object-cover' />
-                    <div className='absolute top-3 left-3'>
-                      <span className='bg-accent text-white text-xs font-semibold px-3 py-1 rounded-full'>{product.category}</span>
-                    </div>
-                  </div>
-                  <div className='p-4'>
-                    <h3 className='text-white font-bold mb-2 line-clamp-1'>{product.title}</h3>
-                    <p className='text-white/60 text-sm mb-4 line-clamp-2'>{product.description}</p>
-                    <div className='flex gap-2'>
-                      <button
-                        onClick={() => openEditModal(product)}
-                        className='flex-1 bg-[#292524] hover:bg-accent text-white py-2 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm'>
-                        <Edit className='w-4 h-4' />
-                        Edit
-                      </button>
-                      <button
-                        onClick={() => handleDelete(product)}
-                        className='flex-1 bg-[#292524] hover:bg-red-500 text-white py-2 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm'>
-                        <Trash2 className='w-4 h-4' />
-                        Hapus
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+        </div>
+      )}
 
-            {filteredProducts.length === 0 && (
-              <div className='text-center py-20'>
-                <Package className='w-16 h-16 text-white/20 mx-auto mb-4' />
-                <p className='text-white/60 text-lg'>{searchQuery ? "Tidak ada produk ditemukan" : "Belum ada produk"}</p>
-              </div>
-            )}
-          </>
-        )}
-      </div>
-
-      {/* Modal */}
+      {/* Modal - Same as before but extracted for clarity */}
       {showModal && (
         <div className='fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-6'>
           <div className='bg-[#1c1917] border border-[#292524] rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto'>
+            {/* Modal content - Same as original */}
             <div className='sticky top-0 bg-[#1c1917] border-b border-[#292524] p-6 flex items-center justify-between'>
               <h2 className='text-2xl font-bold text-white'>{modalMode === "create" ? "Tambah Produk" : "Edit Produk"}</h2>
               <button onClick={() => setShowModal(false)} className='text-white/60 hover:text-white transition-colors'>
