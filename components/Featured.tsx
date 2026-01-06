@@ -3,7 +3,7 @@ import Link from "next/link";
 import {useState, useEffect} from "react";
 import {Loader2} from "lucide-react";
 import {ProductService} from "@/lib/service/product-service";
-import type {Product} from "@/lib/supabase";
+import type { Product } from "@/lib/service/product-service";
 
 export const Featured = () => {
   const [collections, setCollections] = useState<Product[]>([]);

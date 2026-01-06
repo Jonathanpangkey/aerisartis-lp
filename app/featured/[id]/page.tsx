@@ -3,7 +3,7 @@ import {ArrowLeft, Share2, Heart, ShoppingCart, Loader2} from "lucide-react";
 import Link from "next/link";
 import {useState, useEffect, use} from "react";
 import {ProductService} from "@/lib/service/product-service";
-import type {Product} from "@/lib/supabase";
+import type { Product } from "@/lib/service/product-service";
 
 export default function ProductDetailPage({params}: {params: Promise<{id: string}>}) {
   const {id} = use(params);

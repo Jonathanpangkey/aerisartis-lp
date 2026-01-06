@@ -4,7 +4,7 @@ import {useState, useEffect} from "react";
 import {ArrowLeft, Search, Filter, Loader2} from "lucide-react";
 import Link from "next/link";
 import {ProductService} from "@/lib/service/product-service";
-import type {Product} from "@/lib/supabase";
+import type { Product } from "@/lib/service/product-service";
 
 export default function FeaturedPage() {
   const [selectedCategory, setSelectedCategory] = useState("Semua");
