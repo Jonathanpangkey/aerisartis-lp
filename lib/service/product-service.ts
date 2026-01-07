@@ -31,9 +31,9 @@ export class ProductService {
   }
 
   /**
-   * Fetch featured products (limited)
+   * Fetch Products products (limited)
    */
-  static async getFeaturedProducts(limit: number = 3): Promise<{
+  static async getProductsProducts(limit: number = 3): Promise<{
     data: Product[] | null;
     error: string | null;
   }> {
@@ -44,7 +44,7 @@ export class ProductService {
 
       return {data, error: null};
     } catch (err) {
-      console.error("Error fetching featured products:", err);
+      console.error("Error fetching Products products:", err);
       return {
         data: null,
         error: "Gagal memuat koleksi unggulan.",
@@ -111,4 +111,4 @@ export class ProductService {
 }
 
 // Export untuk backward compatibility
-export const {getAllProducts, getFeaturedProducts, getProductById, getProductsByCategory, filterProducts} = ProductService;
+export const {getAllProducts, getProductsProducts, getProductById, getProductsByCategory, filterProducts} = ProductService;

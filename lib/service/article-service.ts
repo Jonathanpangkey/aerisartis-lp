@@ -130,31 +130,9 @@ export class ArticleService {
   }
 
   /**
-   * Fetch single article by ID
+   * Fetch Products articles (latest N articles)
    */
-  static async getArticleById(id: string): Promise<{
-    data: Article | null;
-    error: string | null;
-  }> {
-    try {
-      const {data, error} = await supabase.from("articles").select("*").eq("id", id).single();
-
-      if (error) throw error;
-
-      return {data, error: null};
-    } catch (err: any) {
-      console.error("Error fetching article:", err);
-      return {
-        data: null,
-        error: "Artikel tidak ditemukan.",
-      };
-    }
-  }
-
-  /**
-   * Fetch featured articles (latest N articles)
-   */
-  static async getFeaturedArticles(limit: number = 3): Promise<{
+  static async getProductsArticles(limit: number = 3): Promise<{
     data: Article[] | null;
     error: string | null;
   }> {
@@ -165,7 +143,7 @@ export class ArticleService {
 
       return {data, error: null};
     } catch (err: any) {
-      console.error("Error fetching featured articles:", err);
+      console.error("Error fetching Products articles:", err);
       return {
         data: null,
         error: "Gagal memuat artikel unggulan.",
@@ -214,8 +192,7 @@ export const {
   updateArticle,
   deleteArticle,
   getArticleBySlug,
-  getArticleById,
-  getFeaturedArticles,
+  getProductsArticles,
   filterArticles,
   generateSlug,
   formatDate,

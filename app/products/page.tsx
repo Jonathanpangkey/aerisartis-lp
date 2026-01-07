@@ -4,9 +4,9 @@ import {useState, useEffect} from "react";
 import {ArrowLeft, Search, Filter, Loader2} from "lucide-react";
 import Link from "next/link";
 import {ProductService} from "@/lib/service/product-service";
-import type { Product } from "@/lib/service/product-service";
+import type {Product} from "@/lib/service/product-service";
 
-export default function FeaturedPage() {
+export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState("Semua");
   const [searchQuery, setSearchQuery] = useState("");
   const [collections, setCollections] = useState<Product[]>([]);
@@ -99,7 +99,7 @@ export default function FeaturedPage() {
               {filteredCollections.map((item) => (
                 <Link
                   key={item.id}
-                  href={`/featured/${item.id}`}
+                  href={`/products/${item.id}`}
                   className='group relative bg-[#1c1917]/30 backdrop-blur-sm border border-[#292524] rounded-2xl overflow-hidden hover:border-accent/50 transition-all duration-300 block'>
                   <div className='relative aspect-square overflow-hidden'>
                     <img

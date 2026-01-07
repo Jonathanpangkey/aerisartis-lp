@@ -89,7 +89,7 @@ export default function ArticlePage() {
               {filteredArticles.map((article) => (
                 <Link
                   key={article.id}
-                  href={`/article/${article.id}`}
+                  href={`/articles/${article.slug}`}
                   className='group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-accent hover:shadow-lg transition-all duration-300'>
                   <div className='p-6'>
                     <div className='flex items-center gap-2 mb-4'>

@@ -3,17 +3,17 @@ import Link from "next/link";
 import {useState, useEffect} from "react";
 import {Loader2} from "lucide-react";
 import {ProductService} from "@/lib/service/product-service";
-import type { Product } from "@/lib/service/product-service";
+import type {Product} from "@/lib/service/product-service";
 
-export const Featured = () => {
+export const Products = () => {
   const [collections, setCollections] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchFeaturedProducts() {
+    async function fetchProductsProducts() {
       setLoading(true);
-      const {data, error} = await ProductService.getFeaturedProducts(3);
+      const {data, error} = await ProductService.getProductsProducts(3);
 
       if (error) {
         setError(error);
@@ -24,11 +24,11 @@ export const Featured = () => {
       setLoading(false);
     }
 
-    fetchFeaturedProducts();
+    fetchProductsProducts();
   }, []);
 
   return (
-    <section id='featured' className='relative py-24 px-6 overflow-hidden'>
+    <section id='Products' className='relative py-24 px-6 overflow-hidden'>
       <div className='absolute top-1/4 right-1/4 w-95 h-95 bg-[#b85c2e]/10 rounded-full blur-3xl'></div>
       <div className='absolute bottom-1/4 left-1/3 w-95 h-95 bg-primary-background/10 rounded-full blur-3xl'></div>
 
@@ -63,7 +63,7 @@ export const Featured = () => {
               {collections.map((item) => (
                 <Link
                   key={item.id}
-                  href={`/featured/${item.id}`}
+                  href={`/products/${item.id}`}
                   className='group relative bg-[#1c1917]/50 backdrop-blur-sm border border-[#292524] rounded-2xl overflow-hidden transition-all duration-300 block hover:border-accent/50'>
                   <div className='relative aspect-4/3 overflow-hidden'>
                     <img
@@ -88,7 +88,7 @@ export const Featured = () => {
             </div>
 
             <div className='text-center mt-12'>
-              <Link href='/featured'>
+              <Link href='/products'>
                 <button className='bg-linear-to-r cursor-pointer from-primary to-[#d46e3d] hover:from-[#d46e3d] hover:to-primary text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg'>
                   Lihat Semua Koleksi
                 </button>

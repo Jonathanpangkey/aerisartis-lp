@@ -56,7 +56,7 @@ export const Hero = () => {
           Kerajinan tembaga dan kuningan yang dikerjakan dengan ketelitian, menghadirkan nilai estetika dan fungsi dalam satu kesatuan.
         </p>
         <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
-          <Link href='/featured'>
+          <Link href='/products'>
             <button className='bg-primary cursor-pointer text-primary-foreground px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-primary'>
               Jelajahi Koleksi
             </button>

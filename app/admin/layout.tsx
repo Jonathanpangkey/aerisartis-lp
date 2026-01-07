@@ -40,7 +40,7 @@ export default function AdminLayout({children}: {children: React.ReactNode}) {
         <div className='max-w-7xl mx-auto px-6 py-4'>
           <div className='flex items-center justify-between'>
             <div className='flex items-center gap-6'>
-              <div className='flex items-center gap-3'>
+              <Link href='/' className='flex items-center gap-3 cursor-pointer'>
                 <div className='w-10 h-10 bg-linear-to-br from-accent to-[#b85c2e] rounded-lg flex items-center justify-center'>
                   <Package className='w-6 h-6 text-white' />
                 </div>
@@ -48,8 +48,7 @@ export default function AdminLayout({children}: {children: React.ReactNode}) {
                   <h1 className='text-xl font-bold text-white'>Admin Dashboard</h1>
                   <p className='text-white/60 text-sm'>Aerisartis</p>
                 </div>
-              </div>
-
+              </Link>
               {/* Desktop Navigation */}
               <nav className='hidden md:flex items-center gap-2'>
                 {navigation.map((item) => (

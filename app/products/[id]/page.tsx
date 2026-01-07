@@ -1,9 +1,9 @@
 "use client";
-import {ArrowLeft, Share2, Heart, ShoppingCart, Loader2} from "lucide-react";
+import {ArrowLeft, Share2, ShoppingCart, Loader2} from "lucide-react";
 import Link from "next/link";
 import {useState, useEffect, use} from "react";
 import {ProductService} from "@/lib/service/product-service";
-import type { Product } from "@/lib/service/product-service";
+import type {Product} from "@/lib/service/product-service";
 
 export default function ProductDetailPage({params}: {params: Promise<{id: string}>}) {
   const {id} = use(params);
@@ -42,19 +42,8 @@ Saya ingin mengetahui lebih lanjut tentang produk ini dan proses pemesanannya. T
   };
 
   const handleShare = () => {
-    if (navigator.share && product) {
-      navigator
-        .share({
-          title: product.title,
-          text: product.description,
-          url: window.location.href,
-        })
-        .catch((err) => console.log("Error sharing:", err));
-    } else {
-      // Fallback: copy to clipboard
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link berhasil disalin!");
-    }
+    navigator.clipboard.writeText(window.location.href);
+    alert("Link berhasil disalin!");
   };
 
   if (loading) {
@@ -74,7 +63,7 @@ Saya ingin mengetahui lebih lanjut tentang produk ini dan proses pemesanannya. T
         <div className='text-center'>
           <p className='text-red-400 text-lg mb-4'>{error || "Produk tidak ditemukan"}</p>
           <Link
-            href='/featured'
+            href='/products'
             className='inline-flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-full hover:bg-accent/80 transition-colors'>
             <ArrowLeft className='w-5 h-5' />
             Kembali ke Katalog
@@ -89,16 +78,13 @@ Saya ingin mengetahui lebih lanjut tentang produk ini dan proses pemesanannya. T
       <div className='sticky top-0 z-40 bg-[#0a0908]/95 backdrop-blur-md border-b border-[#292524]'>
         <div className='max-w-7xl mx-auto px-6 py-4'>
           <div className='flex items-center justify-between'>
-            <Link href='/featured' className='flex items-center gap-2 text-white/70 hover:text-accent transition-colors'>
+            <Link href='/products' className='flex items-center gap-2 text-white/70 hover:text-accent transition-colors'>
               <ArrowLeft className='w-5 h-5' />
               <span>Kembali</span>
             </Link>
             <div className='flex items-center gap-4'>
               <button onClick={handleShare} className='p-2 text-white/70 hover:text-accent transition-colors'>
                 <Share2 className='w-5 h-5' />
-              </button>
-              <button className='p-2 text-white/70 hover:text-accent transition-colors'>
-                <Heart className='w-5 h-5' />
               </button>
             </div>
           </div>
