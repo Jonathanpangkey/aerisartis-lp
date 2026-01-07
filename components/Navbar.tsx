@@ -128,6 +128,20 @@ export const Navbar = () => {
                 </a>
               )
             )}
+            <a
+              href='/admin/login'
+              onClick={handleMenuClick}
+              className='
+                    relative text-white
+                    bg-primary
+                    hover:bg-accent
+                    transition-colors duration-200
+                    hover:after:w-full
+                    px-4 py-2
+                    rounded-full
+                '>
+              Admin
+            </a>
           </div>
 
           <button
@@ -160,57 +174,76 @@ export const Navbar = () => {
           overflow-y-auto
           ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}
         `}>
-        <div className='flex flex-col gap-2 pt-24 px-8 pb-8'>
-          {menuItems.map((item) =>
-            item.submenu ? (
-              <div key={item.label}>
-                <button
-                  onClick={() => toggleSubmenu(item.label)}
-                  className='
+        <div>
+          <div className='flex flex-col gap-2 pt-24 px-8 pb-8'>
+            {menuItems.map((item) =>
+              item.submenu ? (
+                <div key={item.label}>
+                  <button
+                    onClick={() => toggleSubmenu(item.label)}
+                    className='
                     w-full flex items-center justify-between
                     text-white text-lg font-medium py-4 border-b border-white/10
                     hover:text-accent
                     transition-all duration-200
                   '>
-                  <span>{item.label}</span>
-                  <ChevronDown className={`w-5 h-5 transition-transform ${openSubmenu === item.label ? "rotate-180" : ""}`} />
-                </button>
+                    <span>{item.label}</span>
+                    <ChevronDown className={`w-5 h-5 transition-transform ${openSubmenu === item.label ? "rotate-180" : ""}`} />
+                  </button>
 
-                <div
-                  className={`
+                  <div
+                    className={`
                     overflow-hidden transition-all duration-300
                     ${openSubmenu === item.label ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}
                   `}>
-                  {item.submenu.map((subItem) => (
-                    <a
-                      key={subItem.label}
-                      href={subItem.href}
-                      onClick={handleMenuClick}
-                      className='
+                    {item.submenu.map((subItem) => (
+                      <a
+                        key={subItem.label}
+                        href={subItem.href}
+                        onClick={handleMenuClick}
+                        className='
                         block text-white/80 text-base py-3 pl-4
                         hover:text-accent hover:pl-6
                         transition-all duration-200
                         border-l-2 border-white/10
                       '>
-                      {subItem.label}
-                    </a>
-                  ))}
+                        {subItem.label}
+                      </a>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={handleMenuClick}
-                className='
+              ) : (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={handleMenuClick}
+                  className='
                   text-white text-lg font-medium py-4 border-b border-white/10
                   hover:text-accent hover:pl-2
                   transition-all duration-200
                 '>
-                {item.label}
-              </a>
-            )
-          )}
+                  {item.label}
+                </a>
+              )
+            )}
+            <a
+              href='/admin/login'
+              onClick={handleMenuClick}
+              className='
+                    relative text-white
+                    bg-primary
+                    hover:bg-accent
+                    transition-colors duration-200
+                    hover:after:w-full
+                    px-4 py-2
+                    mt-8
+                    w-fit
+                    text-center
+                    rounded-full
+                '>
+              Admin
+            </a>
+          </div>
         </div>
       </div>
     </>
