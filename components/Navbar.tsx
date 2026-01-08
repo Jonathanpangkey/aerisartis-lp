@@ -28,7 +28,7 @@ export const Navbar = () => {
 
   const menuItems = [
     {label: "Tentang", href: "/about"},
-    {label: "Koleksi", href: "/products"},
+    {label: "Katalog", href: "/products"},
     {
       label: "Kolaborasi",
       submenu: [

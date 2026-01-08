@@ -49,7 +49,7 @@ export const Hero = () => {
           !isVideoLoaded ? "opacity-0" : "opacity-100"
         } transition-opacity duration-500`}>
         <h1 className='text-5xl md:text-6xl lg:text-7xl mb-6'>
-          <span className='text-accent block m-0'>Abadikan Estetika</span>
+          <span className='text-accent block m-0'>Estetika</span>
           <span className='text-white'>Dalam Timpaan Logam</span>
         </h1>
         <p className='text-muted text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed'>
