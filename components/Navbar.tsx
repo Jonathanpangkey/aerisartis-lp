@@ -128,20 +128,6 @@ export const Navbar = () => {
                 </a>
               )
             )}
-            <a
-              href='/admin/login'
-              onClick={handleMenuClick}
-              className='
-                    relative text-white
-                    bg-primary
-                    hover:bg-accent
-                    transition-colors duration-200
-                    hover:after:w-full
-                    px-4 py-2
-                    rounded-full
-                '>
-              Admin
-            </a>
           </div>
 
           <button
