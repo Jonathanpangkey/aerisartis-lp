@@ -30,13 +30,15 @@ export const Contact = () => {
   const contactInfo = [
     {
       icon: <Phone className='w-5 h-4' />,
-      label: "Telepon",
+      label: "Telepon/WhatsApp",
+      name: "Azfa N.Y",
       value: "081775432061",
       link: "tel:081775432061",
     },
     {
       icon: <Phone className='w-4 h-4' />,
-      label: "Telepon",
+      label: "Telepon/WhatsApp",
+      name: "Ryan A.Y",
       value: "085848440140",
       link: "tel:085848440140",
     },
@@ -91,7 +93,10 @@ export const Contact = () => {
                     <div className='text-white'>{item.icon}</div>
                   </div>
                   <div>
-                    <p className='text-white/60 text-sm mb-1'>{item.label}</p>
+                    <div className='flex w-100 justify-between'>
+                      <p className='text-white/60 text-sm mb-1'>{item.label}</p>
+                      {item.name && <p className='text-white/80 text-sm font-medium mb-0.5'>({item.name})</p>}
+                    </div>
                     <p className='text-white font-semibold text-lg group-hover:text-accent transition-colors'>{item.value}</p>
                   </div>
                 </div>

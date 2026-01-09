@@ -32,7 +32,7 @@ export const Navbar = () => {
     {
       label: "Kolaborasi",
       submenu: [
-        {label: "Galeri", href: "#gallery"},
+        {label: "Portfolio", href: "#gallery"},
         {label: "Kemitraan", href: "#partnership"},
       ],
     },

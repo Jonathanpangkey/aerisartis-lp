@@ -5,7 +5,7 @@ export const Footer = () => {
     {label: "Beranda", href: "#home"},
     {label: "Tentang", href: "#about"},
     {label: "Koleksi", href: "#Products"},
-    {label: "Galeri", href: "#gallery"},
+    {label: "Portfolio", href: "#gallery"},
     {label: "Pemesanan", href: "#how-to-order"},
     {label: "FAQ", href: "#faq"},
     {label: "Kemitraan", href: "#partnership"},
