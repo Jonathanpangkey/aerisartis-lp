@@ -93,11 +93,9 @@ export const Contact = () => {
                     <div className='text-white'>{item.icon}</div>
                   </div>
                   <div>
-                    <div className='flex w-100 justify-between'>
-                      <p className='text-white/60 text-sm mb-1'>{item.label}</p>
-                      {item.name && <p className='text-white/80 text-sm font-medium mb-0.5'>({item.name})</p>}
-                    </div>
-                    <p className='text-white font-semibold text-lg group-hover:text-accent transition-colors'>{item.value}</p>
+                    <p className='text-white/60 text-[9px] md:text-sm mb-1'>{item.label}</p>
+                    {item.name && <p className='text-white/80 text-[9px] md:text-sm font-medium mb-0.5'>({item.name})</p>}
+                    <p className='text-white font-semibold text-[12px] md:text-lg group-hover:text-accent transition-colors'>{item.value}</p>
                   </div>
                 </div>
               </div>

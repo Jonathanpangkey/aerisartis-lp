@@ -83,7 +83,7 @@ export const WhatsAppFloating = () => {
                     <p className='text-sm text-gray-500'>{contact.label}</p>
                   </div>
 
-                  <div className='flex gap-2'>
+                  <div className='flex gap-2 flex-col md:flex-row'>
                     <button
                       onClick={() => handleWhatsAppClick(contact.phone, contact.name)}
                       className='flex-1 bg-[#25D366] hover:bg-[#20BA5A] text-white px-4 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2'>
