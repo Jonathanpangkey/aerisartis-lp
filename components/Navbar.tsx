@@ -1,11 +1,14 @@
 "use client";
 import {useState, useEffect} from "react";
 import {ChevronDown} from "lucide-react";
+import {useLanguage} from "@/context/LanguageContext";
+import {LanguageToggle} from "@/components/LanguageToggle";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+  const {dict} = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,24 +29,26 @@ export const Navbar = () => {
     };
   }, [isMobileMenuOpen]);
 
+  if (!dict) return null;
+
   const menuItems = [
-    {label: "Tentang", href: "/about"},
-    {label: "Katalog", href: "/products"},
+    {label: dict.navbar.menu.about, href: "/about"},
+    {label: dict.navbar.menu.catalog, href: "/products"},
     {
-      label: "Kolaborasi",
+      label: dict.navbar.menu.collaboration,
       submenu: [
-        {label: "Portfolio", href: "#gallery"},
-        {label: "Kemitraan", href: "#partnership"},
+        {label: dict.navbar.submenu.portfolio, href: "#gallery"},
+        {label: dict.navbar.submenu.partnership, href: "#partnership"},
       ],
     },
     {
-      label: "Pemesanan",
+      label: dict.navbar.menu.order,
       submenu: [
-        {label: "Pemesanan/Kolaborasi", href: "#how-to-order"},
-        {label: "FAQ", href: "#faq"},
+        {label: dict.navbar.submenu.order_collab, href: "#how-to-order"},
+        {label: dict.navbar.submenu.faq, href: "#faq"},
       ],
     },
-    {label: "Artikel", href: "/articles"},
+    {label: dict.navbar.menu.articles, href: "/articles"},
   ];
 
   const handleMenuClick = () => {
@@ -128,6 +133,7 @@ export const Navbar = () => {
                 </a>
               )
             )}
+            <LanguageToggle iconOnly />
           </div>
 
           <button
@@ -229,6 +235,9 @@ export const Navbar = () => {
                 '>
               Admin
             </a>
+            <div className='mt-4'>
+              <LanguageToggle iconOnly />
+            </div>
           </div>
         </div>
       </div>

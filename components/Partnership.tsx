@@ -1,6 +1,11 @@
 "use client";
+import {useLanguage} from "@/context/LanguageContext";
 
 export const Partnership = () => {
+  const {dict} = useLanguage();
+
+  if (!dict) return null;
+
   const partners = [
     {
       name: "Coat of Arms Yogyakarta",
@@ -63,13 +68,11 @@ export const Partnership = () => {
 
       <div className='relative max-w-7xl mx-auto'>
         <div className='text-center mb-16'>
-          <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>MITRA KAMI</p>
+          <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>{dict.partnership.subtitle}</p>
           <h2 className='text-4xl md:text-5xl font-bold mb-6'>
-            Dipercaya oleh <span className='text-accent'>Partner Terbaik</span>
+            {dict.partnership.title.part1} <span className='text-accent'>{dict.partnership.title.part2}</span>
           </h2>
-          <p className='text-white/70 text-lg max-w-2xl mx-auto'>
-            Kami bangga telah bekerja sama dengan berbagai institusi dan perusahaan terkemuka di Indonesia
-          </p>
+          <p className='text-white/70 text-lg max-w-2xl mx-auto'>{dict.partnership.description}</p>
         </div>
 
         <div className='md:hidden flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide -mx-6 px-6'>
@@ -94,7 +97,8 @@ export const Partnership = () => {
         <div className='inline-flex items-center gap-3 bg-[#1c1917]/50 backdrop-blur-sm border border-[#292524] rounded-full px-8 py-4'>
           <div className='w-3 h-3 bg-accent rounded-full animate-pulse'></div>
           <p className='text-white/80 text-sm font-medium'>
-            Aerisartis sudah dipercaya untuk berkolaborasi dengan <span className='text-accent font-bold'>10+</span> mitra terbaik
+            {dict.partnership.badge.part1} <span className='text-accent font-bold'>{dict.partnership.badge.count}</span>{" "}
+            {dict.partnership.badge.part2}
           </p>
         </div>
       </div>

@@ -1,0 +1,162 @@
+{
+  "hero": {
+    "title_accent": "Aesthetics",
+    "title_main": "In Forged Metal",
+    "description": "Copper and brass crafts crafted with precision, presenting aesthetic value and function in one unity.",
+    "btn_explore": "Explore Collection",
+    "btn_contact": "Contact Us"
+  },
+  "navbar": {
+    "menu": {
+      "about": "About",
+      "catalog": "Catalog",
+      "collaboration": "Collaboration",
+      "order": "Order",
+      "articles": "Articles",
+      "admin": "Admin"
+    },
+    "submenu": {
+      "portfolio": "Portfolio",
+      "partnership": "Partnership",
+      "order_collab": "Order/Collaboration",
+      "faq": "FAQ"
+    }
+  },
+
+  "about": {
+    "subtitle": "OUR SERVICES",
+    "title": {
+      "part1": "Complete",
+      "part2": "Solutions for Your",
+      "part3": "Needs"
+    },
+    "features": {
+      "customization": {
+        "title": "Product Customization",
+        "description": "Handmade copper and brass products crafted according to specific design, size, and client requirements"
+      },
+      "collaboration": {
+        "title": "Collaboration & Partnership",
+        "description": "Open to collaboration with private parties, designers, architects, contractors, and institutions on projects of all scales"
+      },
+      "survey": {
+        "title": "Survey & Measurement",
+        "description": "On-site field surveys and direct measurements at client locations to ensure design accuracy and product compatibility"
+      },
+      "delivery": {
+        "title": "Product Delivery",
+        "description": "Product delivery services throughout Indonesia and internationally with safe and controlled packaging"
+      },
+      "craftsman": {
+        "title": "Direct Craftsmen",
+        "description": "Products are crafted directly by expert artisans with high attention to detail and quality"
+      },
+      "payment": {
+        "title": "Installment Payment",
+        "description": "Flexible installment payment options according to agreement and production stages"
+      }
+    },
+    "stats": {
+      "handmade_quality": "Handmade Quality",
+      "quality_control": "Quality Control",
+      "quality_control_value": "Strict",
+      "material_quality": "Material Quality",
+      "material_quality_value": "Premium",
+      "consultation": "Consultation",
+      "consultation_value": "Free"
+    }
+  },
+  "products": {
+    "subtitle": "Our Catalog",
+    "title": {
+      "part1": "Exclusive",
+      "part2": "Works"
+    },
+    "description": "Each of our works designed with full attention to detail and quality",
+    "loading": "Loading collection...",
+    "retry": "Try Again",
+    "view_all": "View All Collections",
+    "no_products": "No products available yet"
+  },
+  "gallery": {
+    "subtitle": "OUR WORKS",
+    "title": {
+      "part1": "Collaboration",
+      "part2": "Results"
+    },
+    "description": "Explore our curated collection of crafts created with full dedication",
+    "items": {
+      "item1": "Classic Copper Bowl",
+      "item2": "Brass Hanging Lamp",
+      "item3": "Modern Wall Decoration",
+      "item4": "Elegant Flower Vase",
+      "item5": "Dining Set"
+    },
+    "view_detail": "View Detail",
+    "cta_description": "Interested in our work? Let's discuss your dream project",
+    "cta_button": "Contact Us"
+  },
+  "partnership": {
+    "subtitle": "OUR PARTNERS",
+    "title": {
+      "part1": "Trusted by",
+      "part2": "Best Partners"
+    },
+    "description": "We are proud to have collaborated with various leading institutions and companies in Indonesia",
+    "badge": {
+      "part1": "Aerisartis has been trusted to collaborate with",
+      "count": "10+",
+      "part2": "best partners"
+    }
+  },
+  "faq": {
+    "subtitle": "FREQUENTLY ASKED QUESTIONS",
+    "title": {
+      "part1": "Have",
+      "part2": "Questions?"
+    },
+    "description": "Find answers to frequently asked questions about our products and services",
+    "items": {
+      "item1": {
+        "question": "How long does it take to complete an order at Aerisartis?",
+        "answer": "Production time depends on the type of product, design complexity, size, and order quantity. Estimated production time will be transparently informed before the process begins."
+      },
+      "item2": {
+        "question": "What are the advantages of Aerisartis copper and brass craft products?",
+        "answer": "Aerisartis products are handmade with high attention to detail and material quality. Copper and brass are chosen for their strong visual character, good durability, and ability to present elegant and timeless aesthetic value to spaces."
+      },
+      "item3": {
+        "question": "How does the ordering process begin?",
+        "answer": "Orders begin after initial payment as agreed. Order details, specifications, and design references are sent via WhatsApp or Aerisartis official email."
+      },
+      "item4": {
+        "question": "Do you accept custom designs and production-ready files?",
+        "answer": "Yes. Aerisartis accepts both custom designs and production-ready files. Production begins after the design is approved by the customer."
+      },
+      "item5": {
+        "question": "Are design revisions allowed?",
+        "answer": "Revisions before design approval can be discussed. Revisions after design approval and production has started will incur additional costs according to the production stage."
+      },
+      "item6": {
+        "question": "How long is the production process?",
+        "answer": "Production time depends on the complexity level, size, and order quantity. Estimated time will be informed before production begins."
+      },
+      "item7": {
+        "question": "How is quality control performed?",
+        "answer": "Each product is inspected for quality and conformity before shipment. If there are technical issues, customers will be informed in advance."
+      },
+      "item8": {
+        "question": "When will the order be shipped?",
+        "answer": "Shipping is done after full payment and shipping costs are fully received."
+      },
+      "item9": {
+        "question": "Do you provide international shipping?",
+        "answer": "Yes. Aerisartis provides international shipping with export packaging standards. Shipping costs, taxes, import duties, and customs fees are the customer's responsibility, unless otherwise agreed."
+      },
+      "item10": {
+        "question": "Are there possible minor differences in handmade products?",
+        "answer": "Yes. Each handmade product has unique characteristics. Minor differences in color, texture, or details are part of the craft value and are not considered defects."
+      }
+    }
+  }
+}

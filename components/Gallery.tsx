@@ -1,35 +1,41 @@
+"use client";
 import Link from "next/link";
+import {useLanguage} from "@/context/LanguageContext";
 
 export const Gallery = () => {
+  const {dict} = useLanguage();
+
+  if (!dict) return null;
+
   const galleryItems = [
     {
       id: 1,
       image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800",
-      title: "Mangkuk Tembaga Klasik",
+      title: dict.gallery.items.item1,
       span: "md:col-span-1 md:row-span-1",
     },
     {
       id: 2,
       image: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?q=80&w=800",
-      title: "Lampu Gantung Kuningan",
+      title: dict.gallery.items.item2,
       span: "md:col-span-1 md:row-span-1",
     },
     {
       id: 3,
       image: "https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=800",
-      title: "Dekorasi Dinding Modern",
+      title: dict.gallery.items.item3,
       span: "md:col-span-1 md:row-span-2",
     },
     {
       id: 4,
       image: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?q=80&w=800",
-      title: "Vas Bunga Elegan",
+      title: dict.gallery.items.item4,
       span: "md:col-span-1 md:row-span-1",
     },
     {
       id: 5,
       image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=800",
-      title: "Set Peralatan Makan",
+      title: dict.gallery.items.item5,
       span: "md:col-span-1 md:row-span-1",
     },
   ];
@@ -41,11 +47,11 @@ export const Gallery = () => {
 
       <div className='relative max-w-7xl mx-auto'>
         <div className='text-center mb-16'>
-          <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>KARYA KAMI</p>
+          <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>{dict.gallery.subtitle}</p>
           <h2 className='text-4xl md:text-5xl font-bold mb-6 text-white'>
-            Hasil <span className='text-accent'>Kolaborasi</span>
+            {dict.gallery.title.part1} <span className='text-accent'>{dict.gallery.title.part2}</span>
           </h2>
-          <p className='text-white/70 text-lg max-w-2xl mx-auto'>Jelajahi koleksi kerajinan pilihan yang telah kami ciptakan dengan penuh dedikasi</p>
+          <p className='text-white/70 text-lg max-w-2xl mx-auto'>{dict.gallery.description}</p>
         </div>
 
         <div className='md:hidden flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide -mx-6 px-6'>
@@ -58,7 +64,7 @@ export const Gallery = () => {
                   <h3 className='text-white font-bold text-lg mb-1'>{item.title}</h3>
                   <div className='flex items-center gap-2'>
                     <div className='w-8 h-0.5 bg-accent'></div>
-                    <span className='text-accent text-sm font-medium'>Lihat Detail</span>
+                    <span className='text-accent text-sm font-medium'>{dict.gallery.view_detail}</span>
                   </div>
                 </div>
               </div>
@@ -78,7 +84,7 @@ export const Gallery = () => {
                   <h3 className='text-white font-bold text-lg mb-1'>{item.title}</h3>
                   <div className='flex items-center gap-2'>
                     <div className='w-8 h-0.5 bg-accent'></div>
-                    <span className='text-accent text-sm font-medium'>Lihat Detail</span>
+                    <span className='text-accent text-sm font-medium'>{dict.gallery.view_detail}</span>
                   </div>
                 </div>
               </div>
@@ -89,10 +95,10 @@ export const Gallery = () => {
         </div>
 
         <div className='mt-16 text-center'>
-          <p className='text-white/70 mb-6'>Tertarik dengan karya kami? Mari diskusikan proyek impian Anda</p>
+          <p className='text-white/70 mb-6'>{dict.gallery.cta_description}</p>
           <Link href='#contact'>
             <button className='bg-linear-to-r cursor-pointer from-primary to-[#d46e3d] hover:brightness-110 text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg'>
-              Hubungi Kami
+              {dict.gallery.cta_button}
             </button>
           </Link>
         </div>

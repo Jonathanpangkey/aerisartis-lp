@@ -1,6 +1,7 @@
 import type {Metadata} from "next";
 import {Geist, PT_Serif} from "next/font/google";
 import "./globals.css";
+import {LanguageProvider} from "@/context/LanguageContext";
 
 const ptSerif = PT_Serif({
   subsets: ["latin"],
@@ -21,7 +22,9 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang='id'>
-      <body className={`${geistSans.variable} ${ptSerif.variable} font-sans antialiased`}>{children}</body>
+      <body className={`${geistSans.variable} ${ptSerif.variable} font-sans antialiased`}>
+        <LanguageProvider>{children}</LanguageProvider>
+      </body>
     </html>
   );
 }

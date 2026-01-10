@@ -4,8 +4,10 @@ import {useState, useEffect} from "react";
 import {Loader2} from "lucide-react";
 import {ProductService} from "@/lib/service/product-service";
 import type {Product} from "@/lib/service/product-service";
+import {useLanguage} from "@/context/LanguageContext";
 
 export const Products = () => {
+  const {dict} = useLanguage();
   const [collections, setCollections] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -27,6 +29,8 @@ export const Products = () => {
     fetchProductsProducts();
   }, []);
 
+  if (!dict) return null;
+
   return (
     <section id='Products' className='relative py-24 px-6 overflow-hidden'>
       <div className='absolute top-1/4 right-1/4 w-95 h-95 bg-[#b85c2e]/10 rounded-full blur-3xl'></div>
@@ -34,19 +38,17 @@ export const Products = () => {
 
       <div className='relative max-w-7xl mx-auto'>
         <div className='text-center mb-16'>
-          <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>Katalog Kami</p>
+          <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>{dict.products.subtitle}</p>
           <h2 className='text-4xl md:text-5xl font-bold mb-6'>
-            Karya <span className='text-accent'>Eksklusif</span>
+            {dict.products.title.part1} <span className='text-accent'>{dict.products.title.part2}</span>
           </h2>
-          <p className='text-white/70 text-lg max-w-2xl mx-auto'>
-            Setiap karya kami yang dirancang dengan penuh perhatian terhadap detail dan kualitas
-          </p>
+          <p className='text-white/70 text-lg max-w-2xl mx-auto'>{dict.products.description}</p>
         </div>
 
         {loading ? (
           <div className='flex flex-col items-center justify-center py-20'>
             <Loader2 className='w-12 h-12 text-accent animate-spin mb-4' />
-            <p className='text-white/60'>Memuat koleksi...</p>
+            <p className='text-white/60'>{dict.products.loading}</p>
           </div>
         ) : error ? (
           <div className='text-center py-20'>
@@ -54,7 +56,7 @@ export const Products = () => {
             <button
               onClick={() => window.location.reload()}
               className='bg-accent text-white px-6 py-3 rounded-full hover:bg-accent/80 transition-colors'>
-              Coba Lagi
+              {dict.products.retry}
             </button>
           </div>
         ) : collections.length > 0 ? (
@@ -90,14 +92,14 @@ export const Products = () => {
             <div className='text-center mt-12'>
               <Link href='/products'>
                 <button className='bg-linear-to-r cursor-pointer from-primary to-[#d46e3d] hover:from-[#d46e3d] hover:to-primary text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg'>
-                  Lihat Semua Koleksi
+                  {dict.products.view_all}
                 </button>
               </Link>
             </div>
           </>
         ) : (
           <div className='text-center py-20'>
-            <p className='text-white/60 text-lg'>Belum ada produk tersedia</p>
+            <p className='text-white/60 text-lg'>{dict.products.no_products}</p>
           </div>
         )}
       </div>

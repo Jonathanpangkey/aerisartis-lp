@@ -1,0 +1,162 @@
+{
+  "hero": {
+    "title_accent": "Estetika",
+    "title_main": "Dalam Timpaan Logam",
+    "description": "Kerajinan tembaga dan kuningan yang dikerjakan dengan ketelitian, menghadirkan nilai estetika dan fungsi dalam satu kesatuan.",
+    "btn_explore": "Jelajahi Koleksi",
+    "btn_contact": "Hubungi Kami"
+  },
+  "navbar": {
+    "menu": {
+      "about": "Tentang",
+      "catalog": "Katalog",
+      "collaboration": "Kolaborasi",
+      "order": "Pemesanan",
+      "articles": "Artikel",
+      "admin": "Admin"
+    },
+    "submenu": {
+      "portfolio": "Portfolio",
+      "partnership": "Kemitraan",
+      "order_collab": "Pemesanan/Kolaborasi",
+      "faq": "FAQ"
+    }
+  },
+
+  "about": {
+    "subtitle": "LAYANAN KAMI",
+    "title": {
+      "part1": "Solusi",
+      "part2": "Lengkap untuk Kebutuhan",
+      "part3": "Anda"
+    },
+    "features": {
+      "customization": {
+        "title": "Kustomisasi Produk",
+        "description": "Pembuatan produk tembaga dan kuningan secara handmade sesuai desain, ukuran, dan kebutuhan spesifik klien"
+      },
+      "collaboration": {
+        "title": "Kolaborasi & Kerja Sama",
+        "description": "Terbuka untuk kolaborasi dengan pihak swasta, desainer, arsitek, kontraktor, maupun instansi dalam berbagai skala proyek"
+      },
+      "survey": {
+        "title": "Survei & Pengukuran",
+        "description": "Survei lapangan dan pengukuran langsung ke lokasi klien untuk memastikan akurasi desain dan kesesuaian produk"
+      },
+      "delivery": {
+        "title": "Pengiriman Produk",
+        "description": "Layanan pengiriman produk ke seluruh wilayah Indonesia dan luar negeri dengan pengemasan yang aman dan terkontrol"
+      },
+      "craftsman": {
+        "title": "Pengrajin Langsung",
+        "description": "Produk dikerjakan langsung oleh pengrajin ahli dengan perhatian tinggi pada detail dan kualitas"
+      },
+      "payment": {
+        "title": "Pembayaran Bertahap",
+        "description": "Fleksibilitas pembayaran bertahap sesuai dengan kesepakatan dan tahapan produksi"
+      }
+    },
+    "stats": {
+      "handmade_quality": "Handmade Quality",
+      "quality_control": "Quality Control",
+      "quality_control_value": "Ketat",
+      "material_quality": "Material Quality",
+      "material_quality_value": "Premium",
+      "consultation": "Konsultasi",
+      "consultation_value": "Free"
+    }
+  },
+  "products": {
+    "subtitle": "Katalog Kami",
+    "title": {
+      "part1": "Karya",
+      "part2": "Eksklusif"
+    },
+    "description": "Setiap karya kami yang dirancang dengan penuh perhatian terhadap detail dan kualitas",
+    "loading": "Memuat koleksi...",
+    "retry": "Coba Lagi",
+    "view_all": "Lihat Semua Koleksi",
+    "no_products": "Belum ada produk tersedia"
+  },
+  "gallery": {
+    "subtitle": "KARYA KAMI",
+    "title": {
+      "part1": "Hasil",
+      "part2": "Kolaborasi"
+    },
+    "description": "Jelajahi koleksi kerajinan pilihan yang telah kami ciptakan dengan penuh dedikasi",
+    "items": {
+      "item1": "Mangkuk Tembaga Klasik",
+      "item2": "Lampu Gantung Kuningan",
+      "item3": "Dekorasi Dinding Modern",
+      "item4": "Vas Bunga Elegan",
+      "item5": "Set Peralatan Makan"
+    },
+    "view_detail": "Lihat Detail",
+    "cta_description": "Tertarik dengan karya kami? Mari diskusikan proyek impian Anda",
+    "cta_button": "Hubungi Kami"
+  },
+  "partnership": {
+    "subtitle": "MITRA KAMI",
+    "title": {
+      "part1": "Dipercaya oleh",
+      "part2": "Partner Terbaik"
+    },
+    "description": "Kami bangga telah bekerja sama dengan berbagai institusi dan perusahaan terkemuka di Indonesia",
+    "badge": {
+      "part1": "Aerisartis sudah dipercaya untuk berkolaborasi dengan",
+      "count": "10+",
+      "part2": "mitra terbaik"
+    }
+  },
+  "faq": {
+    "subtitle": "PERTANYAAN UMUM",
+    "title": {
+      "part1": "Ada",
+      "part2": "Pertanyaan?"
+    },
+    "description": "Temukan jawaban untuk pertanyaan yang sering diajukan tentang produk dan layanan kami",
+    "items": {
+      "item1": {
+        "question": "Berapa lama waktu pengerjaan pesanan di Aerisartis?",
+        "answer": "Waktu pengerjaan menyesuaikan jenis produk, tingkat kerumitan desain, ukuran, dan jumlah pesanan. Estimasi waktu produksi akan diinformasikan secara transparan sebelum proses dimulai."
+      },
+      "item2": {
+        "question": "Apa keunggulan produk kerajinan tembaga dan kuningan Aerisartis?",
+        "answer": "Produk Aerisartis dikerjakan secara handmade dengan perhatian tinggi pada detail dan kualitas material. Tembaga dan kuningan dipilih karena karakter visualnya yang kuat, daya tahan yang baik, serta kemampuannya menghadirkan nilai estetika yang elegan dan timeless pada ruang."
+      },
+      "item3": {
+        "question": "Bagaimana proses pemesanan dimulai?",
+        "answer": "Pemesanan dimulai setelah pembayaran awal sesuai kesepakatan. Detail pesanan, spesifikasi, dan referensi desain dikirimkan melalui WhatsApp atau email resmi Aerisartis."
+      },
+      "item4": {
+        "question": "Apakah menerima desain custom dan file siap produksi?",
+        "answer": "Ya. Aerisartis menerima desain custom maupun file siap produksi. Produksi dimulai setelah desain disetujui oleh pelanggan."
+      },
+      "item5": {
+        "question": "Apakah revisi desain diperbolehkan?",
+        "answer": "Revisi sebelum persetujuan desain dapat didiskusikan. Revisi setelah desain disetujui dan produksi berjalan akan dikenakan biaya tambahan sesuai tahapan produksi."
+      },
+      "item6": {
+        "question": "Berapa lama proses produksi?",
+        "answer": "Waktu produksi menyesuaikan tingkat kerumitan, ukuran, dan jumlah pesanan. Estimasi waktu akan diinformasikan sebelum produksi dimulai."
+      },
+      "item7": {
+        "question": "Bagaimana kontrol kualitas dilakukan?",
+        "answer": "Setiap produk diperiksa kualitas dan kesesuaiannya sebelum pengiriman. Jika terdapat kendala teknis, pelanggan akan diinformasikan terlebih dahulu."
+      },
+      "item8": {
+        "question": "Kapan pesanan dikirim?",
+        "answer": "Pengiriman dilakukan setelah pembayaran pelunasan dan biaya pengiriman diterima sepenuhnya."
+      },
+      "item9": {
+        "question": "Apakah melayani pengiriman internasional?",
+        "answer": "Ya. Aerisartis melayani pengiriman ke luar negeri dengan standar pengemasan ekspor. Biaya pengiriman, pajak, bea masuk, dan biaya kepabeanan menjadi tanggung jawab pelanggan, kecuali disepakati lain."
+      },
+      "item10": {
+        "question": "Apakah ada kemungkinan perbedaan kecil/minor pada produk handmade?",
+        "answer": "Ya. Setiap produk handmade memiliki karakter unik. Perbedaan minor pada warna, tekstur, atau detail merupakan bagian dari nilai kerajinan dan tidak dianggap sebagai cacat."
+      }
+    }
+  }
+}

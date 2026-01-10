@@ -1,10 +1,12 @@
 "use client";
 import Link from "next/link";
 import {useState, useEffect, useRef} from "react";
+import {useLanguage} from "@/context/LanguageContext";
 
 export const Hero = () => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const {dict} = useLanguage();
 
   useEffect(() => {
     const video = videoRef.current;
@@ -17,7 +19,7 @@ export const Hero = () => {
 
     const timeout = setTimeout(() => {
       setIsVideoLoaded(true);
-    }, 3000);
+    }, 2000);
 
     const handleCanPlay = () => {
       setIsVideoLoaded(true);
@@ -49,21 +51,19 @@ export const Hero = () => {
           !isVideoLoaded ? "opacity-0" : "opacity-100"
         } transition-opacity duration-500`}>
         <h1 className='text-5xl md:text-6xl lg:text-7xl mb-6'>
-          <span className='text-accent block m-0'>Estetika</span>
-          <span className='text-white'>Dalam Timpaan Logam</span>
+          <span className='text-accent block m-0'>{dict.hero.title_accent}</span>
+          <span className='text-white'>{dict.hero.title_main}</span>
         </h1>
-        <p className='text-muted text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed'>
-          Kerajinan tembaga dan kuningan yang dikerjakan dengan ketelitian, menghadirkan nilai estetika dan fungsi dalam satu kesatuan.
-        </p>
+        <p className='text-muted text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed'>{dict.hero.description}</p>
         <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
           <Link href='/products'>
             <button className='bg-primary cursor-pointer text-primary-foreground px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-primary'>
-              Jelajahi Koleksi
+              {dict.hero.btn_explore}
             </button>
           </Link>
           <Link href='#contact'>
             <button className='border-2 cursor-pointer border-accent text-accent px-7.5 py-3.5 rounded-full font-semibold transition-all duration-300 hover:bg-accent hover:text-white hover:-translate-y-1 hover:shadow-accent'>
-              Hubungi Kami
+              {dict.hero.btn_contact}
             </button>
           </Link>
         </div>

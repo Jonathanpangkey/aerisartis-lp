@@ -1,58 +1,54 @@
 "use client";
 import {useState} from "react";
 import {Plus, Minus} from "lucide-react";
+import {useLanguage} from "@/context/LanguageContext";
 
 export const FAQ = () => {
+  const {dict} = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  if (!dict) return null;
 
   const faqs = [
     {
-      question: "Berapa lama waktu pengerjaan pesanan di Aerisartis?",
-      answer:
-        "Waktu pengerjaan menyesuaikan jenis produk, tingkat kerumitan desain, ukuran, dan jumlah pesanan. Estimasi waktu produksi akan diinformasikan secara transparan sebelum proses dimulai.",
+      question: dict.faq.items.item1.question,
+      answer: dict.faq.items.item1.answer,
     },
     {
-      question: "Apa keunggulan produk kerajinan tembaga dan kuningan Aerisartis?",
-      answer:
-        "Produk Aerisartis dikerjakan secara handmade dengan perhatian tinggi pada detail dan kualitas material. Tembaga dan kuningan dipilih karena karakter visualnya yang kuat, daya tahan yang baik, serta kemampuannya menghadirkan nilai estetika yang elegan dan timeless pada ruang.",
+      question: dict.faq.items.item2.question,
+      answer: dict.faq.items.item2.answer,
     },
     {
-      question: "Bagaimana proses pemesanan dimulai?",
-      answer:
-        "Pemesanan dimulai setelah pembayaran awal sesuai kesepakatan. Detail pesanan, spesifikasi, dan referensi desain dikirimkan melalui WhatsApp atau email resmi Aerisartis.",
+      question: dict.faq.items.item3.question,
+      answer: dict.faq.items.item3.answer,
     },
     {
-      question: "Apakah menerima desain custom dan file siap produksi?",
-      answer: "Ya. Aerisartis menerima desain custom maupun file siap produksi. Produksi dimulai setelah desain disetujui oleh pelanggan.",
+      question: dict.faq.items.item4.question,
+      answer: dict.faq.items.item4.answer,
     },
     {
-      question: "Apakah revisi desain diperbolehkan?",
-      answer:
-        "Revisi sebelum persetujuan desain dapat didiskusikan. Revisi setelah desain disetujui dan produksi berjalan akan dikenakan biaya tambahan sesuai tahapan produksi.",
+      question: dict.faq.items.item5.question,
+      answer: dict.faq.items.item5.answer,
     },
     {
-      question: "Berapa lama proses produksi?",
-      answer:
-        "Waktu produksi menyesuaikan tingkat kerumitan, ukuran, dan jumlah pesanan. Estimasi waktu akan diinformasikan sebelum produksi dimulai.",
+      question: dict.faq.items.item6.question,
+      answer: dict.faq.items.item6.answer,
     },
     {
-      question: "Bagaimana kontrol kualitas dilakukan?",
-      answer:
-        "Setiap produk diperiksa kualitas dan kesesuaiannya sebelum pengiriman. Jika terdapat kendala teknis, pelanggan akan diinformasikan terlebih dahulu.",
+      question: dict.faq.items.item7.question,
+      answer: dict.faq.items.item7.answer,
     },
     {
-      question: "Kapan pesanan dikirim?",
-      answer: "Pengiriman dilakukan setelah pembayaran pelunasan dan biaya pengiriman diterima sepenuhnya.",
+      question: dict.faq.items.item8.question,
+      answer: dict.faq.items.item8.answer,
     },
     {
-      question: "Apakah melayani pengiriman internasional?",
-      answer:
-        "Ya. Aerisartis melayani pengiriman ke luar negeri dengan standar pengemasan ekspor. Biaya pengiriman, pajak, bea masuk, dan biaya kepabeanan menjadi tanggung jawab pelanggan, kecuali disepakati lain.",
+      question: dict.faq.items.item9.question,
+      answer: dict.faq.items.item9.answer,
     },
     {
-      question: "Apakah ada kemungkinan perbedaan kecil/minor pada produk handmade?",
-      answer:
-        "Ya. Setiap produk handmade memiliki karakter unik. Perbedaan minor pada warna, tekstur, atau detail merupakan bagian dari nilai kerajinan dan tidak dianggap sebagai cacat.",
+      question: dict.faq.items.item10.question,
+      answer: dict.faq.items.item10.answer,
     },
   ];
 
@@ -67,13 +63,11 @@ export const FAQ = () => {
 
       <div className='relative max-w-4xl mx-auto'>
         <div className='text-center mb-16'>
-          <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>PERTANYAAN UMUM</p>
+          <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>{dict.faq.subtitle}</p>
           <h2 className='text-4xl md:text-5xl font-bold mb-6'>
-            Ada <span className='text-accent'>Pertanyaan?</span>
+            {dict.faq.title.part1} <span className='text-accent'>{dict.faq.title.part2}</span>
           </h2>
-          <p className='text-white/70 text-lg max-w-2xl mx-auto'>
-            Temukan jawaban untuk pertanyaan yang sering diajukan tentang produk dan layanan kami
-          </p>
+          <p className='text-white/70 text-lg max-w-2xl mx-auto'>{dict.faq.description}</p>
         </div>
 
         <div className='space-y-4'>

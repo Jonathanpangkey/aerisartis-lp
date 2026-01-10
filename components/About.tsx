@@ -1,44 +1,50 @@
+"use client";
 import {Wrench, Handshake, MapPin, Truck, Globe, CreditCard, MessageSquare, Hammer} from "lucide-react";
+import {useLanguage} from "@/context/LanguageContext";
 
 export const About = () => {
+  const {dict} = useLanguage();
+
+  if (!dict) return null;
+
   const features = [
     {
       icon: <Wrench className='w-6 h-6' />,
-      title: "Kustomisasi Produk",
-      description: "Pembuatan produk tembaga dan kuningan secara handmade sesuai desain, ukuran, dan kebutuhan spesifik klien",
+      title: dict.about.features.customization.title,
+      description: dict.about.features.customization.description,
     },
     {
       icon: <Handshake className='w-6 h-6' />,
-      title: "Kolaborasi & Kerja Sama",
-      description: "Terbuka untuk kolaborasi dengan pihak swasta, desainer, arsitek, kontraktor, maupun instansi dalam berbagai skala proyek",
+      title: dict.about.features.collaboration.title,
+      description: dict.about.features.collaboration.description,
     },
     {
       icon: <MapPin className='w-6 h-6' />,
-      title: "Survei & Pengukuran",
-      description: "Survei lapangan dan pengukuran langsung ke lokasi klien untuk memastikan akurasi desain dan kesesuaian produk",
+      title: dict.about.features.survey.title,
+      description: dict.about.features.survey.description,
     },
     {
       icon: <Truck className='w-6 h-6' />,
-      title: "Pengiriman Produk",
-      description: "Layanan pengiriman produk ke seluruh wilayah Indonesia dan luar negeri dengan pengemasan yang aman dan terkontrol",
+      title: dict.about.features.delivery.title,
+      description: dict.about.features.delivery.description,
     },
     {
       icon: <Hammer className='w-6 h-6' />,
-      title: "Pengrajin Langsung",
-      description: "Produk dikerjakan langsung oleh pengrajin ahli dengan perhatian tinggi pada detail dan kualitas",
+      title: dict.about.features.craftsman.title,
+      description: dict.about.features.craftsman.description,
     },
     {
       icon: <CreditCard className='w-6 h-6' />,
-      title: "Pembayaran Bertahap",
-      description: "Fleksibilitas pembayaran bertahap sesuai dengan kesepakatan dan tahapan produksi",
+      title: dict.about.features.payment.title,
+      description: dict.about.features.payment.description,
     },
   ];
 
   const stats = [
-    {label: "Handmade Quality", value: "100%"},
-    {label: "Quality Control", value: "Ketat"},
-    {label: "Material Quality", value: "Premium"},
-    {label: "Konsultasi", value: "Free"},
+    {label: dict.about.stats.handmade_quality, value: "100%"},
+    {label: dict.about.stats.quality_control, value: dict.about.stats.quality_control_value},
+    {label: dict.about.stats.material_quality, value: dict.about.stats.material_quality_value},
+    {label: dict.about.stats.consultation, value: dict.about.stats.consultation_value},
   ];
 
   return (
@@ -48,9 +54,9 @@ export const About = () => {
 
       <div className='relative max-w-7xl mx-auto'>
         <div className='text-center mb-16'>
-          <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>LAYANAN KAMI</p>
+          <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>{dict.about.subtitle}</p>
           <h2 className='text-4xl md:text-5xl font-bold mb-6'>
-            Solusi <span className='text-accent'>Lengkap untuk Kebutuhan</span> Anda
+            {dict.about.title.part1} <span className='text-accent'>{dict.about.title.part2}</span> {dict.about.title.part3}
           </h2>
         </div>
 
@@ -72,8 +78,8 @@ export const About = () => {
         <div className='grid grid-cols-1 md:grid-cols-4 gap-8'>
           {stats.map((stat, index) => (
             <div key={index} className='text-center'>
-              <div className='text-2xl md:text-4xl font-bold text-accent mb-2'>{stat.value}</div> {/* Ukuran teks lebih kecil */}
-              <div className='text-white/50 text-xs'>{stat.label}</div> {/* Ukuran teks label lebih kecil */}
+              <div className='text-2xl md:text-4xl font-bold text-accent mb-2'>{stat.value}</div>
+              <div className='text-white/50 text-xs'>{stat.label}</div>
             </div>
           ))}
         </div>
