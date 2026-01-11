@@ -1,8 +1,10 @@
 "use client";
 import {MessageCircle, X, Phone} from "lucide-react";
 import {useState, useEffect} from "react";
+import {useLanguage} from "@/context/LanguageContext";
 
 export const WhatsAppFloating = () => {
+  const {dict, locale} = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -19,21 +21,25 @@ export const WhatsAppFloating = () => {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
+  if (!dict) return null;
+
   const contacts = [
     {
       name: "Azfa N.Y",
       phone: "081775432061",
-      label: "Telepon/WhatsApp",
+      label: dict.whatsappFloating.phone_label,
     },
     {
       name: "Ryan A.Y",
       phone: "085848440140",
-      label: "Telepon/WhatsApp",
+      label: dict.whatsappFloating.phone_label,
     },
   ];
 
   const handleWhatsAppClick = (phoneNumber: string, name: string) => {
-    const message = `Halo ${name}, saya tertarik dengan produk Aerisartis. Bisakah saya mendapatkan informasi lebih lanjut?`;
+    const message = locale === 'id'
+      ? `Halo ${name}, saya tertarik dengan produk Aerisartis. Bisakah saya mendapatkan informasi lebih lanjut?`
+      : `Hello ${name}, I am interested in Aerisartis products. Can I get more information?`;
     window.open(`https://wa.me/62${phoneNumber.substring(1)}?text=${encodeURIComponent(message)}`, "_blank");
   };
 
@@ -52,7 +58,7 @@ export const WhatsAppFloating = () => {
         <MessageCircle className='w-6 h-6' />
         {/* Tooltip */}
         <span className='absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-sm px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none'>
-          Chat dengan kami
+          {dict.whatsappFloating.tooltip}
         </span>
 
         <span className='absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20'></span>
@@ -66,7 +72,7 @@ export const WhatsAppFloating = () => {
                 <div className='w-10 h-10 bg-[#25D366] rounded-full flex items-center justify-center'>
                   <MessageCircle className='w-5 h-5 text-white' />
                 </div>
-                Hubungi Kami
+                {dict.whatsappFloating.modal_title}
               </h3>
               <button
                 onClick={() => setShowModal(false)}
@@ -88,21 +94,21 @@ export const WhatsAppFloating = () => {
                       onClick={() => handleWhatsAppClick(contact.phone, contact.name)}
                       className='flex-1 bg-[#25D366] hover:bg-[#20BA5A] text-white px-4 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2'>
                       <MessageCircle className='w-4 h-4' />
-                      WhatsApp
+                      {dict.whatsappFloating.whatsapp_button}
                     </button>
 
                     <button
                       onClick={() => handlePhoneClick(contact.phone)}
                       className='flex-1 bg-accent hover:bg-accent/90 text-white px-4 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2'>
                       <Phone className='w-4 h-4' />
-                      Telepon
+                      {dict.whatsappFloating.phone_button}
                     </button>
                   </div>
                 </div>
               ))}
             </div>
 
-            <p className='text-center text-gray-500 text-sm mt-6'>Pilih kontak yang ingin Anda hubungi</p>
+            <p className='text-center text-gray-500 text-sm mt-6'>{dict.whatsappFloating.modal_footer}</p>
           </div>
         </div>
       )}

@@ -349,5 +349,14 @@
     "minutes_read": "min read",
     "share_text": "Share this article:",
     "share_button": "Share"
+  },
+
+  "whatsappFloating": {
+    "tooltip": "Chat with us",
+    "modal_title": "Contact Us",
+    "phone_label": "Phone/WhatsApp",
+    "whatsapp_button": "WhatsApp",
+    "phone_button": "Phone",
+    "modal_footer": "Choose the contact you want to reach"
   }
 }

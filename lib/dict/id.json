@@ -349,5 +349,14 @@
     "minutes_read": "menit baca",
     "share_text": "Bagikan artikel ini:",
     "share_button": "Bagikan"
+  },
+
+  "whatsappFloating": {
+    "tooltip": "Chat dengan kami",
+    "modal_title": "Hubungi Kami",
+    "phone_label": "Telepon/WhatsApp",
+    "whatsapp_button": "WhatsApp",
+    "phone_button": "Telepon",
+    "modal_footer": "Pilih kontak yang ingin Anda hubungi"
   }
 }
