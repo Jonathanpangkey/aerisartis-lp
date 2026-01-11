@@ -1,50 +1,54 @@
 "use client";
 import {Wallet, FileCheck, Hammer, Search, Truck, CheckCircle, X, Info} from "lucide-react";
 import {useState} from "react";
+import {useLanguage} from "@/context/LanguageContext";
 
 export const HowToOrder = () => {
+  const {dict} = useLanguage();
   const [showPaymentModal, setShowPaymentModal] = useState(false);
+
+  if (!dict) return null;
 
   const steps = [
     {
       icon: <FileCheck className='w-8 h-8' />,
-      title: "Desain & Persetujuan",
-      description: " Konsultasikan desain anda ke kami. Kami menyusun desain bedasarkan materi Anda. Produksi dimulai setelah desain disetujui.",
+      title: dict.howToOrder.steps.step1.title,
+      description: dict.howToOrder.steps.step1.description,
       gradientFrom: "#b85c2e",
       gradientTo: "#d46e3d",
     },
     {
       icon: <Wallet className='w-8 h-8' />,
-      title: "Pemesanan & Pembayaran",
-      description: "Pembayaran di lakukan bertahap lalu kirimkan detail pesanan, referensi desain, ukuran melalui WhatsApp atau email resmi.",
+      title: dict.howToOrder.steps.step2.title,
+      description: dict.howToOrder.steps.step2.description,
       gradientFrom: "#c97846",
       gradientTo: "#b85c2e",
     },
     {
       icon: <Hammer className='w-8 h-8' />,
-      title: "Proses Produksi",
-      description: "Produk dikerjakan handmade dengan detail sempurna. Estimasi waktu disesuaikan dengan kompleksitas pesanan.",
+      title: dict.howToOrder.steps.step3.title,
+      description: dict.howToOrder.steps.step3.description,
       gradientFrom: "#d46e3d",
       gradientTo: "#c97846",
     },
     {
       icon: <Search className='w-8 h-8' />,
-      title: "Quality Control",
-      description: "Setiap produk melalui pemeriksaan kualitas ketat sebelum diserahkan. Kami pastikan sesuai pesanan Anda.",
+      title: dict.howToOrder.steps.step4.title,
+      description: dict.howToOrder.steps.step4.description,
       gradientFrom: "#c97846",
       gradientTo: "#b85c2e",
     },
     {
       icon: <CheckCircle className='w-8 h-8' />,
-      title: "Pelunasan",
-      description: "Selesaikan pembayaran pelunasan dan biaya pengiriman sebelum produk dikirim.",
+      title: dict.howToOrder.steps.step5.title,
+      description: dict.howToOrder.steps.step5.description,
       gradientFrom: "#b85c2e",
       gradientTo: "#d46e3d",
     },
     {
       icon: <Truck className='w-8 h-8' />,
-      title: "Pengiriman",
-      description: "Produk dikemas aman dan dikirim ke alamat Anda atau dapat diambil langsung di workshop.",
+      title: dict.howToOrder.steps.step6.title,
+      description: dict.howToOrder.steps.step6.description,
       gradientFrom: "#d46e3d",
       gradientTo: "#c97846",
     },
@@ -52,21 +56,20 @@ export const HowToOrder = () => {
 
   const policies = [
     {
-      title: "Revisi Desain",
-      description: "Perubahan setelah desain disetujui dan produksi berjalan akan dikenakan biaya tambahan sesuai tahapan produksi.",
+      title: dict.howToOrder.policies.policy1.title,
+      description: dict.howToOrder.policies.policy1.description,
     },
     {
-      title: "Pengambilan Barang",
-      description: "Batas waktu pengambilan langsung maksimal 1 bulan sejak pemberitahuan barang selesai.",
+      title: dict.howToOrder.policies.policy2.title,
+      description: dict.howToOrder.policies.policy2.description,
     },
     {
-      title: "Pembatalan Pesanan",
-      description:
-        "Pengembalian dana 100% hanya jika kami tidak dapat menyelesaikan produksi. Pembatalan oleh pelanggan akan dipotong sesuai kesepakatan.",
+      title: dict.howToOrder.policies.policy3.title,
+      description: dict.howToOrder.policies.policy3.description,
     },
     {
-      title: "Karakter Handmade",
-      description: "Perbedaan minor pada tekstur, warna, atau detail adalah bagian dari keunikan produk handmade, bukan cacat produksi.",
+      title: dict.howToOrder.policies.policy4.title,
+      description: dict.howToOrder.policies.policy4.description,
     },
   ];
 
@@ -77,13 +80,11 @@ export const HowToOrder = () => {
 
       <div className='relative max-w-7xl mx-auto'>
         <div className='text-center mb-20'>
-          <p className='text-[#c97846] text-sm font-semibold tracking-wider uppercase mb-4'>PROSEDUR PEMESANAN</p>
+          <p className='text-[#c97846] text-sm font-semibold tracking-wider uppercase mb-4'>{dict.howToOrder.subtitle}</p>
           <h2 className='text-4xl md:text-5xl font-bold mb-6 text-white'>
-            Cara <span className='text-[#c97846]'>Memesan</span>
+            {dict.howToOrder.title.part1} <span className='text-[#c97846]'>{dict.howToOrder.title.part2}</span>
           </h2>
-          <p className='text-white/70 text-lg max-w-2xl mx-auto'>
-            Proses pemesanan yang jelas dan terstruktur untuk memastikan hasil terbaik sesuai keinginan Anda
-          </p>
+          <p className='text-white/70 text-lg max-w-2xl mx-auto'>{dict.howToOrder.description}</p>
         </div>
 
         <div className='relative mb-20'>
@@ -114,7 +115,7 @@ export const HowToOrder = () => {
                       }}
                       className='relative z-10 mt-2 flex items-center gap-2 text-accent hover:text-primary transition-colors text-[12px] font-semibold cursor-pointer'>
                       <Info className='w-4 h-4' />
-                      Lihat Ketentuan Pembayaran
+                      {dict.howToOrder.payment_terms_button}
                     </button>
                   )}
 
@@ -128,9 +129,9 @@ export const HowToOrder = () => {
         <div className='mb-6'>
           <div className='text-center mb-12'>
             <h3 className='text-3xl font-bold text-white mb-4'>
-              Ketentuan <span className='text-[#c97846]'>Penting</span>
+              {dict.howToOrder.policies_title.part1} <span className='text-[#c97846]'>{dict.howToOrder.policies_title.part2}</span>
             </h3>
-            <p className='text-white/60 max-w-2xl mx-auto'>Mohon perhatikan kebijakan berikut untuk kelancaran proses pemesanan</p>
+            <p className='text-white/60 max-w-2xl mx-auto'>{dict.howToOrder.policies_description}</p>
           </div>
 
           <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
@@ -152,20 +153,20 @@ export const HowToOrder = () => {
 
         <div className='bg-[#1c1917]/50 backdrop-blur-sm border border-[#c97846]/20 rounded-2xl p-8 mb-16'>
           <h4 className='text-white font-bold text-lg mb-4 flex items-center gap-3'>
-            <span className='text-[#c97846]'>ℹ</span> Catatan Penting
+            <span className='text-[#c97846]'>ℹ</span> {dict.howToOrder.important_notes.title}
           </h4>
           <ul className='space-y-3 text-white/70 text-sm'>
             <li className='flex items-start gap-3'>
               <span className='text-[#c97846] mt-1'>•</span>
-              <span>Biaya pengiriman menjadi tanggung jawab pelanggan, kecuali ada kesepakatan tertulis untuk subsidi atau gratis ongkir.</span>
+              <span>{dict.howToOrder.important_notes.note1}</span>
             </li>
             <li className='flex items-start gap-3'>
               <span className='text-[#c97846] mt-1'>•</span>
-              <span>Pengiriman dilakukan setelah seluruh kewajiban pembayaran terpenuhi.</span>
+              <span>{dict.howToOrder.important_notes.note2}</span>
             </li>
             <li className='flex items-start gap-3'>
               <span className='text-[#c97846] mt-1'>•</span>
-              <span>Apabila terdapat kendala teknis dalam produksi, pelanggan akan segera diinformasikan oleh tim Aerisartis.</span>
+              <span>{dict.howToOrder.important_notes.note3}</span>
             </li>
           </ul>
         </div>
@@ -181,7 +182,7 @@ export const HowToOrder = () => {
             <div className='sticky top-0 bg-[#1c1917] border-b border-[#292524] p-6 flex items-center justify-between'>
               <h3 className='text-2xl font-bold text-white flex items-center gap-3'>
                 <Wallet className='w-6 h-6 text-[#c97846]' />
-                Ketentuan Pembayaran & Pemesanan
+                {dict.howToOrder.modal.title}
               </h3>
               <button
                 onClick={() => setShowPaymentModal(false)}
@@ -195,42 +196,33 @@ export const HowToOrder = () => {
                 <div className='bg-[#292524]/50 rounded-xl p-5 border border-[#c97846]/10'>
                   <h4 className='text-[#c97846] font-semibold text-lg mb-3 flex items-center gap-2'>
                     <span className='w-2 h-2 bg-[#c97846] rounded-full'></span>
-                    Produk Ready Stock
+                    {dict.howToOrder.modal.ready_stock.title}
                   </h4>
-                  <p className='text-white/70 text-sm leading-relaxed'>
-                    Produk yang tersedia (ready stock) akan dikirimkan setelah pembayaran penuh kami terima.
-                  </p>
+                  <p className='text-white/70 text-sm leading-relaxed'>{dict.howToOrder.modal.ready_stock.description}</p>
                 </div>
 
                 <div className='bg-[#292524]/50 rounded-xl p-5 border border-[#c97846]/10'>
                   <h4 className='text-[#c97846] font-semibold text-lg mb-3 flex items-center gap-2'>
                     <span className='w-2 h-2 bg-[#c97846] rounded-full'></span>
-                    Pemesanan Custom
+                    {dict.howToOrder.modal.custom_order.title}
                   </h4>
-                  <p className='text-white/70 text-sm leading-relaxed'>
-                    Untuk pemesanan produk custom, pelanggan diwajibkan melakukan pembayaran uang muka minimal 50% dari total nilai pesanan.
-                  </p>
+                  <p className='text-white/70 text-sm leading-relaxed'>{dict.howToOrder.modal.custom_order.description}</p>
                 </div>
 
                 <div className='bg-[#292524]/50 rounded-xl p-5 border border-[#c97846]/10'>
                   <h4 className='text-[#c97846] font-semibold text-lg mb-3 flex items-center gap-2'>
                     <span className='w-2 h-2 bg-[#c97846] rounded-full'></span>
-                    Pelunasan Pembayaran
+                    {dict.howToOrder.modal.payment_settlement.title}
                   </h4>
-                  <p className='text-white/70 text-sm leading-relaxed'>
-                    Sisa pembayaran dilakukan setelah pelanggan menerima invoice serta dokumentasi berupa foto produk yang telah selesai dan siap
-                    dikirim.
-                  </p>
+                  <p className='text-white/70 text-sm leading-relaxed'>{dict.howToOrder.modal.payment_settlement.description}</p>
                 </div>
 
                 <div className='bg-[#292524]/50 rounded-xl p-5 border border-[#c97846]/10'>
                   <h4 className='text-[#c97846] font-semibold text-lg mb-3 flex items-center gap-2'>
                     <span className='w-2 h-2 bg-[#c97846] rounded-full'></span>
-                    Diskon Pembelian
+                    {dict.howToOrder.modal.bulk_discount.title}
                   </h4>
-                  <p className='text-white/70 text-sm leading-relaxed'>
-                    Diskon khusus tersedia untuk pembelian dalam jumlah lebih dari 10 pcs, dengan ketentuan dan besaran yang disesuaikan.
-                  </p>
+                  <p className='text-white/70 text-sm leading-relaxed'>{dict.howToOrder.modal.bulk_discount.description}</p>
                 </div>
               </div>
             </div>

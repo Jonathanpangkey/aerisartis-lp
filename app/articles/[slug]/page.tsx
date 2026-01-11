@@ -4,9 +4,11 @@ import Link from "next/link";
 import {useState, useEffect, use} from "react";
 import {ArticleService} from "@/lib/service/article-service";
 import type {Article} from "@/lib/service/article-service";
+import {useLanguage} from "@/context/LanguageContext";
 
 export default function ArticleDetailPage({params}: {params: Promise<{slug: string}>}) {
   const {slug} = use(params);
+  const {dict, locale} = useLanguage();
 
   const [article, setArticle] = useState<Article | null>(null);
   const [loading, setLoading] = useState(true);
@@ -32,9 +34,11 @@ export default function ArticleDetailPage({params}: {params: Promise<{slug: stri
     fetchArticle();
   }, [slug]);
 
+  if (!dict) return null;
+
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href);
-    alert("Link berhasil disalin!");
+    alert(dict.articleDetail.share_success);
   };
 
   const formatDate = (dateString: string) => {
@@ -43,7 +47,7 @@ export default function ArticleDetailPage({params}: {params: Promise<{slug: stri
       month: "long",
       day: "numeric",
     };
-    return new Date(dateString).toLocaleDateString("id-ID", options);
+    return new Date(dateString).toLocaleDateString(locale === "id" ? "id-ID" : "en-US", options);
   };
 
   if (loading) {
@@ -51,7 +55,7 @@ export default function ArticleDetailPage({params}: {params: Promise<{slug: stri
       <div className='min-h-screen bg-gray-50 flex items-center justify-center'>
         <div className='flex flex-col items-center'>
           <Loader2 className='w-12 h-12 text-accent animate-spin mb-4' />
-          <p className='text-gray-600'>Memuat artikel...</p>
+          <p className='text-gray-600'>{dict.articleDetail.loading}</p>
         </div>
       </div>
     );
@@ -61,12 +65,12 @@ export default function ArticleDetailPage({params}: {params: Promise<{slug: stri
     return (
       <div className='min-h-screen bg-gray-50 flex items-center justify-center'>
         <div className='text-center'>
-          <p className='text-red-500 text-lg mb-4'>{error || "Artikel tidak ditemukan"}</p>
+          <p className='text-red-500 text-lg mb-4'>{error || dict.articleDetail.not_found}</p>
           <Link
             href='/articles'
             className='inline-flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-full hover:bg-accent/90 transition-colors'>
             <ArrowLeft className='w-5 h-5' />
-            Kembali ke Artikel
+            {dict.articleDetail.back_to_articles}
           </Link>
         </div>
       </div>
@@ -81,7 +85,7 @@ export default function ArticleDetailPage({params}: {params: Promise<{slug: stri
           <div className='flex items-center justify-between'>
             <Link href='/articles' className='flex items-center gap-2 text-gray-600 hover:text-accent transition-colors'>
               <ArrowLeft className='w-5 h-5' />
-              <span>Kembali</span>
+              <span>{dict.articleDetail.back_button}</span>
             </Link>
             <button onClick={handleShare} className='p-2 text-gray-600 hover:text-accent transition-colors'>
               <Share2 className='w-5 h-5' />
@@ -112,7 +116,9 @@ export default function ArticleDetailPage({params}: {params: Promise<{slug: stri
           </div>
           <div className='flex items-center gap-2'>
             <Clock className='w-4 h-4' />
-            <span>{article.read_time} menit baca</span>
+            <span>
+              {article.read_time} {dict.articleDetail.minutes_read}
+            </span>
           </div>
         </div>
 
@@ -135,12 +141,12 @@ export default function ArticleDetailPage({params}: {params: Promise<{slug: stri
 
         <div className='mt-12 pt-8 border-t border-gray-200'>
           <div className='flex items-center justify-between'>
-            <p className='text-gray-600'>Bagikan artikel ini:</p>
+            <p className='text-gray-600'>{dict.articleDetail.share_text}</p>
             <button
               onClick={handleShare}
               className='flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-full hover:bg-accent/90 transition-colors'>
               <Share2 className='w-4 h-4' />
-              Bagikan
+              {dict.articleDetail.share_button}
             </button>
           </div>
         </div>

@@ -3,8 +3,10 @@ import {useState, useEffect} from "react";
 import Link from "next/link";
 import {ArrowLeft, Search, Calendar, Clock, ArrowRight, Loader2} from "lucide-react";
 import {ArticleService, type Article} from "@/lib/service/article-service";
+import {useLanguage} from "@/context/LanguageContext";
 
 export default function ArticlePage() {
+  const {dict} = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
@@ -27,6 +29,8 @@ export default function ArticlePage() {
     fetchArticles();
   }, []);
 
+  if (!dict) return null;
+
   const filteredArticles = articles.filter((article) => {
     const matchSearch =
       article.title.toLowerCase().includes(searchQuery.toLowerCase()) || article.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
@@ -40,14 +44,14 @@ export default function ArticlePage() {
         <div className='max-w-7xl mx-auto px-6 py-12'>
           <Link href='/' className='inline-flex items-center gap-2 text-gray-600 hover:text-accent transition-colors mb-8'>
             <ArrowLeft className='w-5 h-5' />
-            <span>Kembali</span>
+            <span>{dict.articlesPage.back_button}</span>
           </Link>
 
           <div className='text-center mb-8'>
             <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4'>
-              Artikel & <span className='text-accent'>Inspirasi</span>
+              {dict.articlesPage.title.part1} <span className='text-accent'>{dict.articlesPage.title.part2}</span>
             </h1>
-            <p className='text-gray-600 text-lg max-w-2xl mx-auto'>Temukan wawasan, tips, dan cerita menarik seputar dunia kerajinan logam</p>
+            <p className='text-gray-600 text-lg max-w-2xl mx-auto'>{dict.articlesPage.description}</p>
           </div>
 
           <div className='flex flex-col md:flex-row gap-4 items-center justify-center'>
@@ -55,7 +59,7 @@ export default function ArticlePage() {
               <Search className='absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400' />
               <input
                 type='text'
-                placeholder='Cari artikel...'
+                placeholder={dict.articlesPage.search_placeholder}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className='w-full bg-gray-100 border border-gray-300 rounded-full pl-12 pr-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-colors'
@@ -70,7 +74,7 @@ export default function ArticlePage() {
         {loading ? (
           <div className='flex flex-col items-center justify-center py-20'>
             <Loader2 className='w-12 h-12 text-accent animate-spin mb-4' />
-            <p className='text-gray-600'>Memuat artikel...</p>
+            <p className='text-gray-600'>{dict.articlesPage.loading}</p>
           </div>
         ) : error ? (
           <div className='text-center py-20'>
@@ -78,12 +82,14 @@ export default function ArticlePage() {
             <button
               onClick={() => window.location.reload()}
               className='bg-accent text-white px-6 py-3 rounded-full hover:bg-accent/90 transition-colors'>
-              Coba Lagi
+              {dict.articlesPage.retry}
             </button>
           </div>
         ) : (
           <>
-            <div className='mb-6 text-gray-600 text-sm'>Menampilkan {filteredArticles.length} artikel</div>
+            <div className='mb-6 text-gray-600 text-sm'>
+              {dict.articlesPage.showing} {filteredArticles.length} {dict.articlesPage.articles}
+            </div>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
               {filteredArticles.map((article) => (
@@ -112,9 +118,11 @@ export default function ArticlePage() {
                     </div>
 
                     <div className='flex items-center justify-between'>
-                      <span className='text-gray-500 text-sm'>Oleh {article.author}</span>
+                      <span className='text-gray-500 text-sm'>
+                        {dict.articlesPage.by} {article.author}
+                      </span>
                       <div className='flex items-center gap-2 text-accent text-sm font-semibold group-hover:gap-3 transition-all'>
-                        Baca
+                        {dict.articlesPage.read_button}
                         <ArrowRight className='w-4 h-4' />
                       </div>
                     </div>
@@ -125,9 +133,9 @@ export default function ArticlePage() {
 
             {filteredArticles.length === 0 && !loading && (
               <div className='text-center py-20'>
-                <p className='text-gray-600 text-lg mb-4'>Tidak ada artikel ditemukan</p>
+                <p className='text-gray-600 text-lg mb-4'>{dict.articlesPage.no_articles}</p>
                 <button onClick={() => setSearchQuery("")} className='text-accent hover:underline'>
-                  Reset Pencarian
+                  {dict.articlesPage.reset_search}
                 </button>
               </div>
             )}

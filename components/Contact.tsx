@@ -1,14 +1,18 @@
 "use client";
 import React, {useState} from "react";
 import {Phone, Mail, MapPin, Send, Instagram} from "lucide-react";
+import {useLanguage} from "@/context/LanguageContext";
 
 export const Contact = () => {
+  const {dict, locale} = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     whatsapp: "",
     message: "",
   });
+
+  if (!dict) return null;
 
   const handleChange = (e: any) => {
     setFormData({
@@ -20,7 +24,10 @@ export const Contact = () => {
   const handleSubmit = () => {
     const {name, email, whatsapp, message} = formData;
 
-    const whatsappMessage = `Halo, saya ${name}.\nEmail: ${email}\nNomor WhatsApp: ${whatsapp}\nPesan: ${message}`;
+    const whatsappMessage =
+      locale === "id"
+        ? `Halo, saya ${name}.\nEmail: ${email}\nNomor WhatsApp: ${whatsapp}\nPesan: ${message}`
+        : `Hello, I am ${name}.\nEmail: ${email}\nWhatsApp Number: ${whatsapp}\nMessage: ${message}`;
 
     const phoneNumber = "6281328390414";
 
@@ -30,33 +37,33 @@ export const Contact = () => {
   const contactInfo = [
     {
       icon: <Phone className='w-5 h-4' />,
-      label: "Telepon/WhatsApp",
+      label: dict.contact.info.phone,
       name: "Azfa N.Y",
       value: "081775432061",
       link: "tel:081775432061",
     },
     {
       icon: <Phone className='w-4 h-4' />,
-      label: "Telepon/WhatsApp",
+      label: dict.contact.info.phone,
       name: "Ryan A.Y",
       value: "085848440140",
       link: "tel:085848440140",
     },
     {
       icon: <Mail className='w-4 h-4' />,
-      label: "Email",
+      label: dict.contact.info.email,
       value: "aerisartisart@gmail.com",
       link: "mailto:aerisartisart@gmail.com",
     },
     {
       icon: <MapPin className='w-4 h-4' />,
-      label: "Lokasi",
+      label: dict.contact.info.location,
       value: "Tumang, Boyolali, Indonesia",
       link: "https://www.google.com/maps/search/?api=1&query=Tumang+Boyolali+Indonesia",
     },
     {
       icon: <Instagram className='w-4 h-4' />,
-      label: "Instagram",
+      label: dict.contact.info.instagram,
       value: "aeris_artis",
       link: "https://www.instagram.com/aeris_artis/",
     },
@@ -72,13 +79,11 @@ export const Contact = () => {
 
       <div className='relative max-w-7xl mx-auto'>
         <div className='text-center mb-16'>
-          <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>HUBUNGI KAMI</p>
+          <p className='text-accent text-sm font-semibold tracking-wider uppercase mb-4'>{dict.contact.subtitle}</p>
           <h2 className='text-4xl md:text-5xl font-bold mb-6'>
-            Mari <span className='text-accent'>Berkolaborasi</span>
+            {dict.contact.title.part1} <span className='text-accent'>{dict.contact.title.part2}</span>
           </h2>
-          <p className='text-white/70 text-lg max-w-2xl mx-auto'>
-            Punya ide untuk karya custom? Atau ingin tahu lebih lanjut tentang produk kami? Kami siap mendengarkan Anda
-          </p>
+          <p className='text-white/70 text-lg max-w-2xl mx-auto'>{dict.contact.description}</p>
         </div>
 
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
@@ -105,48 +110,48 @@ export const Contact = () => {
           <div className='bg-[#1c1917]/50 backdrop-blur-sm border border-[#292524] rounded-2xl p-8'>
             <div className='space-y-6'>
               <div>
-                <label className='text-white/70 text-sm mb-2 block'>Nama Anda</label>
+                <label className='text-white/70 text-sm mb-2 block'>{dict.contact.form.name_label}</label>
                 <input
                   type='text'
                   name='name'
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder='Masukkan nama Anda'
+                  placeholder={dict.contact.form.name_placeholder}
                   className='w-full bg-[#0a0908] border border-[#292524] rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors'
                 />
               </div>
 
               <div>
-                <label className='text-white/70 text-sm mb-2 block'>Email</label>
+                <label className='text-white/70 text-sm mb-2 block'>{dict.contact.form.email_label}</label>
                 <input
                   type='email'
                   name='email'
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder='email@example.com'
+                  placeholder={dict.contact.form.email_placeholder}
                   className='w-full bg-[#0a0908] border border-[#292524] rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors'
                 />
               </div>
 
               <div>
-                <label className='text-white/70 text-sm mb-2 block'>Nomor WhatsApp</label>
+                <label className='text-white/70 text-sm mb-2 block'>{dict.contact.form.whatsapp_label}</label>
                 <input
                   type='tel'
                   name='whatsapp'
                   value={formData.whatsapp}
                   onChange={handleChange}
-                  placeholder='+62 812 xxxx xxxx'
+                  placeholder={dict.contact.form.whatsapp_placeholder}
                   className='w-full bg-[#0a0908] border border-[#292524] rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors'
                 />
               </div>
 
               <div>
-                <label className='text-white/70 text-sm mb-2 block'>Pesan Anda</label>
+                <label className='text-white/70 text-sm mb-2 block'>{dict.contact.form.message_label}</label>
                 <textarea
                   name='message'
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder='Ceritakan tentang proyek atau pertanyaan Anda...'
+                  placeholder={dict.contact.form.message_placeholder}
                   rows={4}
                   className='w-full bg-[#0a0908] border border-[#292524] rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors resize-none'
                 />
@@ -155,7 +160,7 @@ export const Contact = () => {
               <button
                 onClick={handleSubmit}
                 className='w-full cursor-pointer bg-linear-to-r from-accent to-[#b85c2e] hover:from-[#b85c2e] hover:to-accent text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:shadow-lg hover:shadow-accent/50 flex items-center justify-center gap-2'>
-                Kirim Pesan
+                {dict.contact.form.submit_button}
                 <Send className='w-5 h-5' />
               </button>
             </div>

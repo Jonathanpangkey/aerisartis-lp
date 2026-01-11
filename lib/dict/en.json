@@ -158,5 +158,196 @@
         "answer": "Yes. Each handmade product has unique characteristics. Minor differences in color, texture, or details are part of the craft value and are not considered defects."
       }
     }
+  },
+  "howToOrder": {
+    "subtitle": "ORDERING PROCEDURE",
+    "title": {
+      "part1": "How to",
+      "part2": "Order"
+    },
+    "description": "Clear and structured ordering process to ensure the best results according to your wishes",
+    "steps": {
+      "step1": {
+        "title": "Design & Approval",
+        "description": "Consult your design with us. We arrange the design based on your materials. Production starts after design approval."
+      },
+      "step2": {
+        "title": "Order & Payment",
+        "description": "Payment is made in stages, then send order details, design references, sizes via WhatsApp or official email."
+      },
+      "step3": {
+        "title": "Production Process",
+        "description": "Products are handmade with perfect details. Estimated time is adjusted to order complexity."
+      },
+      "step4": {
+        "title": "Quality Control",
+        "description": "Every product goes through strict quality inspection before delivery. We ensure it matches your order."
+      },
+      "step5": {
+        "title": "Final Payment",
+        "description": "Complete the final payment and shipping costs before the product is sent."
+      },
+      "step6": {
+        "title": "Delivery",
+        "description": "Products are safely packed and shipped to your address or can be picked up directly at the workshop."
+      }
+    },
+    "payment_terms_button": "View Payment Terms",
+    "policies_title": {
+      "part1": "Important",
+      "part2": "Terms"
+    },
+    "policies_description": "Please note the following policies for smooth ordering process",
+    "policies": {
+      "policy1": {
+        "title": "Design Revision",
+        "description": "Changes after design approval and production has started will incur additional costs according to production stages."
+      },
+      "policy2": {
+        "title": "Product Pickup",
+        "description": "Direct pickup deadline is maximum 1 month from product completion notification."
+      },
+      "policy3": {
+        "title": "Order Cancellation",
+        "description": "100% refund only if we cannot complete production. Customer cancellation will be deducted according to agreement."
+      },
+      "policy4": {
+        "title": "Handmade Character",
+        "description": "Minor differences in texture, color, or details are part of handmade product uniqueness, not production defects."
+      }
+    },
+    "important_notes": {
+      "title": "Important Notes",
+      "note1": "Shipping costs are the customer's responsibility, unless there is a written agreement for subsidized or free shipping.",
+      "note2": "Shipping is done after all payment obligations are fulfilled.",
+      "note3": "If there are technical issues in production, customers will be immediately informed by the Aerisartis team."
+    },
+    "modal": {
+      "title": "Payment & Ordering Terms",
+      "ready_stock": {
+        "title": "Ready Stock Products",
+        "description": "Available products (ready stock) will be shipped after we receive full payment."
+      },
+      "custom_order": {
+        "title": "Custom Orders",
+        "description": "For custom product orders, customers are required to make a down payment of at least 50% of the total order value."
+      },
+      "payment_settlement": {
+        "title": "Payment Settlement",
+        "description": "Remaining payment is made after the customer receives the invoice and documentation in the form of photos of completed products ready for shipment."
+      },
+      "bulk_discount": {
+        "title": "Bulk Purchase Discount",
+        "description": "Special discounts are available for purchases of more than 10 pcs, with adjusted terms and amounts."
+      }
+    }
+  },
+  "contact": {
+    "subtitle": "CONTACT US",
+    "title": {
+      "part1": "Let's",
+      "part2": "Collaborate"
+    },
+    "description": "Have an idea for a custom work? Or want to know more about our products? We are ready to listen to you",
+    "info": {
+      "phone": "Phone/WhatsApp",
+      "email": "Email",
+      "location": "Location",
+      "instagram": "Instagram"
+    },
+    "form": {
+      "name_label": "Your Name",
+      "name_placeholder": "Enter your name",
+      "email_label": "Email",
+      "email_placeholder": "email@example.com",
+      "whatsapp_label": "WhatsApp Number",
+      "whatsapp_placeholder": "+62 812 xxxx xxxx",
+      "message_label": "Your Message",
+      "message_placeholder": "Tell us about your project or question...",
+      "submit_button": "Send Message"
+    }
+  },
+  "footer": {
+    "description": "Bringing beauty and expertise in every copper and brass craft since 2004.",
+    "quick_links_title": "Quick Links",
+    "links": {
+      "home": "Home",
+      "about": "About",
+      "collection": "Collection",
+      "portfolio": "Portfolio",
+      "ordering": "Ordering",
+      "faq": "FAQ",
+      "partnership": "Partnership",
+      "contact": "Contact"
+    },
+    "operational_title": "Operational Hours",
+    "operational": {
+      "days": "Monday - Sunday",
+      "hours": "08:00 - 21:00"
+    },
+    "copyright": "© 2025 Aerisartis. All rights reserved.",
+    "made_with": "Made with",
+    "location": "in Yogyakarta"
+  },
+
+  "productsPage": {
+    "back_button": "Back",
+    "search_placeholder": "Search products...",
+    "categories": {
+      "all": "All",
+      "home_decor": "Home Decor",
+      "dining_art": "Dining Art",
+      "wall_art": "Wall Art",
+      "vases_pots": "Vases & Pots",
+      "lamps": "Lamps",
+      "equipment": "Equipment"
+    },
+    "loading": "Loading products...",
+    "retry": "Try Again",
+    "showing": "Showing",
+    "products": "products",
+    "detail_button": "Detail",
+    "no_products": "No products found",
+    "reset_filter": "Reset Filter"
+  },
+
+  "productDetail": {
+    "loading": "Loading product...",
+    "not_found": "Product not found",
+    "back_to_catalog": "Back to Catalog",
+    "back_button": "Back",
+    "share_success": "Link copied successfully!",
+    "description_title": "Product Description",
+    "order_button": "Order Now",
+    "note_label": "Note:",
+    "note_text": "Each product is handmade so there may be slight differences from the picture. This actually makes each product unique and special."
+  },
+
+  "articlesPage": {
+    "back_button": "Back",
+    "title": {
+      "part1": "Articles &",
+      "part2": "Inspiration"
+    },
+    "description": "Discover insights, tips, and interesting stories about the world of metal crafts",
+    "search_placeholder": "Search articles...",
+    "loading": "Loading articles...",
+    "retry": "Try Again",
+    "showing": "Showing",
+    "articles": "articles",
+    "by": "By",
+    "read_button": "Read",
+    "no_articles": "No articles found",
+    "reset_search": "Reset Search"
+  },
+  "articleDetail": {
+    "loading": "Loading article...",
+    "not_found": "Article not found",
+    "back_to_articles": "Back to Articles",
+    "back_button": "Back",
+    "share_success": "Link copied successfully!",
+    "minutes_read": "min read",
+    "share_text": "Share this article:",
+    "share_button": "Share"
   }
 }

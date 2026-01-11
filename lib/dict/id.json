@@ -158,5 +158,196 @@
         "answer": "Ya. Setiap produk handmade memiliki karakter unik. Perbedaan minor pada warna, tekstur, atau detail merupakan bagian dari nilai kerajinan dan tidak dianggap sebagai cacat."
       }
     }
+  },
+  "howToOrder": {
+    "subtitle": "PROSEDUR PEMESANAN",
+    "title": {
+      "part1": "Cara",
+      "part2": "Memesan"
+    },
+    "description": "Proses pemesanan yang jelas dan terstruktur untuk memastikan hasil terbaik sesuai keinginan Anda",
+    "steps": {
+      "step1": {
+        "title": "Desain & Persetujuan",
+        "description": " Konsultasikan desain anda ke kami. Kami menyusun desain bedasarkan materi Anda. Produksi dimulai setelah desain disetujui."
+      },
+      "step2": {
+        "title": "Pemesanan & Pembayaran",
+        "description": "Pembayaran di lakukan bertahap lalu kirimkan detail pesanan, referensi desain, ukuran melalui WhatsApp atau email resmi."
+      },
+      "step3": {
+        "title": "Proses Produksi",
+        "description": "Produk dikerjakan handmade dengan detail sempurna. Estimasi waktu disesuaikan dengan kompleksitas pesanan."
+      },
+      "step4": {
+        "title": "Quality Control",
+        "description": "Setiap produk melalui pemeriksaan kualitas ketat sebelum diserahkan. Kami pastikan sesuai pesanan Anda."
+      },
+      "step5": {
+        "title": "Pelunasan",
+        "description": "Selesaikan pembayaran pelunasan dan biaya pengiriman sebelum produk dikirim."
+      },
+      "step6": {
+        "title": "Pengiriman",
+        "description": "Produk dikemas aman dan dikirim ke alamat Anda atau dapat diambil langsung di workshop."
+      }
+    },
+    "payment_terms_button": "Lihat Ketentuan Pembayaran",
+    "policies_title": {
+      "part1": "Ketentuan",
+      "part2": "Penting"
+    },
+    "policies_description": "Mohon perhatikan kebijakan berikut untuk kelancaran proses pemesanan",
+    "policies": {
+      "policy1": {
+        "title": "Revisi Desain",
+        "description": "Perubahan setelah desain disetujui dan produksi berjalan akan dikenakan biaya tambahan sesuai tahapan produksi."
+      },
+      "policy2": {
+        "title": "Pengambilan Barang",
+        "description": "Batas waktu pengambilan langsung maksimal 1 bulan sejak pemberitahuan barang selesai."
+      },
+      "policy3": {
+        "title": "Pembatalan Pesanan",
+        "description": "Pengembalian dana 100% hanya jika kami tidak dapat menyelesaikan produksi. Pembatalan oleh pelanggan akan dipotong sesuai kesepakatan."
+      },
+      "policy4": {
+        "title": "Karakter Handmade",
+        "description": "Perbedaan minor pada tekstur, warna, atau detail adalah bagian dari keunikan produk handmade, bukan cacat produksi."
+      }
+    },
+    "important_notes": {
+      "title": "Catatan Penting",
+      "note1": "Biaya pengiriman menjadi tanggung jawab pelanggan, kecuali ada kesepakatan tertulis untuk subsidi atau gratis ongkir.",
+      "note2": "Pengiriman dilakukan setelah seluruh kewajiban pembayaran terpenuhi.",
+      "note3": "Apabila terdapat kendala teknis dalam produksi, pelanggan akan segera diinformasikan oleh tim Aerisartis."
+    },
+    "modal": {
+      "title": "Ketentuan Pembayaran & Pemesanan",
+      "ready_stock": {
+        "title": "Produk Ready Stock",
+        "description": "Produk yang tersedia (ready stock) akan dikirimkan setelah pembayaran penuh kami terima."
+      },
+      "custom_order": {
+        "title": "Pemesanan Custom",
+        "description": "Untuk pemesanan produk custom, pelanggan diwajibkan melakukan pembayaran uang muka minimal 50% dari total nilai pesanan."
+      },
+      "payment_settlement": {
+        "title": "Pelunasan Pembayaran",
+        "description": "Sisa pembayaran dilakukan setelah pelanggan menerima invoice serta dokumentasi berupa foto produk yang telah selesai dan siap dikirim."
+      },
+      "bulk_discount": {
+        "title": "Diskon Pembelian",
+        "description": "Diskon khusus tersedia untuk pembelian dalam jumlah lebih dari 10 pcs, dengan ketentuan dan besaran yang disesuaikan."
+      }
+    }
+  },
+  "contact": {
+    "subtitle": "HUBUNGI KAMI",
+    "title": {
+      "part1": "Mari",
+      "part2": "Berkolaborasi"
+    },
+    "description": "Punya ide untuk karya custom? Atau ingin tahu lebih lanjut tentang produk kami? Kami siap mendengarkan Anda",
+    "info": {
+      "phone": "Telepon/WhatsApp",
+      "email": "Email",
+      "location": "Lokasi",
+      "instagram": "Instagram"
+    },
+    "form": {
+      "name_label": "Nama Anda",
+      "name_placeholder": "Masukkan nama Anda",
+      "email_label": "Email",
+      "email_placeholder": "email@example.com",
+      "whatsapp_label": "Nomor WhatsApp",
+      "whatsapp_placeholder": "+62 812 xxxx xxxx",
+      "message_label": "Pesan Anda",
+      "message_placeholder": "Ceritakan tentang proyek atau pertanyaan Anda...",
+      "submit_button": "Kirim Pesan"
+    }
+  },
+  "footer": {
+    "description": "Menghadirkan keindahan dan keahlian dalam setiap karya kerajinan tembaga dan kuningan sejak 2004.",
+    "quick_links_title": "Tautan Cepat",
+    "links": {
+      "home": "Beranda",
+      "about": "Tentang",
+      "collection": "Koleksi",
+      "portfolio": "Portfolio",
+      "ordering": "Pemesanan",
+      "faq": "FAQ",
+      "partnership": "Kemitraan",
+      "contact": "Kontak"
+    },
+    "operational_title": "Jam Operasional",
+    "operational": {
+      "days": "Senin - Minggu",
+      "hours": "08:00 - 21:00"
+    },
+    "copyright": "© 2025 Aerisartis. All rights reserved.",
+    "made_with": "Dibuat dengan",
+    "location": "di Yogyakarta"
+  },
+
+  "productsPage": {
+    "back_button": "Kembali",
+    "search_placeholder": "Cari produk...",
+    "categories": {
+      "all": "Semua",
+      "home_decor": "Dekorasi Rumah",
+      "dining_art": "Seni Makan",
+      "wall_art": "Seni Dinding",
+      "vases_pots": "Vas & Pot",
+      "lamps": "Lampu",
+      "equipment": "Peralatan"
+    },
+    "loading": "Memuat produk...",
+    "retry": "Coba Lagi",
+    "showing": "Menampilkan",
+    "products": "produk",
+    "detail_button": "Detail",
+    "no_products": "Tidak ada produk ditemukan",
+    "reset_filter": "Reset Filter"
+  },
+
+  "productDetail": {
+    "loading": "Memuat produk...",
+    "not_found": "Produk tidak ditemukan",
+    "back_to_catalog": "Kembali ke Katalog",
+    "back_button": "Kembali",
+    "share_success": "Link berhasil disalin!",
+    "description_title": "Deskripsi Produk",
+    "order_button": "Pesan Sekarang",
+    "note_label": "Catatan:",
+    "note_text": "Setiap produk dibuat dengan tangan sehingga mungkin terdapat sedikit perbedaan dengan gambar. Hal ini justru membuat setiap produk menjadi unik dan istimewa."
+  },
+
+  "articlesPage": {
+    "back_button": "Kembali",
+    "title": {
+      "part1": "Artikel &",
+      "part2": "Inspirasi"
+    },
+    "description": "Temukan wawasan, tips, dan cerita menarik seputar dunia kerajinan logam",
+    "search_placeholder": "Cari artikel...",
+    "loading": "Memuat artikel...",
+    "retry": "Coba Lagi",
+    "showing": "Menampilkan",
+    "articles": "artikel",
+    "by": "Oleh",
+    "read_button": "Baca",
+    "no_articles": "Tidak ada artikel ditemukan",
+    "reset_search": "Reset Pencarian"
+  },
+  "articleDetail": {
+    "loading": "Memuat artikel...",
+    "not_found": "Artikel tidak ditemukan",
+    "back_to_articles": "Kembali ke Artikel",
+    "back_button": "Kembali",
+    "share_success": "Link berhasil disalin!",
+    "minutes_read": "menit baca",
+    "share_text": "Bagikan artikel ini:",
+    "share_button": "Bagikan"
   }
 }

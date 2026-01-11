@@ -4,9 +4,11 @@ import Link from "next/link";
 import {useState, useEffect, use} from "react";
 import {ProductService} from "@/lib/service/product-service";
 import type {Product} from "@/lib/service/product-service";
+import {useLanguage} from "@/context/LanguageContext";
 
 export default function ProductDetailPage({params}: {params: Promise<{id: string}>}) {
   const {id} = use(params);
+  const {dict, locale} = useLanguage();
 
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
@@ -28,14 +30,23 @@ export default function ProductDetailPage({params}: {params: Promise<{id: string
     fetchProduct();
   }, [id]);
 
+  if (!dict) return null;
+
   const handleOrderWhatsApp = () => {
     if (!product) return;
 
-    const whatsappMessage = `Halo, saya tertarik dengan produk:
+    const whatsappMessage =
+      locale === "id"
+        ? `Halo, saya tertarik dengan produk:
 
 *${product.title}*
 Kategori: ${product.category}
-Saya ingin mengetahui lebih lanjut tentang produk ini dan proses pemesanannya. Terima kasih!`;
+Saya ingin mengetahui lebih lanjut tentang produk ini dan proses pemesanannya. Terima kasih!`
+        : `Hello, I am interested in this product:
+
+*${product.title}*
+Category: ${product.category}
+I would like to know more about this product and the ordering process. Thank you!`;
 
     const phoneNumber = "6281328390414";
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
@@ -43,7 +54,7 @@ Saya ingin mengetahui lebih lanjut tentang produk ini dan proses pemesanannya. T
 
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href);
-    alert("Link berhasil disalin!");
+    alert(dict.productDetail.share_success);
   };
 
   if (loading) {
@@ -51,7 +62,7 @@ Saya ingin mengetahui lebih lanjut tentang produk ini dan proses pemesanannya. T
       <div className='min-h-screen bg-[#0a0908] flex items-center justify-center'>
         <div className='flex flex-col items-center'>
           <Loader2 className='w-12 h-12 text-accent animate-spin mb-4' />
-          <p className='text-white/60'>Memuat produk...</p>
+          <p className='text-white/60'>{dict.productDetail.loading}</p>
         </div>
       </div>
     );
@@ -61,12 +72,12 @@ Saya ingin mengetahui lebih lanjut tentang produk ini dan proses pemesanannya. T
     return (
       <div className='min-h-screen bg-[#0a0908] flex items-center justify-center'>
         <div className='text-center'>
-          <p className='text-red-400 text-lg mb-4'>{error || "Produk tidak ditemukan"}</p>
+          <p className='text-red-400 text-lg mb-4'>{error || dict.productDetail.not_found}</p>
           <Link
             href='/products'
             className='inline-flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-full hover:bg-accent/80 transition-colors'>
             <ArrowLeft className='w-5 h-5' />
-            Kembali ke Katalog
+            {dict.productDetail.back_to_catalog}
           </Link>
         </div>
       </div>
@@ -80,7 +91,7 @@ Saya ingin mengetahui lebih lanjut tentang produk ini dan proses pemesanannya. T
           <div className='flex items-center justify-between'>
             <Link href='/products' className='flex items-center gap-2 text-white/70 hover:text-accent transition-colors'>
               <ArrowLeft className='w-5 h-5' />
-              <span>Kembali</span>
+              <span>{dict.productDetail.back_button}</span>
             </Link>
             <div className='flex items-center gap-4'>
               <button onClick={handleShare} className='p-2 text-white/70 hover:text-accent transition-colors'>
@@ -109,7 +120,7 @@ Saya ingin mengetahui lebih lanjut tentang produk ini dan proses pemesanannya. T
             </div>
 
             <div className='border-t border-[#292524] pt-6'>
-              <h3 className='text-lg font-semibold text-white mb-3'>Deskripsi Produk</h3>
+              <h3 className='text-lg font-semibold text-white mb-3'>{dict.productDetail.description_title}</h3>
               <p className='text-white/70 leading-relaxed'>{product.description}</p>
             </div>
 
@@ -118,14 +129,13 @@ Saya ingin mengetahui lebih lanjut tentang produk ini dan proses pemesanannya. T
                 onClick={handleOrderWhatsApp}
                 className='w-full bg-linear-to-r from-primary to-[#d46e3d] hover:from-[#d46e3d] hover:to-primary text-white py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-3'>
                 <ShoppingCart className='w-5 h-5' />
-                Pesan Sekarang
+                {dict.productDetail.order_button}
               </button>
             </div>
 
             <div className='bg-[#1c1917]/30 backdrop-blur-sm border border-[#292524] rounded-xl p-4'>
               <p className='text-white/60 text-sm leading-relaxed'>
-                <span className='text-accent font-semibold'>Catatan:</span> Setiap produk dibuat dengan tangan sehingga mungkin terdapat sedikit
-                perbedaan dengan gambar. Hal ini justru membuat setiap produk menjadi unik dan istimewa.
+                <span className='text-accent font-semibold'>{dict.productDetail.note_label}</span> {dict.productDetail.note_text}
               </p>
             </div>
           </div>

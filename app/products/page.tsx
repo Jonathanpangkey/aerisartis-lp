@@ -1,19 +1,30 @@
 "use client";
-"use client";
 import {useState, useEffect} from "react";
 import {ArrowLeft, Search, Filter, Loader2} from "lucide-react";
 import Link from "next/link";
 import {ProductService} from "@/lib/service/product-service";
 import type {Product} from "@/lib/service/product-service";
+import {useLanguage} from "@/context/LanguageContext";
 
 export default function ProductsPage() {
-  const [selectedCategory, setSelectedCategory] = useState("Semua");
+  const {dict} = useLanguage();
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [collections, setCollections] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const categories = ["Semua", "Dekorasi Rumah", "Seni Makan", "Seni Dinding", "Vas & Pot", "Lampu", "Peralatan"];
+  if (!dict) return null;
+
+  const categories = [
+    {id: "all", label: dict.productsPage.categories.all},
+    {id: "home_decor", label: dict.productsPage.categories.home_decor},
+    {id: "dining_art", label: dict.productsPage.categories.dining_art},
+    {id: "wall_art", label: dict.productsPage.categories.wall_art},
+    {id: "vases_pots", label: dict.productsPage.categories.vases_pots},
+    {id: "lamps", label: dict.productsPage.categories.lamps},
+    {id: "equipment", label: dict.productsPage.categories.equipment},
+  ];
 
   useEffect(() => {
     async function fetchProducts() {
@@ -32,7 +43,21 @@ export default function ProductsPage() {
     fetchProducts();
   }, []);
 
-  const filteredCollections = ProductService.filterProducts(collections, selectedCategory, searchQuery);
+  const categoryMapping: {[key: string]: string} = {
+    all: "Semua",
+    home_decor: "Dekorasi Rumah",
+    dining_art: "Seni Makan",
+    wall_art: "Seni Dinding",
+    vases_pots: "Vas & Pot",
+    lamps: "Lampu",
+    equipment: "Peralatan",
+  };
+
+  const filteredCollections = ProductService.filterProducts(
+    collections,
+    selectedCategory === "all" ? "Semua" : categoryMapping[selectedCategory],
+    searchQuery
+  );
 
   return (
     <div className='min-h-screen bg-background-dark'>
@@ -40,14 +65,14 @@ export default function ProductsPage() {
         <div className='max-w-7xl mx-auto px-6 py-8'>
           <Link href='/' className='flex items-center gap-2 text-white/70 hover:text-accent transition-colors mb-6'>
             <ArrowLeft className='w-5 h-5' />
-            <span>Kembali</span>
+            <span>{dict.productsPage.back_button}</span>
           </Link>
           <div className='flex flex-col md:flex-row gap-4 items-center justify-center'>
             <div className='relative w-full md:w-96'>
               <Search className='absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40' />
               <input
                 type='text'
-                placeholder='Cari produk...'
+                placeholder={dict.productsPage.search_placeholder}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className='w-full bg-[#1c1917]/50 backdrop-blur-sm border border-[#292524] rounded-full pl-12 pr-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-accent/50 transition-colors'
@@ -63,13 +88,13 @@ export default function ProductsPage() {
             <Filter className='w-5 h-5 text-white/60 shrink-0' />
             {categories.map((category) => (
               <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
                 className={`
                   px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300
-                  ${selectedCategory === category ? "bg-accent text-white" : "bg-[#1c1917]/50 text-white/70 hover:text-white hover:bg-[#1c1917]"}
+                  ${selectedCategory === category.id ? "bg-accent text-white" : "bg-[#1c1917]/50 text-white/70 hover:text-white hover:bg-[#1c1917]"}
                 `}>
-                {category}
+                {category.label}
               </button>
             ))}
           </div>
@@ -80,7 +105,7 @@ export default function ProductsPage() {
         {loading ? (
           <div className='flex flex-col items-center justify-center py-20'>
             <Loader2 className='w-12 h-12 text-accent animate-spin mb-4' />
-            <p className='text-white/60'>Memuat produk...</p>
+            <p className='text-white/60'>{dict.productsPage.loading}</p>
           </div>
         ) : error ? (
           <div className='text-center py-20'>
@@ -88,12 +113,14 @@ export default function ProductsPage() {
             <button
               onClick={() => window.location.reload()}
               className='bg-accent text-white px-6 py-3 rounded-full hover:bg-accent/80 transition-colors'>
-              Coba Lagi
+              {dict.productsPage.retry}
             </button>
           </div>
         ) : (
           <>
-            <div className='mb-6 text-white/60 text-sm'>Menampilkan {filteredCollections.length} produk</div>
+            <div className='mb-6 text-white/60 text-sm'>
+              {dict.productsPage.showing} {filteredCollections.length} {dict.productsPage.products}
+            </div>
 
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
               {filteredCollections.map((item) => (
@@ -118,7 +145,7 @@ export default function ProductsPage() {
                     <p className='text-white/60 text-sm leading-relaxed mb-4 line-clamp-2'>{item.description}</p>
                     <div className='flex items-center justify-between'>
                       <span className='bg-accent hover:bg-accent/80 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all ml-auto'>
-                        Detail
+                        {dict.productsPage.detail_button}
                       </span>
                     </div>
                   </div>
@@ -130,14 +157,14 @@ export default function ProductsPage() {
 
             {filteredCollections.length === 0 && !loading && (
               <div className='text-center py-20'>
-                <p className='text-white/60 text-lg'>Tidak ada produk ditemukan</p>
+                <p className='text-white/60 text-lg'>{dict.productsPage.no_products}</p>
                 <button
                   onClick={() => {
-                    setSelectedCategory("Semua");
+                    setSelectedCategory("all");
                     setSearchQuery("");
                   }}
                   className='mt-4 text-accent hover:underline'>
-                  Reset Filter
+                  {dict.productsPage.reset_filter}
                 </button>
               </div>
             )}
