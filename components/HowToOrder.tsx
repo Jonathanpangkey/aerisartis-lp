@@ -224,6 +224,14 @@ export const HowToOrder = () => {
                   </h4>
                   <p className='text-white/70 text-sm leading-relaxed'>{dict.howToOrder.modal.bulk_discount.description}</p>
                 </div>
+
+                <div className='bg-[#292524]/50 rounded-xl p-5 border border-[#c97846]/10'>
+                  <h4 className='text-[#c97846] font-semibold text-lg mb-3 flex items-center gap-2'>
+                    <span className='w-2 h-2 bg-[#c97846] rounded-full'></span>
+                    {dict.howToOrder.modal.minimum_payment.title}
+                  </h4>
+                  <p className='text-white/70 text-sm leading-relaxed'>{dict.howToOrder.modal.minimum_payment.description}</p>
+                </div>
               </div>
             </div>
           </div>

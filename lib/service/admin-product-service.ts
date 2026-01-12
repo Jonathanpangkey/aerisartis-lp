@@ -5,6 +5,9 @@ export type ProductInput = {
   title: string;
   description: string;
   category: string;
+  title_en: string;
+  description_en: string;
+  category_en: string;
   image: string;
 };
 

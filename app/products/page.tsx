@@ -7,7 +7,7 @@ import type {Product} from "@/lib/service/product-service";
 import {useLanguage} from "@/context/LanguageContext";
 
 export default function ProductsPage() {
-  const {dict} = useLanguage();
+  const {dict, locale} = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [collections, setCollections] = useState<Product[]>([]);
@@ -43,21 +43,35 @@ export default function ProductsPage() {
     fetchProducts();
   }, []);
 
-  const categoryMapping: {[key: string]: string} = {
-    all: "Semua",
-    home_decor: "Dekorasi Rumah",
-    dining_art: "Seni Makan",
-    wall_art: "Seni Dinding",
-    vases_pots: "Vas & Pot",
-    lamps: "Lampu",
-    equipment: "Peralatan",
+  const categoryMapping: {[key: string]: {id: string; en: string}} = {
+    all: {id: "Semua", en: "All"},
+    home_decor: {id: "Dekorasi Rumah", en: "Home Decor"},
+    dining_art: {id: "Seni Makan", en: "Dining Art"},
+    wall_art: {id: "Seni Dinding", en: "Wall Art"},
+    vases_pots: {id: "Vas & Pot", en: "Vases & Pots"},
+    lamps: {id: "Lampu", en: "Lamps"},
+    equipment: {id: "Peralatan", en: "Utensils"},
   };
 
-  const filteredCollections = ProductService.filterProducts(
-    collections,
-    selectedCategory === "all" ? "Semua" : categoryMapping[selectedCategory],
-    searchQuery
-  );
+  const filteredCollections = collections.filter((product) => {
+    const localized = ProductService.getLocalizedProduct(product, locale);
+
+    const matchCategory =
+      selectedCategory === "all" ||
+      product.category === categoryMapping[selectedCategory].id ||
+      product.category_en === categoryMapping[selectedCategory].en;
+
+    const searchLower = searchQuery.toLowerCase();
+    const matchSearch =
+      product.title.toLowerCase().includes(searchLower) ||
+      product.description.toLowerCase().includes(searchLower) ||
+      product.title_en?.toLowerCase().includes(searchLower) ||
+      false ||
+      product.description_en?.toLowerCase().includes(searchLower) ||
+      false;
+
+    return matchCategory && matchSearch;
+  });
 
   return (
     <div className='min-h-screen bg-background-dark'>
@@ -123,36 +137,40 @@ export default function ProductsPage() {
             </div>
 
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
-              {filteredCollections.map((item) => (
-                <Link
-                  key={item.id}
-                  href={`/products/${item.id}`}
-                  className='group relative bg-[#1c1917]/30 backdrop-blur-sm border border-[#292524] rounded-2xl overflow-hidden hover:border-accent/50 transition-all duration-300 block'>
-                  <div className='relative aspect-square overflow-hidden'>
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-500'
-                    />
-                    <div className='absolute top-4 left-4'>
-                      <span className='bg-accent text-white text-xs font-semibold px-3 py-1 rounded-full'>{item.category}</span>
-                    </div>
-                    <div className='absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent opacity-60'></div>
-                  </div>
+              {filteredCollections.map((item) => {
+                const localized = ProductService.getLocalizedProduct(item, locale);
 
-                  <div className='p-5'>
-                    <h3 className='text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors line-clamp-1'>{item.title}</h3>
-                    <p className='text-white/60 text-sm leading-relaxed mb-4 line-clamp-2'>{item.description}</p>
-                    <div className='flex items-center justify-between'>
-                      <span className='bg-accent hover:bg-accent/80 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all ml-auto'>
-                        {dict.productsPage.detail_button}
-                      </span>
+                return (
+                  <Link
+                    key={item.id}
+                    href={`/products/${item.id}`}
+                    className='group relative bg-[#1c1917]/30 backdrop-blur-sm border border-[#292524] rounded-2xl overflow-hidden hover:border-accent/50 transition-all duration-300 block'>
+                    <div className='relative aspect-square overflow-hidden'>
+                      <img
+                        src={item.image}
+                        alt={localized.title}
+                        className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-500'
+                      />
+                      <div className='absolute top-4 left-4'>
+                        <span className='bg-accent text-white text-xs font-semibold px-3 py-1 rounded-full'>{localized.category}</span>
+                      </div>
+                      <div className='absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent opacity-60'></div>
                     </div>
-                  </div>
 
-                  <div className='absolute inset-0 border-2 border-accent rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity'></div>
-                </Link>
-              ))}
+                    <div className='p-5'>
+                      <h3 className='text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors line-clamp-1'>{localized.title}</h3>
+                      <p className='text-white/60 text-sm leading-relaxed mb-4 line-clamp-2'>{localized.description}</p>
+                      <div className='flex items-center justify-between'>
+                        <span className='bg-accent hover:bg-accent/80 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all ml-auto'>
+                          {dict.productsPage.detail_button}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className='absolute inset-0 border-2 border-accent rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity'></div>
+                  </Link>
+                );
+              })}
             </div>
 
             {filteredCollections.length === 0 && !loading && (

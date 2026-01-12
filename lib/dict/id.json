@@ -239,6 +239,10 @@
       "bulk_discount": {
         "title": "Diskon Pembelian",
         "description": "Diskon khusus tersedia untuk pembelian dalam jumlah lebih dari 10 pcs, dengan ketentuan dan besaran yang disesuaikan."
+      },
+      "minimum_payment": {
+        "title": "Tanpa Minimum & Maksimum Pemesanan",
+        "description": "Aerisartis melayani pemesanan satuan hingga jumlah besar, tanpa batas minimum maupun maksimum, sesuai kebutuhan Anda."
       }
     }
   },

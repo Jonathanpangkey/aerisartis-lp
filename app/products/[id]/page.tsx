@@ -1,4 +1,5 @@
 "use client";
+
 import {ArrowLeft, Share2, ShoppingCart, Loader2} from "lucide-react";
 import Link from "next/link";
 import {useState, useEffect, use} from "react";
@@ -32,31 +33,6 @@ export default function ProductDetailPage({params}: {params: Promise<{id: string
 
   if (!dict) return null;
 
-  const handleOrderWhatsApp = () => {
-    if (!product) return;
-
-    const whatsappMessage =
-      locale === "id"
-        ? `Halo, saya tertarik dengan produk:
-
-*${product.title}*
-Kategori: ${product.category}
-Saya ingin mengetahui lebih lanjut tentang produk ini dan proses pemesanannya. Terima kasih!`
-        : `Hello, I am interested in this product:
-
-*${product.title}*
-Category: ${product.category}
-I would like to know more about this product and the ordering process. Thank you!`;
-
-    const phoneNumber = "6281328390414";
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
-  };
-
-  const handleShare = () => {
-    navigator.clipboard.writeText(window.location.href);
-    alert(dict.productDetail.share_success);
-  };
-
   if (loading) {
     return (
       <div className='min-h-screen bg-[#0a0908] flex items-center justify-center'>
@@ -84,6 +60,34 @@ I would like to know more about this product and the ordering process. Thank you
     );
   }
 
+  /** 🔑 localized product */
+  const localized = ProductService.getLocalizedProduct(product, locale);
+
+  const handleOrderWhatsApp = () => {
+    const message =
+      locale === "id"
+        ? `Halo, saya tertarik dengan produk:
+
+*${localized.title}*
+Kategori: ${localized.category}
+
+Saya ingin mengetahui lebih lanjut tentang produk ini dan proses pemesanannya. Terima kasih!`
+        : `Hello, I am interested in this product:
+
+*${localized.title}*
+Category: ${localized.category}
+
+I would like to know more about this product and the ordering process. Thank you!`;
+
+    const phoneNumber = "6281328390414";
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
+  };
+
+  const handleShare = () => {
+    navigator.clipboard.writeText(window.location.href);
+    alert(dict.productDetail.share_success);
+  };
+
   return (
     <div className='min-h-screen bg-[#0a0908]'>
       <div className='sticky top-0 z-40 bg-[#0a0908]/95 backdrop-blur-md border-b border-[#292524]'>
@@ -93,38 +97,33 @@ I would like to know more about this product and the ordering process. Thank you
               <ArrowLeft className='w-5 h-5' />
               <span>{dict.productDetail.back_button}</span>
             </Link>
-            <div className='flex items-center gap-4'>
-              <button onClick={handleShare} className='p-2 text-white/70 hover:text-accent transition-colors'>
-                <Share2 className='w-5 h-5' />
-              </button>
-            </div>
+
+            <button onClick={handleShare} className='p-2 text-white/70 hover:text-accent transition-colors'>
+              <Share2 className='w-5 h-5' />
+            </button>
           </div>
         </div>
       </div>
 
       <div className='max-w-7xl mx-auto px-6 py-12'>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-12'>
-          <div className='space-y-4'>
+          <div>
             <div className='relative aspect-square bg-[#1c1917]/30 backdrop-blur-sm border border-[#292524] rounded-2xl overflow-hidden'>
-              <img src={product.image} alt={product.title} className='w-full h-full object-cover' />
+              <img src={product.image} alt={localized.title} className='w-full h-full object-cover' />
             </div>
           </div>
 
           <div className='space-y-6'>
-            <div>
-              <span className='inline-block bg-accent/10 text-accent text-sm font-semibold px-4 py-2 rounded-full'>{product.category}</span>
-            </div>
+            <span className='inline-block bg-accent/10 text-accent text-sm font-semibold px-4 py-2 rounded-full'>{localized.category}</span>
 
-            <div>
-              <h1 className='text-4xl font-bold text-white mb-4'>{product.title}</h1>
-            </div>
+            <h1 className='text-4xl font-bold text-white'>{localized.title}</h1>
 
             <div className='border-t border-[#292524] pt-6'>
               <h3 className='text-lg font-semibold text-white mb-3'>{dict.productDetail.description_title}</h3>
-              <p className='text-white/70 leading-relaxed'>{product.description}</p>
+              <p className='text-white/70 leading-relaxed'>{localized.description}</p>
             </div>
 
-            <div className='border-t border-[#292524] pt-6 space-y-3'>
+            <div className='border-t border-[#292524] pt-6'>
               <button
                 onClick={handleOrderWhatsApp}
                 className='w-full bg-linear-to-r from-primary to-[#d46e3d] hover:from-[#d46e3d] hover:to-primary text-white py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-3'>

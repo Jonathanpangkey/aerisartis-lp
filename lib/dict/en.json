@@ -239,6 +239,10 @@
       "bulk_discount": {
         "title": "Bulk Purchase Discount",
         "description": "Special discounts are available for purchases of more than 10 pcs, with adjusted terms and amounts."
+      },
+      "minimum_payment": {
+        "title": "No Minimum & Maximum Order",
+        "description": "Aerisartis accepts orders from single items to bulk quantities, with no minimum or maximum limits, tailored to your needs."
       }
     }
   },

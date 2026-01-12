@@ -7,7 +7,7 @@ import type {Product} from "@/lib/service/product-service";
 import {useLanguage} from "@/context/LanguageContext";
 
 export const Products = () => {
-  const {dict} = useLanguage();
+  const {dict, locale} = useLanguage();
   const [collections, setCollections] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -62,31 +62,35 @@ export const Products = () => {
         ) : collections.length > 0 ? (
           <>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-              {collections.map((item) => (
-                <Link
-                  key={item.id}
-                  href={`/products/${item.id}`}
-                  className='group relative bg-[#1c1917]/50 backdrop-blur-sm border border-[#292524] rounded-2xl overflow-hidden transition-all duration-300 block hover:border-accent/50'>
-                  <div className='relative aspect-4/3 overflow-hidden'>
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-500'
-                    />
+              {collections.map((item) => {
+                const localized = ProductService.getLocalizedProduct(item, locale);
 
-                    <div className='absolute top-4 left-4'>
-                      <span className='bg-accent text-white text-xs font-semibold px-3 py-1 rounded-full'>{item.category}</span>
+                return (
+                  <Link
+                    key={item.id}
+                    href={`/products/${item.id}`}
+                    className='group relative bg-[#1c1917]/50 backdrop-blur-sm border border-[#292524] rounded-2xl overflow-hidden transition-all duration-300 block hover:border-accent/50'>
+                    <div className='relative aspect-4/3 overflow-hidden'>
+                      <img
+                        src={item.image}
+                        alt={localized.title}
+                        className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-500'
+                      />
+
+                      <div className='absolute top-4 left-4'>
+                        <span className='bg-accent text-white text-xs font-semibold px-3 py-1 rounded-full'>{localized.category}</span>
+                      </div>
+
+                      <div className='absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent opacity-60'></div>
                     </div>
-
-                    <div className='absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent opacity-60'></div>
-                  </div>
-                  <div className='p-6'>
-                    <h3 className='text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors line-clamp-1'>{item.title}</h3>
-                    <p className='text-white/60 text-sm leading-relaxed line-clamp-2'>{item.description}</p>
-                  </div>
-                  <div className='absolute inset-0 border-2 border-primary-background rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity'></div>
-                </Link>
-              ))}
+                    <div className='p-6'>
+                      <h3 className='text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors line-clamp-1'>{localized.title}</h3>
+                      <p className='text-white/60 text-sm leading-relaxed line-clamp-2'>{localized.description}</p>
+                    </div>
+                    <div className='absolute inset-0 border-2 border-primary-background rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity'></div>
+                  </Link>
+                );
+              })}
             </div>
 
             <div className='text-center mt-12'>

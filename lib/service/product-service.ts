@@ -5,6 +5,9 @@ export type Product = {
   title: string;
   description: string;
   category: string;
+  title_en: string | null;
+  description_en: string | null;
+  category_en: string | null;
   image: string;
   created_at: string;
   updated_at: string;
@@ -108,7 +111,33 @@ export class ProductService {
       return matchCategory && matchSearch;
     });
   }
+
+  /**
+   * Get localized product data
+   * Helper method untuk mendapatkan data sesuai bahasa
+   */
+  static getLocalizedProduct(
+    product: Product,
+    locale: string
+  ): {
+    title: string;
+    description: string;
+    category: string;
+  } {
+    if (locale === "en") {
+      return {
+        title: product.title_en || product.title,
+        description: product.description_en || product.description,
+        category: product.category_en || product.category,
+      };
+    }
+    return {
+      title: product.title,
+      description: product.description,
+      category: product.category,
+    };
+  }
 }
 
 // Export untuk backward compatibility
-export const {getAllProducts, getProductsProducts, getProductById, getProductsByCategory, filterProducts} = ProductService;
+export const {getAllProducts, getProductsProducts, getProductById, getProductsByCategory, filterProducts, getLocalizedProduct} = ProductService;

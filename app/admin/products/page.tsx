@@ -1,7 +1,7 @@
 // app/admin/dashboard/products/page.tsx
 "use client";
 import {useState, useEffect} from "react";
-import {Plus, Edit, Trash2, Loader2, Package, Search, Image as ImageIcon, X, Save, AlertCircle, CheckCircle} from "lucide-react";
+import {Plus, Edit, Trash2, Loader2, Package, Search, Image as ImageIcon, X, Save, AlertCircle, CheckCircle, Languages} from "lucide-react";
 import {ProductService} from "@/lib/service/product-service";
 import {AdminProductService, type ProductInput} from "@/lib/service/admin-product-service";
 import {ImageValidator} from "@/lib/utils/image-utils";
@@ -18,6 +18,9 @@ export default function ProductsPage() {
     title: "",
     description: "",
     category: "",
+    title_en: "",
+    description_en: "",
+    category_en: "",
     image: "",
   });
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -28,6 +31,7 @@ export default function ProductsPage() {
   const [imageInfo, setImageInfo] = useState<string>("");
 
   const categories = ["Dekorasi Rumah", "Seni Makan", "Seni Dinding", "Vas & Pot", "Lampu", "Peralatan"];
+  const categoriesEn = ["Home Decor", "Dining Art", "Wall Art", "Vases & Pots", "Lamps", "Utensils"];
 
   useEffect(() => {
     fetchProducts();
@@ -46,6 +50,9 @@ export default function ProductsPage() {
       title: "",
       description: "",
       category: categories[0],
+      title_en: "",
+      description_en: "",
+      category_en: categoriesEn[0],
       image: "",
     });
     setImageFile(null);
@@ -62,6 +69,9 @@ export default function ProductsPage() {
       title: product.title,
       description: product.description,
       category: product.category,
+      title_en: product.title_en || "",
+      description_en: product.description_en || "",
+      category_en: product.category_en || "",
       image: product.image,
     });
     setImagePreview(product.image);
@@ -240,11 +250,13 @@ export default function ProductsPage() {
                           </div>
                           <div>
                             <div className='text-white font-medium line-clamp-1'>{product.title}</div>
+                            {product.title_en && <div className='text-white/50 text-xs flex items-center gap-1 mt-1'>{product.title_en}</div>}
                           </div>
                         </div>
                       </td>
                       <td className='py-4 px-6'>
                         <span className='inline-block bg-accent/20 text-accent text-xs font-semibold px-3 py-1 rounded-full'>{product.category}</span>
+                        {product.category_en && <div className='text-white/40 text-xs mt-1'>{product.category_en}</div>}
                       </td>
                       <td className='py-4 px-6'>
                         <p className='text-white/70 text-sm line-clamp-2 max-w-md'>{product.description}</p>
@@ -281,11 +293,10 @@ export default function ProductsPage() {
         </div>
       )}
 
-      {/* Modal - Same as before but extracted for clarity */}
+      {/* Modal */}
       {showModal && (
         <div className='fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-6'>
-          <div className='bg-[#1c1917] border border-[#292524] rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto'>
-            {/* Modal content - Same as original */}
+          <div className='bg-[#1c1917] border border-[#292524] rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto'>
             <div className='sticky top-0 bg-[#1c1917] border-b border-[#292524] p-6 flex items-center justify-between'>
               <h2 className='text-2xl font-bold text-white'>{modalMode === "create" ? "Tambah Produk" : "Edit Produk"}</h2>
               <button onClick={() => setShowModal(false)} className='text-white/60 hover:text-white transition-colors'>
@@ -308,6 +319,7 @@ export default function ProductsPage() {
                 </div>
               )}
 
+              {/* Image Upload */}
               <div>
                 <label className='text-white/70 text-sm mb-2 block'>Gambar Produk</label>
                 <div className='text-white/50 text-xs mb-3'>Format: JPG, PNG, WebP • Maksimal: 5MB • Dimensi: 2048x2048px</div>
@@ -353,43 +365,105 @@ export default function ProductsPage() {
                 </div>
               </div>
 
-              <div>
-                <label className='text-white/70 text-sm mb-2 block'>Nama Produk</label>
-                <input
-                  type='text'
-                  value={formData.title}
-                  onChange={(e) => setFormData({...formData, title: e.target.value})}
-                  placeholder='Contoh: Mangkuk Tembaga Klasik'
-                  required
-                  className='w-full bg-[#0a0908] border border-[#292524] rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors'
-                />
-              </div>
+              {/* Two Column Layout for Indonesian and English */}
+              <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
+                {/* Indonesian Version */}
+                <div className='space-y-6 border border-[#292524] rounded-xl p-6 bg-[#0a0908]/50'>
+                  <div className='flex items-center gap-2 mb-4'>
+                    <div className='w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center'>
+                      <span className='text-red-400 font-semibold text-sm'>ID</span>
+                    </div>
+                    <h3 className='text-white font-semibold'>Bahasa Indonesia</h3>
+                  </div>
 
-              <div>
-                <label className='text-white/70 text-sm mb-2 block'>Kategori</label>
-                <select
-                  value={formData.category}
-                  onChange={(e) => setFormData({...formData, category: e.target.value})}
-                  required
-                  className='w-full bg-[#0a0908] border border-[#292524] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors'>
-                  {categories.map((cat) => (
-                    <option key={cat} value={cat}>
-                      {cat}
-                    </option>
-                  ))}
-                </select>
-              </div>
+                  <div>
+                    <label className='text-white/70 text-sm mb-2 block'>Nama Produk</label>
+                    <input
+                      type='text'
+                      value={formData.title}
+                      onChange={(e) => setFormData({...formData, title: e.target.value})}
+                      placeholder='Contoh: Mangkuk Tembaga Klasik'
+                      required
+                      className='w-full bg-[#1c1917] border border-[#292524] rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors'
+                    />
+                  </div>
 
-              <div>
-                <label className='text-white/70 text-sm mb-2 block'>Deskripsi</label>
-                <textarea
-                  value={formData.description}
-                  onChange={(e) => setFormData({...formData, description: e.target.value})}
-                  placeholder='Deskripsikan produk Anda...'
-                  rows={4}
-                  required
-                  className='w-full bg-[#0a0908] border border-[#292524] rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors resize-none'
-                />
+                  <div>
+                    <label className='text-white/70 text-sm mb-2 block'>Kategori</label>
+                    <select
+                      value={formData.category}
+                      onChange={(e) => setFormData({...formData, category: e.target.value})}
+                      required
+                      className='w-full bg-[#1c1917] border border-[#292524] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors'>
+                      {categories.map((cat) => (
+                        <option key={cat} value={cat}>
+                          {cat}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className='text-white/70 text-sm mb-2 block'>Deskripsi</label>
+                    <textarea
+                      value={formData.description}
+                      onChange={(e) => setFormData({...formData, description: e.target.value})}
+                      placeholder='Deskripsikan produk Anda...'
+                      rows={4}
+                      required
+                      className='w-full bg-[#1c1917] border border-[#292524] rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors resize-none'
+                    />
+                  </div>
+                </div>
+
+                {/* English Version */}
+                <div className='space-y-6 border border-[#292524] rounded-xl p-6 bg-[#0a0908]/50'>
+                  <div className='flex items-center gap-2 mb-4'>
+                    <div className='w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center'>
+                      <span className='text-blue-400 font-semibold text-sm'>EN</span>
+                    </div>
+                    <h3 className='text-white font-semibold'>English</h3>
+                  </div>
+
+                  <div>
+                    <label className='text-white/70 text-sm mb-2 block'>Product Name</label>
+                    <input
+                      type='text'
+                      value={formData.title_en}
+                      onChange={(e) => setFormData({...formData, title_en: e.target.value})}
+                      placeholder='Example: Classic Copper Bowl'
+                      required
+                      className='w-full bg-[#1c1917] border border-[#292524] rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors'
+                    />
+                  </div>
+
+                  <div>
+                    <label className='text-white/70 text-sm mb-2 block'>Category</label>
+                    <select
+                      value={formData.category_en}
+                      onChange={(e) => setFormData({...formData, category_en: e.target.value})}
+                      required
+                      className='w-full bg-[#1c1917] border border-[#292524] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors'>
+                      {categoriesEn.map((cat) => (
+                        <option key={cat} value={cat}>
+                          {cat}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className='text-white/70 text-sm mb-2 block'>Description</label>
+                    <textarea
+                      value={formData.description_en}
+                      onChange={(e) => setFormData({...formData, description_en: e.target.value})}
+                      placeholder='Describe your product...'
+                      rows={4}
+                      required
+                      className='w-full bg-[#1c1917] border border-[#292524] rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors resize-none'
+                    />
+                  </div>
+                </div>
               </div>
 
               <div className='flex gap-3 pt-4'>
