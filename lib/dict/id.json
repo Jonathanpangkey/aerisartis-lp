@@ -294,6 +294,50 @@
     "location": "di Yogyakarta"
   },
 
+  "aboutPage": {
+    "back_button": "Kembali",
+    "title": {
+      "part1": "Tentang",
+      "part2": "Aerisartis"
+    },
+    "subtitle": "Kerajinan Tembaga & Kuningan Handmade dari Tumang, Boyolali",
+    "story_title": "Cerita Kami",
+    "story_content": "Aerisartis adalah usaha kerajinan produk anak bangsa yang bergerak dalam pembuatan tembaga dan kuningan handmade, diproduksi langsung di sentra kerajinan tembaga dan kuningan Tumang, Boyolali yang telah dikenal secara nasional dan internasional. Kami menghadirkan berbagai karya untuk kebutuhan interior, eksterior, dan proyek custom mulai dari elemen dekoratif, ornamen arsitektural, hingga produk tematik sesuai konsep klien yang dikerjakan secara manual dengan perhatian tinggi pada detail, proporsi, dan kualitas material.",
+    "advantages_title": {
+      "part1": "Keunggulan",
+      "part2": "Kami"
+    },
+    "highlights": {
+      "highlight1": {
+        "title": "Sentra Kerajinan Tumang",
+        "description": "Diproduksi langsung di sentra kerajinan tembaga dan kuningan Tumang, Boyolali yang telah dikenal secara nasional dan internasional."
+      },
+      "highlight2": {
+        "title": "Berbagai Karya Custom",
+        "description": "Menghadirkan berbagai karya untuk kebutuhan interior, eksterior, dan proyek custom mulai dari elemen dekoratif, ornamen arsitektural, hingga produk tematik."
+      },
+      "highlight3": {
+        "title": "Handmade berkualitas",
+        "description": "Dikerjakan secara manual dengan perhatian tinggi pada detail, proporsi, dan kualitas material oleh pengrajin berpengalaman."
+      },
+      "highlight4": {
+        "title": "Kolaborasi Profesional",
+        "description": "Dipercaya dalam berbagai kolaborasi dengan klien individu, desainer, arsitek, kontraktor, hingga instansi dan pihak swasta."
+      },
+      "highlight5": {
+        "title": "Kualitas Terjamin",
+        "description": "Berkomitmen menghasilkan karya yang rapi, bernilai estetika, dan berdaya tahan jangka panjang."
+      },
+      "highlight6": {
+        "title": "Jangkauan Luas",
+        "description": "Melayani kebutuhan lokal maupun internasional dengan standar kualitas yang konsisten."
+      }
+    },
+    "cta_title": "Siap Mewujudkan Proyek Anda?",
+    "cta_description": "Konsultasikan kebutuhan Anda dengan tim kami dan dapatkan solusi terbaik untuk proyek Anda",
+    "cta_button": "Hubungi Kami Sekarang"
+  },
+
   "productsPage": {
     "back_button": "Kembali",
     "search_placeholder": "Cari produk...",

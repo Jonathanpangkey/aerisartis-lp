@@ -218,23 +218,6 @@ export const Navbar = () => {
                 </a>
               )
             )}
-            <a
-              href='/admin/login'
-              onClick={handleMenuClick}
-              className='
-                    relative text-white
-                    bg-primary
-                    hover:bg-accent
-                    transition-colors duration-200
-                    hover:after:w-full
-                    px-4 py-2
-                    mt-8
-                    w-fit
-                    text-center
-                    rounded-full
-                '>
-              Admin
-            </a>
             <div className='mt-4'>
               <LanguageToggle iconOnly />
             </div>

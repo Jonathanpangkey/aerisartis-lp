@@ -294,6 +294,50 @@
     "location": "in Yogyakarta"
   },
 
+  "aboutPage": {
+    "back_button": "Back",
+    "title": {
+      "part1": "About",
+      "part2": "Aerisartis"
+    },
+    "subtitle": "Handmade Copper & Brass Crafts from Tumang, Boyolali",
+    "story_title": "Our Story",
+    "story_content": "Aerisartis is a local craft business engaged in handmade copper and brass production, manufactured directly at the Tumang craft center in Boyolali, which is nationally and internationally recognized. We present various works for interior, exterior, and custom project needs ranging from decorative elements, architectural ornaments, to thematic products according to client concepts, crafted manually with high attention to detail, proportion, and material quality.",
+    "advantages_title": {
+      "part1": "Our",
+      "part2": "Advantages"
+    },
+    "highlights": {
+      "highlight1": {
+        "title": "Tumang Craft Center",
+        "description": "Produced directly at the Tumang copper and brass craft center in Boyolali, which is nationally and internationally recognized."
+      },
+      "highlight2": {
+        "title": "Various Custom Works",
+        "description": "Presenting various works for interior, exterior, and custom project needs ranging from decorative elements, architectural ornaments, to thematic products."
+      },
+      "highlight3": {
+        "title": "Quality Handmade",
+        "description": "Crafted manually with high attention to detail, proportion, and material quality by experienced artisans."
+      },
+      "highlight4": {
+        "title": "Professional Collaboration",
+        "description": "Trusted in various collaborations with individual clients, designers, architects, contractors, institutions, and private parties."
+      },
+      "highlight5": {
+        "title": "Guaranteed Quality",
+        "description": "Committed to producing neat work with aesthetic value and long-term durability."
+      },
+      "highlight6": {
+        "title": "Wide Reach",
+        "description": "Serving local and international needs with consistent quality standards."
+      }
+    },
+    "cta_title": "Ready to Realize Your Project?",
+    "cta_description": "Consult your needs with our team and get the best solution for your project",
+    "cta_button": "Contact Us Now"
+  },
+
   "productsPage": {
     "back_button": "Back",
     "search_placeholder": "Search products...",
