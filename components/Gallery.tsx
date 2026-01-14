@@ -10,32 +10,110 @@ export const Gallery = () => {
   const galleryItems = [
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=800",
-      title: dict.gallery.items.item1,
+      image: "/assets/img/portofolio/portfolio-brass-logo-direktorat-jenderal-pemasyarakatan.jpeg",
+      title: "Brass Logo Direktorat Jenderal Pemasyarakatan",
       span: "md:col-span-1 md:row-span-1",
     },
     {
       id: 2,
-      image: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?q=80&w=800",
-      title: dict.gallery.items.item2,
+      image: "/assets/img/portofolio/portfolio-brass-logo-polres-cimahi.jpg",
+      title: "Brass Logo Polres Cimahi",
       span: "md:col-span-1 md:row-span-1",
     },
     {
       id: 3,
-      image: "https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=800",
-      title: dict.gallery.items.item3,
+      image: "/assets/img/portofolio/portfolio-brass-statue_buddha.jpg",
+      title: "Brass Statue Buddha",
       span: "md:col-span-1 md:row-span-2",
     },
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?q=80&w=800",
-      title: dict.gallery.items.item4,
+      image: "/assets/img/portofolio/portfolio-brass-wall-art-logo-denjaka.jpg",
+      title: "Brass Wall Art Logo Denjaka",
       span: "md:col-span-1 md:row-span-1",
     },
     {
       id: 5,
-      image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=800",
-      title: dict.gallery.items.item5,
+      image: "/assets/img/portofolio/portfolio-brass-wall-art-the-one-hotel-canggu.jpg.png",
+      title: "Brass Wall Art The One Hotel Canggu",
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: 6,
+      image: "/assets/img/portofolio/portfolio-brass-wall-logo-the-one-hotel-canggu.jpg",
+      title: "Brass Wall Logo The One Hotel Canggu",
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: 7,
+      image: "/assets/img/portofolio/portfolio-copper-globe-garuda.jpg",
+      title: "Copper Globe Garuda",
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: 8,
+      image: "/assets/img/portofolio/portfolio-copper-logo-art-logo-psi-1.jpg",
+      title: "Copper Logo Art PSI",
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: 9,
+      image: "/assets/img/portofolio/portfolio-copper-logo-art-logo-psi.jpg",
+      title: "Copper Logo Art PSI Variant",
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: 10,
+      image: "/assets/img/portofolio/portfolio-copper-statue_moh-hatta.jpg",
+      title: "Copper Statue Mohammad Hatta",
+      span: "md:col-span-1 md:row-span-2",
+    },
+    {
+      id: 11,
+      image: "/assets/img/portofolio/portfolio-copper-statue_soekarno-hatta.jpg",
+      title: "Copper Statue Soekarno Hatta",
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: 12,
+      image: "/assets/img/portofolio/portfolio-gunung-tidar-monument-copper-art-magelang.jpg",
+      title: "Gunung Tidar Monument Copper Art Magelang",
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: 13,
+      image: "/assets/img/portofolio/portfolio-logo-wall-art-sekretariat-negara-republik-indonesia.jpg",
+      title: "Logo Wall Art Sekretariat Negara RI",
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: 14,
+      image: "/assets/img/portofolio/portfolio-logo-wall-art-sekretariat-negara-republik-indonesia.png",
+      title: "Logo Wall Art Sekretariat Negara RI",
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: 15,
+      image: "/assets/img/portofolio/portfolio-wall-decor-hotel-maxone-boyolali-1.jpg",
+      title: "Wall Decor Hotel Maxone Boyolali",
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: 16,
+      image: "/assets/img/portofolio/portfolio-wall-decor-hotel-maxone-boyolali-2.jpg",
+      title: "Wall Decor Hotel Maxone Boyolali",
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: 17,
+      image: "/assets/img/portofolio/portfolio-wall-decor-hotel-maxone-boyolali-3.jpg",
+      title: "Wall Decor Hotel Maxone Boyolali",
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: 18,
+      image: "/assets/img/portofolio/portfolio-wall-decor-hotel-maxone-boyolali.jpg",
+      title: "Wall Decor Hotel Maxone Boyolali",
       span: "md:col-span-1 md:row-span-1",
     },
   ];
@@ -82,10 +160,6 @@ export const Gallery = () => {
               <div className='absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
                 <div className='absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300'>
                   <h3 className='text-white font-bold text-lg mb-1'>{item.title}</h3>
-                  <div className='flex items-center gap-2'>
-                    <div className='w-8 h-0.5 bg-accent'></div>
-                    <span className='text-accent text-sm font-medium'>{dict.gallery.view_detail}</span>
-                  </div>
                 </div>
               </div>
 
