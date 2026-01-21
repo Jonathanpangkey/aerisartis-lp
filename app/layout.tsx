@@ -17,6 +17,9 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   title: "Toko Tembaga | Kerajinan Tembaga & Kuningan",
   description: "Pusat kerajinan tembaga dan kuningan kualitas premium.",
+  icons: {
+    icon: "/assets/img/logo/logo-only.png",
+  },
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
