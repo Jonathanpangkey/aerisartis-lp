@@ -8,7 +8,7 @@ import {Footer} from "@/components/Footer";
 import {Partnership} from "@/components/Partnership";
 import {FAQ} from "@/components/FAQ";
 import {HowToOrder} from "@/components/HowToOrder";
-import { WhatsAppFloating } from "@/components/FloatingIcons";
+import {WhatsAppFloating} from "@/components/FloatingIcons";
 
 export default function Home() {
   return (
@@ -19,11 +19,11 @@ export default function Home() {
       <Products />
       <Gallery />
       <Partnership />
-      <FAQ />
       <HowToOrder />
+      <FAQ />
       <Contact />
       <Footer />
-      
+
       {/* WhatsApp Floating Button */}
       <WhatsAppFloating />
     </div>
