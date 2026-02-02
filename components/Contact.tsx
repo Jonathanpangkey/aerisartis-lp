@@ -65,7 +65,7 @@ export const Contact = () => {
       icon: <Instagram className='w-4 h-4' />,
       label: dict.contact.info.instagram,
       value: "aeris_artis",
-      link: "https://www.instagram.com/aeris_artis/",
+      link: "https://www.instagram.com/aerisartis?igsh=MTMxbXY4a21vb3lr",
     },
   ];
 
