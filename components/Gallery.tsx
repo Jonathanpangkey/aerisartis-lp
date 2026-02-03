@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import {useLanguage} from "@/context/LanguageContext";
+import {i, span} from "framer-motion/client";
 
 export const Gallery = () => {
   const {dict} = useLanguage();
@@ -114,6 +115,24 @@ export const Gallery = () => {
       id: 18,
       image: "/assets/img/portofolio/portfolio-wall-decor-hotel-maxone-boyolali.jpg",
       title: "Wall Decor Hotel Maxone Boyolali",
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: 19,
+      image: "/assets/img/portofolio/WhatsApp Image 2026-02-03 at 16.42.46 (1).jpeg",
+      title: "",
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: 20,
+      image: "/assets/img/portofolio/WhatsApp Image 2026-02-03 at 16.42.46 (2).jpeg",
+      title: "",
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: 21,
+      image: "/assets/img/portofolio/WhatsApp Image 2026-02-03 at 16.42.46.jpeg",
+      title: "",
       span: "md:col-span-1 md:row-span-1",
     },
   ];
