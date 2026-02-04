@@ -120,19 +120,19 @@ export const Gallery = () => {
     {
       id: 19,
       image: "/assets/img/portofolio/WhatsApp Image 2026-02-03 at 16.42.46 (1).jpeg",
-      title: "",
+      title: "Lampu Robyong Dekorasi Joglo",
       span: "md:col-span-1 md:row-span-1",
     },
     {
       id: 20,
       image: "/assets/img/portofolio/WhatsApp Image 2026-02-03 at 16.42.46 (2).jpeg",
-      title: "",
+      title: "Lampu Robyong Dekorasi Joglo",
       span: "md:col-span-1 md:row-span-1",
     },
     {
       id: 21,
       image: "/assets/img/portofolio/WhatsApp Image 2026-02-03 at 16.42.46.jpeg",
-      title: "",
+      title: "Lampu Gantung Hotel MaxOne",
       span: "md:col-span-1 md:row-span-1",
     },
   ];
