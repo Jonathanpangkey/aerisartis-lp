@@ -79,7 +79,7 @@ Category: ${localized.category}
 
 I would like to know more about this product and the ordering process. Thank you!`;
 
-    const phoneNumber = "6281328390414";
+    const phoneNumber = "6282221471493";
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
   };
 
