@@ -1,55 +1,28 @@
 "use client";
 import Link from "next/link";
-import {useState, useEffect, useRef} from "react";
+import {useRef} from "react";
 import {useLanguage} from "@/context/LanguageContext";
 
 export const Hero = () => {
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const {dict} = useLanguage();
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (video.readyState >= 3) {
-      setIsVideoLoaded(true);
-      return;
-    }
-
-    const timeout = setTimeout(() => {
-      setIsVideoLoaded(true);
-    }, 2000);
-
-    const handleCanPlay = () => {
-      setIsVideoLoaded(true);
-    };
-
-    video.addEventListener("canplay", handleCanPlay);
-    video.addEventListener("loadeddata", handleCanPlay);
-
-    return () => {
-      clearTimeout(timeout);
-      video.removeEventListener("canplay", handleCanPlay);
-      video.removeEventListener("loadeddata", handleCanPlay);
-    };
-  }, []);
-
   return (
     <section id='home' className='relative min-h-screen flex items-center justify-center overflow-hidden'>
-      {!isVideoLoaded && (
-        <div className='absolute inset-0 z-20 flex items-center justify-center bg-black'>
-          <div className='w-12 h-12 border-4 border-t-transparent border-white rounded-full animate-spin'></div>
-        </div>
-      )}
-      <div className='absolute inset-0 z-0'>
-        <video ref={videoRef} src='/assets/bg.mp4' autoPlay loop muted playsInline preload='auto' className='w-full h-full object-cover' />
+      <div className='absolute inset-0 z-0 bg-black'>
+        <video
+          ref={videoRef}
+          src='/assets/bg.mp4'
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload='auto'
+          className='w-full h-full object-cover'
+        />
         <div className='absolute inset-0 bg-linear-to-b from-black/50 via-black/40 to-black/70' />
       </div>
-      <div
-        className={`relative z-10 max-w-5xl mx-auto px-6 text-center ${
-          !isVideoLoaded ? "opacity-0" : "opacity-100"
-        } transition-opacity duration-500`}>
+      <div className='relative z-10 max-w-5xl mx-auto px-6 text-center'>
         <h1 className='text-5xl md:text-6xl lg:text-7xl mb-6'>
           <span className='text-accent block m-0'>{dict.hero.title_accent}</span>
           <span className='text-white'>{dict.hero.title_main}</span>
